@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Information - CSE SIT Nagpur</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<script>
+function setFieldError(fieldId, errorId, message) {
+    let field = document.getElementById(fieldId);
+    let errorBox = document.getElementById(errorId);
+
+    if (message) {
+        field.classList.add("input-error");
+        errorBox.textContent = message;
+        return false;
+    } else {
+        field.classList.remove("input-error");
+        errorBox.textContent = "";
+        return true;
+    }
+}
+
+function generateProfile() {
+
+    console.log("Generate Student Profile clicked - starting validation");
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let dob = document.getElementById("dob").value;
+    let gender = document.getElementById("gender").value;
+    let address = document.getElementById("address").value.trim();
+    let fatherName = document.getElementById("fatherName").value.trim();
+    let motherName = document.getElementById("motherName").value.trim();
+    let guardianMobile = document.getElementById("guardianMobile").value.trim();
+    let category = document.getElementById("category").value;
+    let nationality = document.getElementById("nationality").value.trim();
+    let aadhar = document.getElementById("aadhar").value.trim();
+    let bloodGroup = document.getElementById("bloodGroup").value;
+    let qualifyingExam = document.getElementById("qualifyingExam").value;
+    let qualifyingScore = document.getElementById("qualifyingScore").value.trim();
+    let hscPercentage = document.getElementById("hscPercentage").value.trim();
+    let state = document.getElementById("state").value.trim();
+    let city = document.getElementById("city").value.trim();
+    let pincode = document.getElementById("pincode").value.trim();
+
+    let isValid = true;
+    if (name === "") {
+        console.warn("Validation failed: name field is empty");
+        isValid = setFieldError("name", "nameError", "Please enter your full name.") && isValid;
+    } else {
+        setFieldError("name", "nameError", "");
+    }
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === "") {
+        console.warn("Validation failed: email field is empty");
+        isValid = setFieldError("email", "emailError", "Please enter your email address.") && isValid;
+    } else if (!emailPattern.test(email)) {
+        console.error("Validation failed: invalid email format - " + email);
+        isValid = setFieldError("email", "emailError", "Please enter a valid email address.") && isValid;
+    } else {
+        setFieldError("email", "emailError", "");
+    }
+
+    if (mobile === "") {
+        console.warn("Validation failed: mobile field is empty");
+        isValid = setFieldError("mobile", "mobileError", "Please enter your mobile number.") && isValid;
+    } else if (!isTenDigitMobile(mobile)) {
+        console.error("Validation failed: invalid mobile number - " + mobile);
+        isValid = setFieldError("mobile", "mobileError", "Enter a valid 10-digit mobile number.") && isValid;
+    } else {
+        setFieldError("mobile", "mobileError", "");
+    }
+
+    if (fatherName === "") {
+        console.warn("Validation failed: father's name field is empty");
+        isValid = setFieldError("fatherName", "fatherNameError", "Please enter father's name.") && isValid;
+    } else {
+        setFieldError("fatherName", "fatherNameError", "");
+    }
+
+    if (category === "") {
+        console.warn("Validation failed: category not selected");
+        isValid = setFieldError("category", "categoryError", "Please select your category.") && isValid;
+    } else {
+        setFieldError("category", "categoryError", "");
+    }
+
+    let aadharPattern = /^[0-9]{12}$/;
+    if (aadhar === "") {
+        console.warn("Validation failed: Aadhaar field is empty");
+        isValid = setFieldError("aadhar", "aadharError", "Please enter your Aadhaar number.") && isValid;
+    } else if (!aadharPattern.test(aadhar)) {
+        console.error("Validation failed: invalid Aadhaar number - " + aadhar);
+        isValid = setFieldError("aadhar", "aadharError", "Aadhaar number must be exactly 12 digits.") && isValid;
+    } else {
+        setFieldError("aadhar", "aadharError", "");
+    }
+
+    if (guardianMobile === "") {
+        console.warn("Validation failed: guardian mobile field is empty");
+        isValid = setFieldError("guardianMobile", "guardianMobileError", "Please enter a guardian/parent contact number.") && isValid;
+    } else if (!isTenDigitMobile(guardianMobile)) {
+        console.error("Validation failed: invalid guardian mobile number - " + guardianMobile);
+        isValid = setFieldError("guardianMobile", "guardianMobileError", "Enter a valid 10-digit mobile number.") && isValid;
+    } else {
+        setFieldError("guardianMobile", "guardianMobileError", "");
+    }
+    let hscValue = parseFloat(hscPercentage);
+    if (hscPercentage === "") {
+        console.warn("Validation failed: HSC percentage field is empty");
+        isValid = setFieldError("hscPercentage", "hscPercentageError", "Please enter your 12th/HSC percentage.") && isValid;
+    } else if (isNaN(hscValue) || hscValue < 0 || hscValue > 100) {
+        console.error("Validation failed: invalid HSC percentage - " + hscPercentage);
+        isValid = setFieldError("hscPercentage", "hscPercentageError", "Enter a valid percentage between 0 and 100.") && isValid;
+    } else {
+        setFieldError("hscPercentage", "hscPercentageError", "");
+    }
+
+    if (!isValid) {
+        console.error("Form has validation errors - profile not generated");
+        return;
+    }
+    showSubmissionPopup();
+
+    let displayName = toTitleCase(name); 
+    document.getElementById("profileWelcomeName").textContent = displayName;
+    document.getElementById("profileName").textContent = displayName;
+    document.getElementById("profileEmail").textContent = email;
+    document.getElementById("profileMobile").textContent = mobile;
+    document.getElementById("profileDob").textContent = dob || "-";
+    document.getElementById("profileGender").textContent = gender || "-";
+    document.getElementById("profileAddress").textContent = address || "-";
+    document.getElementById("profileFatherName").textContent = fatherName || "-";
+    document.getElementById("profileMotherName").textContent = motherName || "-";
+    document.getElementById("profileGuardianMobile").textContent = guardianMobile || "-";
+    document.getElementById("profileCategory").textContent = category || "-";
+    document.getElementById("profileNationality").textContent = nationality || "-";
+    document.getElementById("profileAadhar").textContent = aadhar ? aadhar.replace(/(\d{4})(\d{4})(\d{4})/, "$1 $2 $3") : "-";
+    document.getElementById("profileBloodGroup").textContent = bloodGroup || "-";
+    document.getElementById("profileQualifyingExam").textContent = qualifyingExam || "-";
+    document.getElementById("profileQualifyingScore").textContent = qualifyingScore || "-";
+    document.getElementById("profileHscPercentage").textContent = hscPercentage ? hscPercentage + "%" : "-";
+    document.getElementById("profileState").textContent = state || "-";
+    document.getElementById("profileCity").textContent = city || "-";
+    document.getElementById("profilePincode").textContent = pincode || "-";
+
+    document.getElementById("profileCard").style.display = "block";
+    document.getElementById("profileCard").scrollIntoView({ behavior: "smooth" });
+
+    console.log("Student profile generated successfully for " + displayName);
+
+    console.table([
+        {
+            Name: displayName,
+            Email: email,
+            Mobile: mobile,
+            DOB: dob,
+            Gender: gender,
+            FatherName: fatherName,
+            MotherName: motherName,
+            GuardianMobile: guardianMobile,
+            Category: category,
+            Nationality: nationality,
+            Aadhar: aadhar,
+            BloodGroup: bloodGroup,
+            QualifyingExam: qualifyingExam,
+            QualifyingScore: qualifyingScore,
+            HscPercentage: hscPercentage,
+            State: state,
+            City: city,
+            Pincode: pincode
+        }
+    ]);
+}
+
+function resetForm() {
+    let errorIds = ["nameError", "emailError", "mobileError", "fatherNameError", "categoryError", "aadharError", "guardianMobileError", "hscPercentageError"];
+    let fieldIds = ["name", "email", "mobile", "fatherName", "category", "aadhar", "guardianMobile", "hscPercentage"];
+
+    errorIds.forEach(function (id) {
+        document.getElementById(id).textContent = "";
+    });
+    fieldIds.forEach(function (id) {
+        document.getElementById(id).classList.remove("input-error");
+    });
+
+    document.getElementById("profileCard").style.display = "none";
+    console.log("Form reset by user");
+}
+</script>
+
+</head>
+<body>
+<div class="marquee-bar">
+    <div class="marquee-track">
+        <span>Admissions open&nbsp;&nbsp;&bull;&nbsp;&nbsp;ICSIT@2026&nbsp;&nbsp;&bull;&nbsp;&nbsp;Know more about SIT&nbsp;&nbsp;&bull;&nbsp;&nbsp;Admissions open&nbsp;&nbsp;&bull;&nbsp;&nbsp;ICSIT@2026&nbsp;&nbsp;&bull;&nbsp;&nbsp;Know more about SIT</span>
+    </div>
+</div>
+
+<header class="navbar">
+    <div class="navbar-inner">
+        <a href="department.html#home" class="navbar-brand">
+            <img src="logo.png" alt="SIT Logo" class="navbar-logo">
+            <div class="navbar-text">
+                <span class="navbar-title">Symbiosis Institute of Technology, Nagpur</span>
+            </div>
+        </a>
+
+        <nav class="navbar-links" id="mainNav">
+            <a href="department.html#home">Home</a>
+            <a href="department.html#about">About</a>
+            <a href="department.html#facilities">Facilities</a>
+            <a href="department.html#specializations">Specializations</a>
+            <a href="student.html" class="navbar-button">Student Portal</a>
+        </nav>
+
+        <button class="navbar-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<section class="dome-section dome-strip">
+    <div class="container">
+        <h2>Student Information Portal</h2>
+        <p>Fill in your details below to generate your student profile card.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="card">
+            <h2>Student Details</h2>
+
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="e.g. Rohan Sharma">
+                    <span class="error-msg" id="nameError"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="e.g. rohan@example.com">
+                    <span class="error-msg" id="emailError"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" maxlength="10" placeholder="10-digit number">
+                    <span class="error-msg" id="mobileError"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob">
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="gender">Gender</label>
+                    <select id="gender">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="fatherName">Father's Name</label>
+                    <input type="text" id="fatherName" placeholder="e.g. Suresh Sharma">
+                    <span class="error-msg" id="fatherNameError"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="motherName">Mother's Name</label>
+                    <input type="text" id="motherName" placeholder="e.g. Sunita Sharma">
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="guardianMobile">Parent/Guardian Mobile</label>
+                    <input type="tel" id="guardianMobile" maxlength="10" placeholder="10-digit number">
+                    <span class="error-msg" id="guardianMobileError"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="">Select Category</option>
+                        <option value="General">General / Open</option>
+                        <option value="OBC">OBC</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="NT">NT (VJ/DT/NT)</option>
+                        <option value="EWS">EWS</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span class="error-msg" id="categoryError"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" value="Indian">
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="aadhar">Aadhaar Number</label>
+                    <input type="text" id="aadhar" maxlength="12" placeholder="12-digit Aadhaar number">
+                    <span class="error-msg" id="aadharError"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="bloodGroup">Blood Group</label>
+                    <select id="bloodGroup">
+                        <option value="">Select Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="qualifyingExam">Qualifying Exam</label>
+                    <select id="qualifyingExam">
+                        <option value="">Select Exam</option>
+                        <option value="MHT-CET">MHT-CET</option>
+                        <option value="JEE Main">JEE Main</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="qualifyingScore">Qualifying Exam Score / Percentile</label>
+                    <input type="text" id="qualifyingScore" placeholder="e.g. 98.45 percentile">
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="hscPercentage">12th / HSC Percentage</label>
+                    <input type="number" id="hscPercentage" min="0" max="100" step="0.01" placeholder="e.g. 87.50">
+                    <span class="error-msg" id="hscPercentageError"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="state">State</label>
+                    <input type="text" id="state" placeholder="e.g. Maharashtra">
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="city">City / Town</label>
+                    <input type="text" id="city" placeholder="e.g. Nagpur">
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field">
+                    <label for="pincode">Pincode</label>
+                    <input type="text" id="pincode" maxlength="6" placeholder="6-digit pincode">
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-field full-width">
+                    <label for="address">Address</label>
+                    <textarea id="address" placeholder="Current residential address"></textarea>
+                    <span class="error-msg"></span>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button
+                    class="btn"
+                    onclick="generateProfile()"
+                    onmouseover="console.log('Hovering over Generate Student Profile button')">
+                    <i class="fa-solid fa-check"></i> Submit
+                </button>
+                <button class="btn btn-outline" onclick="resetForm()">
+                    <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+            </div>
+
+            <div class="profile-card card" id="profileCard">
+                <div class="profile-welcome">
+                    <span class="small">Welcome,</span>
+                    <span class="name" id="profileWelcomeName"></span>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-item"><span class="p-label">Name</span><span class="p-value" id="profileName"></span></div>
+                    <div class="profile-item"><span class="p-label">Email</span><span class="p-value" id="profileEmail"></span></div>
+                    <div class="profile-item"><span class="p-label">Mobile</span><span class="p-value" id="profileMobile"></span></div>
+                    <div class="profile-item"><span class="p-label">DOB</span><span class="p-value" id="profileDob"></span></div>
+                    <div class="profile-item"><span class="p-label">Gender</span><span class="p-value" id="profileGender"></span></div>
+                    <div class="profile-item"><span class="p-label">Father's Name</span><span class="p-value" id="profileFatherName"></span></div>
+                    <div class="profile-item"><span class="p-label">Mother's Name</span><span class="p-value" id="profileMotherName"></span></div>
+                    <div class="profile-item"><span class="p-label">Guardian Mobile</span><span class="p-value" id="profileGuardianMobile"></span></div>
+                    <div class="profile-item"><span class="p-label">Category</span><span class="p-value" id="profileCategory"></span></div>
+                    <div class="profile-item"><span class="p-label">Nationality</span><span class="p-value" id="profileNationality"></span></div>
+                    <div class="profile-item"><span class="p-label">Aadhaar No.</span><span class="p-value" id="profileAadhar"></span></div>
+                    <div class="profile-item"><span class="p-label">Blood Group</span><span class="p-value" id="profileBloodGroup"></span></div>
+                    <div class="profile-item"><span class="p-label">Qualifying Exam</span><span class="p-value" id="profileQualifyingExam"></span></div>
+                    <div class="profile-item"><span class="p-label">Exam Score</span><span class="p-value" id="profileQualifyingScore"></span></div>
+                    <div class="profile-item"><span class="p-label">12th / HSC %</span><span class="p-value" id="profileHscPercentage"></span></div>
+                    <div class="profile-item"><span class="p-label">State</span><span class="p-value" id="profileState"></span></div>
+                    <div class="profile-item"><span class="p-label">City</span><span class="p-value" id="profileCity"></span></div>
+                    <div class="profile-item"><span class="p-label">Pincode</span><span class="p-value" id="profilePincode"></span></div>
+                    <div class="profile-item"><span class="p-label">Address</span><span class="p-value" id="profileAddress"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-row">
+            <a href="department.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Department Page</a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <span>Designed by Ananya Marghade</span>
+    <span>PRN 24070521004</span>
+    <span>Batch A1</span>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
