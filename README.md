@@ -6,7 +6,8 @@
 |------------|-------------|
 | **Experiment 1** | Demonstration of Inline, Internal and External JavaScript, Console Methods, and Displaying User Information |
 | **Experiment 2** | Demonstration of `var`, `let`, `const`, Template Literals, Destructuring, and Billing Calculator |
-| **Experiment 3** | Implementation control structures and form validation to create a grading system based on user-entered marks |
+| **Experiment 3** | Implementation of control structures and form validation to create a grading system based on user-entered marks |
+| **Experiment 4** | Implementation of function types, scope, and closures. Apply try-catch to build a Palindrome Checker|
 ---
 
 ## Technologies Used
