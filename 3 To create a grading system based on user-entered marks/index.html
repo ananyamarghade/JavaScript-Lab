@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="brand-bar">
+    <img
+        class="brand-logo"
+        src="D:\Ananya\JavaScipt LAB\exp1\logo.png"
+        alt="SIT Logo"
+        width="45"
+        height="45"
+    />
+    <span class="brand-name">SIT Nagpur Campus Portal</span>
+  </header>
+
+  <div class="page">
+
+    <div class="login-card">
+
+      <p class="eyebrow">Please enter your details</p>
+      <h1>Welcome back</h1>
+
+      <form id="signupForm" novalidate>
+
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your full name"
+            autocomplete="name"
+          />
+          <span class="msg" id="msg-name"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="you@gmail.com"
+            autocomplete="email"
+          />
+          <span class="msg" id="msg-email"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-with-icon">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-btn" id="togglePassword">👁</button>
+          </div>
+          <span class="msg" id="msg-password"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-with-icon">
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Re-enter your password"
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-btn" id="toggleConfirmPassword">👁</button>
+          </div>
+          <span class="msg" id="msg-confirm"></span>
+        </div>
+
+        <div class="options-row">
+          <label class="remember-check">
+            <input type="checkbox" id="rememberMe" />
+            Remember for 30 days
+          </label>
+          <a href="#" class="forgot-link">Forgot password</a>
+        </div>
+
+        <button type="submit" class="login-btn" id="submitBtn" disabled>LOGIN</button>
+
+        <p class="success-msg" id="successMsg">Login Successful!</p>
+
+        <div class="divider">
+          <span>or</span>
+        </div>
+
+        <button type="button" class="google-btn" id="googleBtn">
+          <img
+              src= "D:\Ananya\JavaScipt LAB\google.jpg"
+              alt="Google"
+              width="18"
+              height="18"
+              class="google-logo"
+          />
+          Sign in with Google
+      </button>
+
+        <p class="signup-line">Don't have an account? <a href="#">Sign up</a></p>
+
+      </form>
+    </div>
+
+    <div class="footer-block">
+      <p>Designed By</p>
+      <p class="footer-name">Ananya Marghade</p>
+      <p>PRN 24070521004</p>
+      <p>Batch A1</p>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
