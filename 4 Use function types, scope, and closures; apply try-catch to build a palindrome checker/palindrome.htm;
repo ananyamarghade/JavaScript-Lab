@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Palindrome Checker</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background: linear-gradient(to right,#dbeafe,#f8fbff);
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            width:370px;
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 8px 18px rgba(0,0,0,0.15);
+            text-align:center;
+            border-top:6px solid #3b82f6;
+        }
+
+        h2{
+            color:#2563eb;
+            margin-bottom:20px;
+        }
+
+        label{
+            display:block;
+            text-align:left;
+            margin-bottom:8px;
+            color:#444;
+            font-weight:bold;
+        }
+
+        input[type="text"]{
+            width:100%;
+            padding:10px;
+            border:1px solid #bfbfbf;
+            border-radius:8px;
+            margin-bottom:20px;
+            font-size:15px;
+            outline:none;
+        }
+
+        input[type="text"]:focus{
+            border-color:#3b82f6;
+        }
+
+        input[type="button"]{
+            width:100%;
+            padding:11px;
+            background:#2563eb;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:15px;
+            transition:0.3s;
+        }
+
+        input[type="button"]:hover{
+            background:#1d4ed8;
+            transform:scale(1.02);
+        }
+
+        #result{
+            margin-top:20px;
+            padding:15px;
+            border-radius:8px;
+            border:1px solid #ddd;
+            background:#f8f9fa;
+            text-align:left;
+            line-height:1.8;
+            display:none;
+        }
+
+        .success{
+            background:#e8f8ec;
+            border-left:5px solid #025202;
+            color: #000000;
+        }
+
+        .error{
+            background:#fdeaea;
+            border-left:5px solid red;
+            color:red;
+        }
+        .footer-block {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.4;
+            }
+
+            .footer-block p {
+            margin: 0;
+            }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Palindrome Checker</h2>
+    <label>Enter a String</label>
+    <input type="text" id="word" placeholder="Example: madam">
+
+    <input type="button" value="Check Palindrome" onclick="checkPalindrome()">
+
+    <p id="result"></p>
+
+</div>
+<script src="palindrome.js"></script>
+<div class="footer-block">
+    <p>Designed By</p>
+    <p class="footer-name">Ananya Marghade</p>
+    <p>PRN 24070521004</p>
+    <p>Batch A1</p>
+  </div>
+</body>
+</html>
