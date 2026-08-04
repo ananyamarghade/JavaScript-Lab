@@ -137,13 +137,16 @@ Through these practicals, the following JavaScript concepts were implemented han
 
 ## Screenshots
 
-| Experiment 1 — Student Information Portal | Experiment 2 — Billing Calculator |
-|---|---|
-| ![Student Information Portal](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/1%20To%20create%20a%20webpage%20showing%20user%20info%20and%20a%20welcome%20message/student%20page.png) | ![QuickCart Billing Calculator](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/2%20To%20build%20a%20billing%20calculator%20with%20user%20input./billing%20form.png) |
-
-| Experiment 3 — Student Grading System | Experiment 4 — Palindrome Checker |
-|---|---|
-| ![Student Grading System Report Card](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20grading2.png) | ![Palindrome Checker Result](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome2.png) |
+<p align="center">
+  <b>Experiment 1 — Student Information Portal</b><br>
+  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/1%20To%20create%20a%20webpage%20showing%20user%20info%20and%20a%20welcome%20message/student%20page.png" width="700"><br><br>
+  <b>Experiment 2 — Billing Calculator</b><br>
+  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/2%20To%20build%20a%20billing%20calculator%20with%20user%20input./billing%20form.png" width="700"><br><br>
+  <b>Experiment 3 — Student Grading System</b><br>
+  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20grading2.png" width="700"><br><br>
+  <b>Experiment 4 — Palindrome Checker</b><br>
+  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome2.png" width="700">
+</p>
 
 ---
 
