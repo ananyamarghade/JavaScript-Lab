@@ -1,7 +1,11 @@
 # Experiment No. 3
 **Student Name:** Ananya Marghade
 **PRN:** 24070521004
-**File Path:** `3 To create a grading system based on user-entered marks/3.1) Student Grading System/studentgrading.html` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/index.html` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/script.js` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/style.css`
+**BATCH:** A1
+
+**System File Path:** `"D:\Ananya\JavaScript LAB\EXP3\studentgrading.html"` | `"D:\Ananya\JavaScript LAB\EXP3\index.html"` | `"D:\Ananya\JavaScript LAB\EXP3\script.js"` | `"D:\Ananya\JavaScript LAB\EXP3\style.css"`
+
+**GITHUB File Path:** `3 To create a grading system based on user-entered marks/3.1) Student Grading System/studentgrading.html` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/index.html` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/script.js` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/style.css`
 
 ---
 
