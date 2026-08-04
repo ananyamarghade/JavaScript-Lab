@@ -256,9 +256,11 @@ function checkPalindrome(){
 - The heading "Palindrome Checker" inside the result box is generated using the **closure** returned by `message()`.
 
 > **Screenshot:**
-> ![Palindrome checker - empty state](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/29a209b2ba1ab51e1a7f43f315b9e8040e3b1633/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1)%20Palindrome%20Checker/palindrome1.png)
-> ![Palindrome checker - palindrome result](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/29a209b2ba1ab51e1a7f43f315b9e8040e3b1633/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1)%20Palindrome%20Checker/palindrome2.png)
-> ![Palindrome checker - non-palindrome / error result](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/29a209b2ba1ab51e1a7f43f315b9e8040e3b1633/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1)%20Palindrome%20Checker/palindrome3.png)
+> ![Palindrome checker - empty state](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1)%20Palindrome%20Checker/palindrome1.png)
+> ![Palindrome checker - palindrome result](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1)%20Palindrome%20Checker/palindrome2.png)
+> ![Palindrome checker - non-palindrome / error result](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1)%20Palindrome%20Checker/palindrome3.png)
+
+
 ---
 
 ## Case Study Title
@@ -518,9 +520,8 @@ function checkRegistrationNumber() {
 - If all checks pass, the result box turns green and displays **"VALID Registration Number."**
 
 > **Screenshot:**
-> ![Vehicle registration validator - valid input](https://github.com/ananyamarghade/JavaScript-Lab/blob/e84df12bcd23d0a59e4572d99a2ce61c06d733f9/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.2)%20Vehicle%20Registration%20Page/vehicle%20registration1.png)%20Vehicle%20Registration%20Page/vehicle%20registration1.png)
-> ![Vehicle registration validator - invalid input](
-https://github.com/ananyamarghade/JavaScript-Lab/blob/e84df12bcd23d0a59e4572d99a2ce61c06d733f9/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.2)%20Vehicle%20Registration%20Page/vehicle%20registration2.png)%20Vehicle%20Registration%20Page/vehicle%20registration2.png)
+> ![Vehicle registration validator - valid input](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/e84df12bcd23d0a59e4572d99a2ce61c06d733f9/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.2)%20Vehicle%20Registration%20Page/vehicle%20registration1.png)
+> ![Vehicle registration validator - invalid input](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/e84df12bcd23d0a59e4572d99a2ce61c06d733f9/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.2)%20Vehicle%20Registration%20Page/vehicle%20registration2.png)
 
 ---
 
