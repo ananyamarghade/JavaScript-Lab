@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Grading System | Symbiosis Institute of Technology, Nagpur</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        color: #333333;
+        line-height: 1.5;
+    }
+
+    .top-strip {
+        height: 7px;
+        background-color: #8B0000;
+        width: 100%;
+    }
+
+    .site-header {
+        background-color: #ffffff;
+        border-bottom: 1px solid #d9d9d9;
+        padding: 18px 0;
+    }
+
+    .header-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .header-logo {
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+        object-fit: contain;
+    }
+
+    .header-text {
+        text-align: left;
+    }
+
+    .header-text h1 {
+        margin: 0;
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        color: #8B0000;
+        text-transform: uppercase;
+        line-height: 1.3;
+    }
+
+    .page-title-bar {
+        background-color: #faf5f5;
+        border-bottom: 1px solid #e6d3d3;
+        text-align: center;
+        padding: 26px 20px;
+    }
+
+    .page-title-bar .ptb-primary {
+        margin: 0;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        color: #8B0000;
+    }
+
+    .page-title-bar .ptb-secondary {
+        margin: 8px 0 0 0;
+        font-size: 15px;
+        letter-spacing: 0.2px;
+        color: #8a8a8a;
+    }
+
+    .page-body {
+        max-width: 1000px;
+        margin: 32px auto 40px auto;
+        padding: 0 20px;
+    }
+
+    .card {
+        background-color: #ffffff;
+        border: 1px solid #d9d9d9;
+        border-radius: 6px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        padding: 30px 36px;
+        margin-bottom: 28px;
+    }
+
+    .section-heading {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: #333333;
+        text-align: center;
+        padding: 4px 0;
+        margin: 0 0 28px 0;
+    }
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 24px;
+    }
+
+    .field-group {
+        margin-bottom: 18px;
+    }
+
+    .field-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+    .field-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #444444;
+        margin-bottom: 6px;
+    }
+
+    .field-group input[type="text"],
+    .field-group input[type="number"],
+    .field-group select {
+        width: 100%;
+        height: 43px;
+        padding: 0 12px;
+        border: 1px solid #c9c9c9;
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: inherit;
+        background-color: #ffffff;
+        color: #333333;
+    }
+
+    .field-group select {
+        cursor: pointer;
+    }
+
+    .field-group input[type="text"]:focus,
+    .field-group input[type="number"]:focus,
+    .field-group select:focus {
+        outline: none;
+        border-color: #8B0000;
+        box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.10);
+    }
+
+    .subjects-heading {
+        font-size: 13px;
+        font-weight: 700;
+        color: #8B0000;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        margin: 8px 0 14px 0;
+        grid-column: 1 / -1;
+    }
+
+    .button-row {
+        margin-top: 10px;
+        border-top: 1px solid #ececec;
+        padding-top: 22px;
+        text-align: left;
+    }
+
+    button {
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        height: 44px;
+        padding: 0 28px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #8B0000;
+        color: #ffffff;
+        border: 1px solid #8B0000;
+    }
+
+    .btn-primary:hover {
+        background-color: #6e0000;
+        border-color: #6e0000;
+    }
+
+    .btn-reset {
+        background-color: #eeeeee;
+        color: #444444;
+        border: 1px solid #cccccc;
+        margin-left: 12px;
+    }
+
+    .btn-reset:hover {
+        background-color: #e2e2e2;
+    }
+
+    .form-note {
+        font-size: 12px;
+        color: #8a8a8a;
+        margin-top: 16px;
+        margin-bottom: 0;
+    }
+
+    .report-card {
+        border-top: 3px solid #8B0000;
+    }
+
+    .marksheet-heading {
+        text-align: center;
+        margin-bottom: 22px;
+    }
+
+    .marksheet-heading .msh-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #8B0000;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin: 0;
+    }
+
+    .marksheet-heading .msh-sub {
+        font-size: 12px;
+        color: #888888;
+        margin: 4px 0 0 0;
+    }
+
+    .student-info-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+        font-size: 14px;
+    }
+
+    .student-info-table td {
+        border: 1px solid #d9d9d9;
+        padding: 10px 14px;
+    }
+
+    .student-info-table td.info-label {
+        width: 22%;
+        font-weight: 600;
+        background-color: #faf5f5;
+        color: #555555;
+    }
+
+    table.report-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+        font-size: 14px;
+    }
+
+    table.report-table th,
+    table.report-table td {
+        border: 1px solid #d9d9d9;
+        padding: 11px 12px;
+        text-align: center;
+    }
+
+    table.report-table th {
+        background-color: #8B0000;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 12.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+
+    table.report-table tbody tr:nth-child(even) {
+        background-color: #faf7f7;
+    }
+
+    table.summary-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    table.summary-table td {
+        border: 1px solid #d9d9d9;
+        padding: 11px 16px;
+    }
+
+    table.summary-table td.label-cell {
+        width: 50%;
+        font-weight: 600;
+        background-color: #f5f5f5;
+        color: #444444;
+    }
+
+    table.summary-table tr:last-child td {
+        font-size: 15px;
+        padding: 13px 16px;
+    }
+
+    .grade-pass-cell {
+        color: #1e7a1e;
+        font-weight: 700;
+    }
+
+    .grade-fail-cell {
+        color: #a52a2a;
+        font-weight: 700;
+    }
+
+    .pass-text {
+        color: #1e7a1e;
+        font-weight: 700;
+        font-size: 15.5px;
+        letter-spacing: 0.4px;
+    }
+
+    .fail-text {
+        color: #a52a2a;
+        font-weight: 700;
+        font-size: 15.5px;
+        letter-spacing: 0.4px;
+    }
+
+    .hidden {
+        display: none;
+    }
+    .site-footer {
+        border-top: 1px solid #d9d9d9;
+        background-color: #ffffff;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .site-footer .footer-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: #999999;
+        margin-bottom: 4px;
+    }
+
+    .site-footer .footer-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: #555555;
+        margin-bottom: 3px;
+    }
+
+    .site-footer .footer-meta {
+        font-size: 12px;
+        color: #888888;
+    }
+
+    @media (max-width: 640px) {
+        .header-inner {
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 46px;
+            height: 46px;
+        }
+
+        .header-text h1 {
+            font-size: 16px;
+        }
+
+        .page-title-bar .ptb-primary {
+            font-size: 19px;
+        }
+
+        .page-title-bar .ptb-secondary {
+            font-size: 13px;
+        }
+
+        .card {
+            padding: 22px 18px;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn-reset {
+            margin-left: 0;
+        }
+
+        .student-info-table td.info-label {
+            width: 38%;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+    <div class="top-strip"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <img class="header-logo" src="D:\Ananya\JavaScipt LAB\exp1\logo.png" alt="Symbiosis Institute of Technology, Nagpur Logo">
+            <div class="header-text">
+                <h1>Symbiosis Institute of Technology, Nagpur</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-title-bar">
+        <p class="ptb-primary">Student Grading System</p>
+        <p class="ptb-secondary">Grade Calculation &amp; Report Card</p>
+    </div>
+
+    <div class="page-body">
+
+        <div class="card">
+            <h2 class="section-heading">Student Details</h2>
+
+            <div class="form-grid">
+
+                <div class="field-group full-width">
+                    <label for="studentName">Student Name</label>
+                    <input type="text" id="studentName" placeholder="Enter student name">
+                </div>
+
+                <div class="field-group">
+                    <label for="studentPRN">PRN</label>
+                    <input type="text" id="studentPRN" placeholder="Enter PRN number">
+                </div>
+
+                <div class="field-group">
+                    <label for="studentBatch">Batch</label>
+                    <select id="studentBatch">
+                        <option value="" disabled selected>Select Batch</option>
+                        <option value="2023-2027">2023-2027</option>
+                        <option value="2024-28">2024-28</option>
+                        <option value="2025-29">2025-29</option>
+                    </select>
+                </div>
+
+                <div class="subjects-heading">Subject Marks (Out of 100)</div>
+
+                <div class="field-group">
+                    <label for="subject1">Subject 1</label>
+                    <input type="number" id="subject1" placeholder="0 - 100">
+                </div>
+
+                <div class="field-group">
+                    <label for="subject2">Subject 2</label>
+                    <input type="number" id="subject2" placeholder="0 - 100">
+                </div>
+
+                <div class="field-group">
+                    <label for="subject3">Subject 3</label>
+                    <input type="number" id="subject3" placeholder="0 - 100">
+                </div>
+
+                <div class="field-group">
+                    <label for="subject4">Subject 4</label>
+                    <input type="number" id="subject4" placeholder="0 - 100">
+                </div>
+
+                <div class="field-group">
+                    <label for="subject5">Subject 5</label>
+                    <input type="number" id="subject5" placeholder="0 - 100">
+                </div>
+
+            </div>
+
+            <div class="button-row">
+                <button class="btn-primary" onclick="generateReport()">Calculate Result</button>
+                <button class="btn-reset" onclick="resetForm()">Reset</button>
+            </div>
+        </div>
+
+        <div class="card report-card hidden" id="reportBox">
+
+            <div class="marksheet-heading">
+                <p class="msh-title">Student Report / Marksheet</p>
+                <p class="msh-sub">Symbiosis Institute of Technology, Nagpur</p>
+            </div>
+
+            <table class="student-info-table">
+                <tr>
+                    <td class="info-label">Student Name</td>
+                    <td id="reportName"></td>
+                </tr>
+                <tr>
+                    <td class="info-label">PRN</td>
+                    <td id="reportPRN"></td>
+                </tr>
+                <tr>
+                    <td class="info-label">Batch</td>
+                    <td id="reportBatch"></td>
+                </tr>
+            </table>
+
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Subject 1</td>
+                        <td id="s1Marks"></td>
+                        <td id="s1Grade"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 2</td>
+                        <td id="s2Marks"></td>
+                        <td id="s2Grade"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 3</td>
+                        <td id="s3Marks"></td>
+                        <td id="s3Grade"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 4</td>
+                        <td id="s4Marks"></td>
+                        <td id="s4Grade"></td>
+                    </tr>
+                    <tr>
+                        <td>Subject 5</td>
+                        <td id="s5Marks"></td>
+                        <td id="s5Grade"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="summary-table">
+                <tr>
+                    <td class="label-cell">Total Marks</td>
+                    <td id="totalMarks"></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Percentage</td>
+                    <td id="percentageValue"></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Overall Grade</td>
+                    <td id="finalGrade"></td>
+                </tr>
+                <tr>
+                    <td class="label-cell">Result</td>
+                    <td id="finalResult"></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-label">Designed By</div>
+        <div class="footer-name">Ananya Marghade</div>
+        <div class="footer-meta">PRN 24070521004</div>
+        <div class="footer-meta">Batch A1</div>
+    </footer>
+
+<script>
+    
+    function getGrade(value) {
+        if (value > 90) {
+            return "A+";
+        } else if (value >= 80) {
+            return "A";
+        } else if (value >= 66) {
+            return "B";
+        } else if (value >= 50) {
+            return "C";
+        } else {
+            return "F";
+        }
+    }
+
+    function isValidMark(mark) {
+        return !isNaN(mark) && mark >= 0 && mark <= 100;
+    }
+
+    function setGradeCell(cellId, grade) {
+        var cell = document.getElementById(cellId);
+        cell.innerText = grade;
+        if (grade === "F") {
+            cell.className = "grade-fail-cell";
+        } else {
+            cell.className = "grade-pass-cell";
+        }
+    }
+
+    function generateReport() {
+
+        var studentName = document.getElementById("studentName").value.trim();
+        var studentPRN = document.getElementById("studentPRN").value.trim();
+        var studentBatch = document.getElementById("studentBatch").value;
+
+        var mark1 = document.getElementById("subject1").value.trim();
+        var mark2 = document.getElementById("subject2").value.trim();
+        var mark3 = document.getElementById("subject3").value.trim();
+        var mark4 = document.getElementById("subject4").value.trim();
+        var mark5 = document.getElementById("subject5").value.trim();
+
+        if (studentName === "") {
+            alert("Please enter the student name.");
+            return;
+        }
+
+        if (studentPRN === "") {
+            alert("Please enter the PRN.");
+            return;
+        }
+
+        if (studentBatch === "") {
+            alert("Please select the batch.");
+            return;
+        }
+
+        if (mark1 === "" || mark2 === "" || mark3 === "" || mark4 === "" || mark5 === "") {
+            alert("Please fill in marks for all 5 subjects.");
+            return;
+        }
+
+        mark1 = Number(mark1);
+        mark2 = Number(mark2);
+        mark3 = Number(mark3);
+        mark4 = Number(mark4);
+        mark5 = Number(mark5);
+
+        if (!isValidMark(mark1) || !isValidMark(mark2) || !isValidMark(mark3) ||
+            !isValidMark(mark4) || !isValidMark(mark5)) {
+            alert("Marks must be valid numbers between 0 and 100.");
+            return;
+        }
+
+        var grade1 = getGrade(mark1);
+        var grade2 = getGrade(mark2);
+        var grade3 = getGrade(mark3);
+        var grade4 = getGrade(mark4);
+        var grade5 = getGrade(mark5);
+
+        var totalMarks = mark1 + mark2 + mark3 + mark4 + mark5;
+        var percentage = totalMarks / 5;
+
+        var finalGrade = getGrade(percentage);
+
+        var hasFailingSubject = (grade1 === "F" || grade2 === "F" || grade3 === "F" ||
+            grade4 === "F" || grade5 === "F");
+
+        var finalResult;
+        if (hasFailingSubject) {
+            finalResult = "FAIL";
+            finalGrade = "F";
+        } else if (percentage >= 40) {
+            finalResult = "PASS";
+        } else {
+            finalResult = "FAIL";
+        }
+
+        document.getElementById("reportName").innerText = studentName;
+        document.getElementById("reportPRN").innerText = studentPRN;
+        document.getElementById("reportBatch").innerText = studentBatch;
+
+        document.getElementById("s1Marks").innerText = mark1;
+        setGradeCell("s1Grade", grade1);
+
+        document.getElementById("s2Marks").innerText = mark2;
+        setGradeCell("s2Grade", grade2);
+
+        document.getElementById("s3Marks").innerText = mark3;
+        setGradeCell("s3Grade", grade3);
+
+        document.getElementById("s4Marks").innerText = mark4;
+        setGradeCell("s4Grade", grade4);
+
+        document.getElementById("s5Marks").innerText = mark5;
+        setGradeCell("s5Grade", grade5);
+
+        document.getElementById("totalMarks").innerText = totalMarks;
+        document.getElementById("percentageValue").innerText = percentage.toFixed(2) + " %";
+
+        var finalGradeCell = document.getElementById("finalGrade");
+        finalGradeCell.innerText = finalGrade;
+        finalGradeCell.className = (finalGrade === "F") ? "grade-fail-cell" : "grade-pass-cell";
+
+        var resultCell = document.getElementById("finalResult");
+        resultCell.innerText = finalResult;
+
+        if (finalResult === "PASS") {
+            resultCell.className = "pass-text";
+        } else {
+            resultCell.className = "fail-text";
+        }
+
+        document.getElementById("reportBox").classList.remove("hidden");
+    }
+
+    function resetForm() {
+        document.getElementById("studentName").value = "";
+        document.getElementById("studentPRN").value = "";
+        document.getElementById("studentBatch").value = "";
+        document.getElementById("subject1").value = "";
+        document.getElementById("subject2").value = "";
+        document.getElementById("subject3").value = "";
+        document.getElementById("subject4").value = "";
+        document.getElementById("subject5").value = "";
+
+        document.getElementById("reportBox").classList.add("hidden");
+    }
+</script>
+
+</body>
+</html>
