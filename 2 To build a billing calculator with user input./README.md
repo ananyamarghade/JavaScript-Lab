@@ -1,7 +1,14 @@
 # Experiment No. 2
 **Student Name:** Ananya Marghade
+
 **PRN:** 24070521004
-**File Path:** `2 To build a billing calculator with user input./shop-billing.html` | `2 To build a billing calculator with user input./shop-billing.js`
+
+**BATCH:** A1
+
+
+**System File Path:** `"D:\Ananya\JavaScript LAB\EXP2\shop-billing.html"` | `2 "D:\Ananya\JavaScript LAB\EXP2\shop-billing.js"`
+
+**GITHUB File Path:** `2 To build a billing calculator with user input./shop-billing.html` | `2 To build a billing calculator with user input./shop-billing.js`
 
 ---
 
