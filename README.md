@@ -4,7 +4,7 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Status]([https://img.shields.io/badge/Status-Completed-brightgreen](https://img.shields.io/badge/Status-Ongoing-yellow))
 
 Lab practicals for the JavaScript / Web Technologies course — each experiment pairs a core JavaScript concept with a real, working mini-application (not just a toy snippet), followed by a related case study that applies the same concept in a second, independent program.
 
