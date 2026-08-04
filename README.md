@@ -12,13 +12,15 @@ Lab practicals for the JavaScript / Web Technologies course — each experiment 
 
 ## Table of Contents
 
-- [Student Information](#-student-information)
-- [Repository Structure](#-repository-structure)
-- [List of Experiments](#-list-of-experiments)
-- [Technologies Used](#-technologies-used)
-- [Learning Outcomes](#-learning-outcomes)
-- [How to Run](#-how-to-run)
-- [License](#-license)
+- [Student Information](#student-information)
+- [Repository Structure](#repository-structure)
+- [List of Experiments](#list-of-experiments)
+- [Quick Links](#quick-links)
+- [Technologies Used](#technologies-used)
+- [Learning Outcomes](#learning-outcomes)
+- [How to Run](#how-to-run)
+- [Screenshots](#screenshots)
+- [License](#license)
 
 ---
 
@@ -31,8 +33,6 @@ Lab practicals for the JavaScript / Web Technologies course — each experiment 
 | **Batch** | A1 |
 | **Course** | B.Tech — Computer Science and Engineering |
 | **Institute** | Symbiosis Institute of Technology, Nagpur |
-
----
 
 ## Repository Structure
 
@@ -70,6 +70,7 @@ Each experiment folder includes:
 - Source code (`.html` / `.css` / `.js`)
 - A working, styled UI — not a bare-bones demo
 - Output screenshots
+- A paired case study applying the same concept in a second program
 
 ---
 
@@ -81,6 +82,17 @@ Each experiment folder includes:
 | 2 | `var`, `let`, `const`, Template Literals, Destructuring | QuickCart Billing Calculator — cart, GST, discounts, printable receipt | — |
 | 3 | Control Structures & Form Validation | Student Grading System — marks → grade → report card | Student Login Page — real-time field validation |
 | 4 | Function Types, Scope, Closures, try-catch | Palindrome Checker — closures + exception handling | Vehicle Registration Number Validator |
+
+---
+
+## Quick Links
+
+| Experiment | Lab Record | Source Folder |
+|---|---|---|
+| 1 | [Experiment1.md](./Experiment1.md) | [`1 To create a webpage showing user info and a welcome message/`](<./1 To create a webpage showing user info and a welcome message>) |
+| 2 | [Experiment2.md](./Experiment2.md) | [`2 To build a billing calculator with user input./`](<./2 To build a billing calculator with user input.>) |
+| 3 | [Experiment3.md](./Experiment3.md) | [`3 To create a grading system based on user-entered marks/`](<./3 To create a grading system based on user-entered marks>) |
+| 4 | [Experiment4.md](./Experiment4.md) | [`4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/`](<./4 Use function types, scope, and closures; apply try-catch to build a palindrome checker>) |
 
 ---
 
@@ -123,7 +135,19 @@ Through these practicals, the following JavaScript concepts were implemented han
 
 ---
 
-## 📄 License
+## Screenshots
+
+| Experiment 1 — Student Information Portal | Experiment 2 — Billing Calculator |
+|---|---|
+| ![Student Information Portal](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/1%20To%20create%20a%20webpage%20showing%20user%20info%20and%20a%20welcome%20message/student%20page.png) | ![QuickCart Billing Calculator](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/2%20To%20build%20a%20billing%20calculator%20with%20user%20input./billing%20form.png) |
+
+| Experiment 3 — Student Grading System | Experiment 4 — Palindrome Checker |
+|---|---|
+| ![Student Grading System Report Card](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20grading2.png) | ![Palindrome Checker Result](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome2.png) |
+
+---
+
+## License
 
 This repository is created for educational and academic purposes as part of coursework at Symbiosis Institute of Technology, Nagpur.
 
