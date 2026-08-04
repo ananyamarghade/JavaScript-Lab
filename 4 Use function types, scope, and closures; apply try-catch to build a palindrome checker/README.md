@@ -1,7 +1,13 @@
 # Experiment No. 4
 **Student Name:** Ananya Marghade
+
 **PRN:** 24070521004
-**File Path:** `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/palindrome.html` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/palindrome.js` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/vehicleregistration.html` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/vehicleregistration.js`
+
+**BATCH:** A1
+
+**File Path:** `"D:\Ananya\JavaScript LAB\EXP4\palindrome.html"` | `"D:\Ananya\JavaScript LAB\EXP4\palindrome.js"` | `"D:\Ananya\JavaScript LAB\EXP4\vehicleregistration.html"` | `"D:\Ananya\JavaScript LAB\EXP4\vehicleregistration.js"`
+
+**GITHUB File Path:** `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/palindrome.html` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/palindrome.js` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/vehicleregistration.html` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/vehicleregistration.js`
 
 ---
 
