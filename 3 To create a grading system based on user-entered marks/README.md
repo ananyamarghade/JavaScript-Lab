@@ -1,6 +1,8 @@
 # Experiment No. 3
 **Student Name:** Ananya Marghade
+
 **PRN:** 24070521004
+
 **BATCH:** A1
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP3\studentgrading.html"` | `"D:\Ananya\JavaScript LAB\EXP3\index.html"` | `"D:\Ananya\JavaScript LAB\EXP3\script.js"` | `"D:\Ananya\JavaScript LAB\EXP3\style.css"`
