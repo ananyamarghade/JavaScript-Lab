@@ -1,7 +1,11 @@
 # Experiment No. 1
 **Student Name:** Ananya Marghade
+
 **PRN:** 24070521004
-**File Path:** `1 To create a webpage showing user info and a welcome message/department.html` | `1 To create a webpage showing user info and a welcome message/student.html` | `1 To create a webpage showing user info and a welcome message/script.js` | `1 To create a webpage showing user info and a welcome message/style.css`
+
+**System File Path:** `"D:\Ananya\JavaScript LAB\EXP1\department.html"` | `"D:\Ananya\JavaScript LAB\EXP1\student.html"` | `1 "D:\Ananya\JavaScript LAB\EXP1\script.js"` | `1"D:\Ananya\JavaScript LAB\EXP1\style.css"`
+
+**GITHUB File Path:** `1 To create a webpage showing user info and a welcome message/department.html` | `1 To create a webpage showing user info and a welcome message/student.html` | `1 To create a webpage showing user info and a welcome message/script.js` | `1 To create a webpage showing user info and a welcome message/style.css`
 
 ---
 
