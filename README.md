@@ -108,8 +108,8 @@ Each experiment folder includes:
 | 2 | [Experiment2.md](./Experiment2.md) | [`2 To build a billing calculator with user input./`](<./2 To build a billing calculator with user input.>) |
 | 3 | [Experiment3.md](./Experiment3.md) | [`3 To create a grading system based on user-entered marks/`](<./3 To create a grading system based on user-entered marks>) |
 | 4 | [Experiment4.md](./Experiment4.md) | [`4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/`](<./4 Use function types, scope, and closures; apply try-catch to build a palindrome checker>) |
-| 5 | [README.md](<./5 To create a cart total calculator with discount logic/README.md>) | [`5 To create a cart total calculator with discount logic/`](<./5 To create a cart total calculator with discount logic>) |
-| 6 | [README.md](<./6 Use string functions and regex  for validation/README.md>) | [`6 Use string functions and regex  for validation/`](<./6 Use string functions and regex  for validation>) |
+| 5 | [Experiment5.md](<./5 To create a cart total calculator with discount logic/README.md>) | [`5 To create a cart total calculator with discount logic/`](<./5 To create a cart total calculator with discount logic>) |
+| 6 | [Experiment6.md](<./6 Use string functions and regex  for validation/README.md>) | [`6 Use string functions and regex  for validation/`](<./6 Use string functions and regex  for validation>) |
 
 ---
 
