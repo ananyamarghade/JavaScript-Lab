@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef4ff, #f8f5ff);
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        .form {
+            width: 620px;
+            margin: auto;
+            background: white;
+            padding: 30px 40px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color: #3157a4;
+            margin: 0 0 8px;
+        }
+
+        .mandatory {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .label {
+            width: 150px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 270px;
+            height: 35px;
+            padding: 7px 10px;
+            border: 1px solid #b8c4d3;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+            background-color: white;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #3157a4;
+            box-shadow: 0 0 4px rgba(49, 87, 164, 0.25);
+        }
+
+        select {
+            height: 35px;
+            padding: 5px 8px;
+            border: 1px solid #b8c4d3;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 14px;
+            margin-right: 6px;
+        }
+
+        .required {
+            color: red;
+            margin-left: 6px;
+            font-weight: bold;
+        }
+
+        #error {
+            color: #d62828;
+            font-size: 14px;
+            margin-left: 150px;
+            margin-bottom: 12px;
+            min-height: 18px;
+        }
+
+        .terms {
+            margin-left: 150px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .terms input {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .button {
+            margin-left: 150px;
+            margin-top: 22px;
+        }
+
+        .signup-btn {
+            padding: 10px 30px;
+            background-color: black;
+            color: white;
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .signup-btn:hover {
+            background-color: #3157a4;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .footer .title {
+            color: #3157a4;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .footer .name {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<form class="form" id="signupForm">
+
+    <h2>Sign Up</h2>
+
+    <div class="mandatory">* Mandatory to fill</div>
+
+    <div id="error"></div>
+
+    <div class="row">
+        <div class="label">Firstname:</div>
+        <input type="text" id="firstname">
+        <span class="required">*</span>
+    </div>
+
+    <div class="row">
+        <div class="label">Lastname:</div>
+        <input type="text" id="lastname">
+    </div>
+
+    <div class="row">
+        <div class="label">Birthday:</div>
+
+        <select id="day">
+            <option value="">Day</option>
+        </select>
+
+        <select id="month">
+            <option value="">Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+
+        <select id="year">
+            <option value="">Year</option>
+        </select>
+    </div>
+
+    <div class="row">
+        <div class="label">Username:</div>
+        <input type="text" id="username">
+        <span class="required">*</span>
+    </div>
+
+    <div class="row">
+        <div class="label">E-mail:</div>
+        <input type="email" id="email">
+    </div>
+
+    <div class="row">
+        <div class="label">Website:</div>
+        <input type="text" id="website">
+    </div>
+
+    <div class="row">
+        <div class="label">Password:</div>
+        <input type="password" id="password">
+        <span class="required">*</span>
+    </div>
+
+    <div class="row">
+        <div class="label">Re-password:</div>
+        <input type="password" id="repassword">
+        <span class="required">*</span>
+    </div>
+
+    <div class="terms">
+        <input type="checkbox" id="terms">
+        <label for="terms">I agree to the terms & conditions.</label>
+    </div>
+
+    <div class="button">
+        <button type="submit" class="signup-btn">Sign Up</button>
+    </div>
+
+</form>
+
+<div class="footer">
+    <div class="title">Designed By</div>
+    <div class="name">Ananya Marghade</div>
+    <div>PRN 24070521004</div>
+    <div>Batch A1</div>
+</div>
+
+<script>
+let form = document.getElementById("signupForm");
+let firstname = document.getElementById("firstname");
+let lastname = document.getElementById("lastname");
+let username = document.getElementById("username");
+let email = document.getElementById("email");
+let website = document.getElementById("website");
+let password = document.getElementById("password");
+let repassword = document.getElementById("repassword");
+let day = document.getElementById("day");
+let month = document.getElementById("month");
+let year = document.getElementById("year");
+let terms = document.getElementById("terms");
+let error = document.getElementById("error");
+
+for (let i = 1; i <= 31; i++) {
+    let option = document.createElement("option");
+    option.value = i;
+    option.textContent = i;
+    day.appendChild(option);
+}
+
+for (let i = new Date().getFullYear(); i >= 1950; i--) {
+    let option = document.createElement("option");
+    option.value = i;
+    option.textContent = i;
+    year.appendChild(option);
+}
+
+function showError(message, element) {
+    error.textContent = message;
+    element.style.borderColor = "#d62828";
+    element.focus();
+}
+
+function clearError(element) {
+    element.style.borderColor = "#b8c4d3";
+}
+
+firstname.addEventListener("focus", function() {
+    firstname.style.borderColor = "#3157a4";
+});
+
+firstname.addEventListener("blur", function() {
+    clearError(firstname);
+});
+
+firstname.addEventListener("keyup", function() {
+    if (firstname.value.trim().length >= 3) {
+        error.textContent = "";
+        clearError(firstname);
+    }
+});
+
+lastname.addEventListener("focus", function() {
+    lastname.style.borderColor = "#3157a4";
+});
+
+lastname.addEventListener("blur", function() {
+    clearError(lastname);
+});
+
+username.addEventListener("focus", function() {
+    username.style.borderColor = "#3157a4";
+});
+
+username.addEventListener("blur", function() {
+    clearError(username);
+});
+
+password.addEventListener("focus", function() {
+    password.style.borderColor = "#3157a4";
+});
+
+password.addEventListener("blur", function() {
+    clearError(password);
+});
+
+repassword.addEventListener("focus", function() {
+    repassword.style.borderColor = "#3157a4";
+});
+
+repassword.addEventListener("blur", function() {
+    clearError(repassword);
+});
+
+day.addEventListener("change", function() {
+    error.textContent = "";
+});
+
+month.addEventListener("change", function() {
+    error.textContent = "";
+});
+
+year.addEventListener("change", function() {
+    error.textContent = "";
+});
+
+terms.addEventListener("change", function() {
+    if (terms.checked) {
+        error.textContent = "";
+    }
+});
+
+window.addEventListener("load", function() {
+    if (localStorage.getItem("editMode") === "true") {
+        firstname.value = localStorage.getItem("firstname") || "";
+        lastname.value = localStorage.getItem("lastname") || "";
+        username.value = localStorage.getItem("username") || "";
+        email.value = localStorage.getItem("email") || "";
+        website.value = localStorage.getItem("website") || "";
+        day.value = localStorage.getItem("day") || "";
+        month.value = localStorage.getItem("month") || "";
+        year.value = localStorage.getItem("year") || "";
+        localStorage.removeItem("editMode");
+    }
+});
+
+form.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let namePattern = /^[A-Za-z]+$/;
+    let usernamePattern = /^[A-Za-z0-9_]+$/;
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let websitePattern = /^https?:\/\/.+\..+/;
+    let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (firstname.value.trim() == "") {
+        showError("Firstname is mandatory.", firstname);
+        return;
+    }
+
+    if (firstname.value.trim().length < 3) {
+        showError("Firstname must contain at least 3 characters.", firstname);
+        return;
+    }
+
+    if (!namePattern.test(firstname.value.trim())) {
+        showError("Firstname can contain only letters.", firstname);
+        return;
+    }
+
+    if (lastname.value.trim() != "") {
+        if (lastname.value.trim().length < 3) {
+            showError("Lastname must contain at least 3 characters.", lastname);
+            return;
+        }
+
+        if (!namePattern.test(lastname.value.trim())) {
+            showError("Lastname can contain only letters.", lastname);
+            return;
+        }
+    }
+
+    if (day.value == "" || month.value == "" || year.value == "") {
+        error.textContent = "Please select your complete birthday.";
+        return;
+    }
+
+    if (username.value.trim() == "") {
+        showError("Username is mandatory.", username);
+        return;
+    }
+
+    if (username.value.trim().length < 5) {
+        showError("Username must contain at least 5 characters.", username);
+        return;
+    }
+
+    if (!usernamePattern.test(username.value.trim())) {
+        showError("Username can contain only letters, numbers and underscore.", username);
+        return;
+    }
+
+    if (email.value.trim() != "" && !emailPattern.test(email.value.trim())) {
+        showError("Please enter a valid e-mail address.", email);
+        return;
+    }
+
+    if (website.value.trim() != "" && !websitePattern.test(website.value.trim())) {
+        showError("Please enter a valid website URL.", website);
+        return;
+    }
+
+    if (password.value == "") {
+        showError("Password is mandatory.", password);
+        return;
+    }
+
+    if (password.value.length < 8) {
+        showError("Password must contain at least 8 characters.", password);
+        return;
+    }
+
+    if (!passwordPattern.test(password.value)) {
+        showError("Password must contain uppercase, lowercase and a number.", password);
+        return;
+    }
+
+    if (repassword.value == "") {
+        showError("Re-password is mandatory.", repassword);
+        return;
+    }
+
+    if (password.value != repassword.value) {
+        showError("Passwords do not match.", repassword);
+        return;
+    }
+
+    if (!terms.checked) {
+        error.textContent = "Please agree to the terms & conditions.";
+        return;
+    }
+
+    localStorage.setItem("firstname", firstname.value);
+    localStorage.setItem("lastname", lastname.value);
+    localStorage.setItem("username", username.value);
+    localStorage.setItem("email", email.value);
+    localStorage.setItem("website", website.value);
+    localStorage.setItem("day", day.value);
+    localStorage.setItem("month", month.value);
+    localStorage.setItem("year", year.value);
+
+    window.location.href = "welcome.html";
+});
+</script>
+
+</body>
+</html>
