@@ -24,7 +24,7 @@ Perform DOM Traversal and Updates
 
 ## Experiment Program Code
 
-### My Tasks — To-Do List — `todo.html`
+### To-Do List — `todo.html`
 A full to-do list application built almost entirely through DOM traversal and manipulation: every task item (checkbox, label, Edit/Delete buttons) is constructed at runtime with `document.createElement()` and wired together with `appendChild()`, task completion is toggled with `classList.toggle()`, the live task count is derived by traversing existing nodes with `querySelectorAll("li:not(.empty)")`, and the day-selector strip is updated by looping over `querySelectorAll(".day")` to move the `active` class between siblings.
 
 #### `7 Perform DOM traversal and updates/todo.html`
