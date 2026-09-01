@@ -73,10 +73,15 @@ JavaScript-Lab/
 │       ├── expense.css
 │       └── expense.js
 │
-└── 6 Use string functions and regex  for validation/
-    ├── exp6.html
-    ├── exp6 case study.html
-    └── feedback form.html
+├── 6 Use string functions and regex  for validation/
+│   ├── exp6.html
+│   ├── exp6 case study.html
+│   └── feedback form.html
+│
+└── 7 Perform DOM traversal and updates/
+    ├── todo.html
+    ├── form.html
+    └── welcome.html
 ```
 
 Each experiment folder includes:
@@ -97,6 +102,7 @@ Each experiment folder includes:
 | 4 | Function Types, Scope, Closures, try-catch | Palindrome Checker — closures + exception handling | Vehicle Registration Number Validator |
 | 5 | Arrays, Array Methods, Math.max/min | CartEase — cart total calculator with slab-based discount logic | Pennywise — Expense Tracker (array min/max, total, average) |
 | 6 | String Functions & Regular Expressions | String Methods & Regex demo — split, match, replace, indexOf, email validation/extraction, reverse | String Operations (reverse + vowel count) & Feedback Analyzer |
+| 7 | DOM Traversal & Updates | My Tasks — To-Do List (createElement, appendChild, classList, querySelectorAll) | Sign Up Form (dynamic dropdowns + live validation) & Welcome Page |
 
 ---
 
@@ -110,6 +116,7 @@ Each experiment folder includes:
 | 4 | [Experiment4.md](./Experiment4.md) | [`4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/`](<./4 Use function types, scope, and closures; apply try-catch to build a palindrome checker>) |
 | 5 | [Experiment5.md](<./5 To create a cart total calculator with discount logic/README.md>) | [`5 To create a cart total calculator with discount logic/`](<./5 To create a cart total calculator with discount logic>) |
 | 6 | [Experiment6.md](<./6 Use string functions and regex  for validation/README.md>) | [`6 Use string functions and regex  for validation/`](<./6 Use string functions and regex  for validation>) |
+| 7 | [Experiment7.md](<./7 Perform DOM traversal and updates/README.md>) | [`7 Perform DOM traversal and updates/`](<./7 Perform DOM traversal and updates>) |
 
 ---
 
@@ -166,7 +173,9 @@ Through these practicals, the following JavaScript concepts were implemented han
   <b>Experiment 5 — CartEase Billing Calculator</b><br>
   <img src="./5%20To%20create%20a%20cart%20total%20calculator%20with%20discount%20logic/cart-output.png" width="700"><br><br>
   <b>Experiment 6 — Feedback Analyzer</b><br>
-  <img src="./6%20Use%20string%20functions%20and%20regex%20%20for%20validation/feedback-analyzer-output.jpg" width="700">
+  <img src="./6%20Use%20string%20functions%20and%20regex%20%20for%20validation/feedback-analyzer-output.jpg" width="700"><br><br>
+  <b>Experiment 7 — SignUp Form</b><br>
+  <img src="./7%20Perform%20DOM%20traversal%20and%20updates/signupform (1).png" width="700">
 </p>
 
 ---
