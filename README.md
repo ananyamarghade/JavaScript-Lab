@@ -102,7 +102,7 @@ Each experiment folder includes:
 | 4 | Function Types, Scope, Closures, try-catch | Palindrome Checker — closures + exception handling | Vehicle Registration Number Validator |
 | 5 | Arrays, Array Methods, Math.max/min | CartEase — cart total calculator with slab-based discount logic | Pennywise — Expense Tracker (array min/max, total, average) |
 | 6 | String Functions & Regular Expressions | String Methods & Regex demo — split, match, replace, indexOf, email validation/extraction, reverse | String Operations (reverse + vowel count) & Feedback Analyzer |
-| 7 | DOM Traversal & Updates | My Tasks — To-Do List (createElement, appendChild, classList, querySelectorAll) | Sign Up Form (dynamic dropdowns + live validation) & Welcome Page |
+| 7 | DOM Traversal & Updates | To-Do List (createElement, appendChild, classList, querySelectorAll) | Sign Up Form (dynamic dropdowns + live validation) & Welcome Page |
 
 ---
 
@@ -128,6 +128,27 @@ Each experiment folder includes:
 - Visual Studio Code
 - Google Chrome
 - Git & GitHub
+  
+---
+
+## Screenshots
+
+<p align="center">
+  <b>Experiment 1 — Student Information Portal</b><br>
+  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/1%20To%20create%20a%20webpage%20showing%20user%20info%20and%20a%20welcome%20message/student%20page.png" width="700"><br><br>
+  <b>Experiment 2 — Billing Calculator</b><br>
+  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/2%20To%20build%20a%20billing%20calculator%20with%20user%20input./billing%20form.png" width="700"><br><br>
+  <b>Experiment 3 — Student Grading System</b><br>
+  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20grading2.png" width="700"><br><br>
+  <b>Experiment 4 — Palindrome Checker</b><br>
+  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome2.png" width="700"><br><br>
+  <b>Experiment 5 — CartEase Billing Calculator</b><br>
+  <img src="./5%20To%20create%20a%20cart%20total%20calculator%20with%20discount%20logic/cart-output.png" width="700"><br><br>
+  <b>Experiment 6 — Feedback Analyzer</b><br>
+  <img src="./6%20Use%20string%20functions%20and%20regex%20%20for%20validation/feedback-analyzer-output.jpg" width="700"><br><br>
+  <b>Experiment 7 — SignUp Form</b><br>
+  <img src="./7%20Perform%20DOM%20traversal%20and%20updates/signupform (1).png" width="700">
+</p>
 
 ---
 
@@ -156,27 +177,6 @@ Through these practicals, the following JavaScript concepts were implemented han
    ```
 2. **Open any experiment folder** and launch its main `.html` file (e.g. `index.html`, `department.html`, `shop-billing.html`) directly in a browser.
 3. No build tools, servers, or dependencies required — everything runs client-side.
-
----
-
-## Screenshots
-
-<p align="center">
-  <b>Experiment 1 — Student Information Portal</b><br>
-  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/1%20To%20create%20a%20webpage%20showing%20user%20info%20and%20a%20welcome%20message/student%20page.png" width="700"><br><br>
-  <b>Experiment 2 — Billing Calculator</b><br>
-  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/2%20To%20build%20a%20billing%20calculator%20with%20user%20input./billing%20form.png" width="700"><br><br>
-  <b>Experiment 3 — Student Grading System</b><br>
-  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20grading2.png" width="700"><br><br>
-  <b>Experiment 4 — Palindrome Checker</b><br>
-  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome2.png" width="700"><br><br>
-  <b>Experiment 5 — CartEase Billing Calculator</b><br>
-  <img src="./5%20To%20create%20a%20cart%20total%20calculator%20with%20discount%20logic/cart-output.png" width="700"><br><br>
-  <b>Experiment 6 — Feedback Analyzer</b><br>
-  <img src="./6%20Use%20string%20functions%20and%20regex%20%20for%20validation/feedback-analyzer-output.jpg" width="700"><br><br>
-  <b>Experiment 7 — SignUp Form</b><br>
-  <img src="./7%20Perform%20DOM%20traversal%20and%20updates/signupform (1).png" width="700">
-</p>
 
 ---
 
