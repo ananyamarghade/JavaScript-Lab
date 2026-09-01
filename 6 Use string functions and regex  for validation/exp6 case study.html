@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Operations</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef2f6;
+            color: #2f3a45;
+        }
+
+        .container {
+            width: 760px;
+            max-width: 92%;
+            margin: 55px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #263746;
+            font-weight: 600;
+        }
+
+        .header p {
+            margin: 9px 0 0;
+            color: #74808b;
+            font-size: 15px;
+        }
+
+        .box {
+            background: #ffffff;
+            border: 1px solid #d9e0e6;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 18px rgba(40, 55, 70, 0.08);
+        }
+
+        .input-title {
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+            color: #354452;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 155px;
+            padding: 14px 15px;
+            border: 1px solid #cbd4dc;
+            border-radius: 7px;
+            background: #fbfcfd;
+            color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        textarea::placeholder {
+            color: #a1aab2;
+        }
+
+        textarea:focus {
+            border-color: #607d8b;
+            box-shadow: 0 0 0 3px rgba(96, 125, 139, 0.10);
+            background: #fff;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto 0;
+            padding: 11px 30px;
+            border: none;
+            border-radius: 6px;
+            background: #455a64;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #37474f;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        #output {
+            margin-top: 28px;
+        }
+
+        .result {
+            background: #f8fafb;
+            border: 1px solid #dce3e8;
+            border-left: 4px solid #607d8b;
+            border-radius: 6px;
+            padding: 18px 20px;
+            margin-top: 15px;
+        }
+
+        .result h3 {
+            margin: 0 0 10px;
+            color: #374957;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .result p {
+            margin: 0;
+            color: #505c66;
+            font-size: 15px;
+            line-height: 1.7;
+            word-break: break-word;
+        }
+
+        .count {
+            font-size: 28px !important;
+            font-weight: bold;
+            color: #455a64 !important;
+        }
+
+        .empty {
+            text-align: center;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 30px auto;
+            }
+
+            .box {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            textarea {
+                min-height: 130px;
+            }
+        }
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            padding: 20px 10px;
+            color: #74808b;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .footer p {
+            margin: 2px 0;
+        }
+
+        .footer-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #455a64;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>String Operations</h1>
+            <p>Reverse a string and count the number of vowels</p>
+        </div>
+
+        <div class="box">
+
+            <label class="input-title" for="paragraph">
+                Enter a paragraph
+            </label>
+
+            <textarea id="paragraph"
+                placeholder="Type or paste your paragraph here..."></textarea>
+
+            <button onclick="processString()">Process</button>
+
+            <div id="output"></div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function processString() {
+
+            let paragraph = document.getElementById("paragraph").value;
+
+            if (paragraph.trim() === "") {
+                document.getElementById("output").innerHTML = `
+                    <div class="result empty">
+                        <p>Please enter a paragraph first.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let reversedString = paragraph.split("").reverse().join("");
+
+            let vowels = paragraph.match(/[aeiou]/gi);
+            let vowelCount = vowels ? vowels.length : 0;
+
+            document.getElementById("output").innerHTML = `
+                <div class="result">
+                    <h3>1. Reversed String</h3>
+                    <p>${reversedString}</p>
+                </div>
+
+                <div class="result">
+                    <h3>2. Number of Vowels</h3>
+                    <p class="count">${vowelCount}</p>
+                </div>
+            `;
+        }
+    </script>
+<footer class="footer">
+    <p>Designed By</p>
+    <p class="footer-name">Ananya Marghade</p>
+    <p>PRN 24070521004</p>
+    <p>Batch A1</p>
+</footer>
+</body>
+</html>

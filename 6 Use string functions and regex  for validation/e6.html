@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Analyzer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f4;
+            color: #333;
+        }
+
+        .topbar {
+            height: 58px;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+
+        .topbar-inner {
+            width: 900px;
+            max-width: 92%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 19px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .topbar a {
+            color: #777;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .main {
+            width: 900px;
+            max-width: 92%;
+            margin: 42px auto;
+        }
+
+        .intro {
+            margin-bottom: 25px;
+        }
+
+        .intro h1 {
+            margin: 0 0 7px;
+            font-size: 28px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .intro p {
+            margin: 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 285px;
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .form-card {
+            padding: 25px;
+        }
+
+        .form-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 22px;
+        }
+
+        .rating button {
+            width: 36px;
+            height: 34px;
+            padding: 0;
+            border: 1px solid #ccc;
+            background: #fff;
+            color: #555;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .rating button:hover,
+        .rating button.active {
+            background: #34495e;
+            border-color: #34495e;
+            color: #fff;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 145px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            outline: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            border-color: #8293a2;
+        }
+
+        textarea::placeholder {
+            color: #aaa;
+        }
+
+        .bottom-row {
+            margin-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .counter {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .analyze-btn {
+            border: none;
+            background: #506a7e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .analyze-btn:hover {
+            background: #40586a;
+        }
+
+        #error {
+            display: none;
+            margin-top: 10px;
+            color: #a94442;
+            font-size: 13px;
+        }
+
+        .info-card {
+            padding: 24px;
+        }
+
+        .info-card h2 {
+            margin: 0 0 12px;
+            font-size: 17px;
+            color: #444;
+        }
+
+        .info-card p {
+            margin: 0;
+            color: #777;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .line {
+            height: 1px;
+            background: #e5e5e5;
+            margin: 18px 0;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 9px;
+            margin-bottom: 13px;
+            color: #666;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .number {
+            min-width: 21px;
+            height: 21px;
+            border: 1px solid #c9d0d5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #5d7282;
+            font-size: 11px;
+        }
+
+        #result {
+            display: none;
+            margin-top: 25px;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 13px;
+        }
+
+        .result-header h2 {
+            margin: 0;
+            font-size: 19px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .rating-result {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .stat {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            margin-top: 6px;
+            font-size: 23px;
+            font-weight: bold;
+            color: #506a7e;
+        }
+
+        .result-box {
+            margin-top: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 16px;
+        }
+
+        .result-box h3 {
+            margin: 0 0 8px;
+            font-size: 12px;
+            color: #667b8a;
+            text-transform: uppercase;
+        }
+
+        .result-box p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        @media (max-width: 700px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .info-card {
+                display: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .main {
+                margin: 30px auto;
+            }
+
+            .intro h1 {
+                font-size: 25px;
+            }
+
+            .bottom-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .analyze-btn {
+                width: 100%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            padding: 20px 10px;
+            color: #74808b;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .footer p {
+            margin: 2px 0;
+        }
+
+        .footer-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #455a64;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="logo">Feedback Analyzer</div>
+            <a href="#">Home</a>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <div class="intro">
+            <h1>Share Your Feedback</h1>
+            <p>Tell us about your experience and analyze your response.</p>
+        </div>
+
+        <div class="layout">
+
+            <div class="card form-card">
+
+                <div class="form-title">Feedback Form</div>
+
+                <div class="question">
+                    How would you rate your experience?
+                </div>
+
+                <div class="rating">
+                    <button onclick="setRating(1)">1</button>
+                    <button onclick="setRating(2)">2</button>
+                    <button onclick="setRating(3)">3</button>
+                    <button onclick="setRating(4)">4</button>
+                    <button onclick="setRating(5)">5</button>
+                </div>
+
+                <label for="feedback">Your Feedback</label>
+
+                <textarea id="feedback"
+                    maxlength="500"
+                    oninput="updateCount()"
+                    placeholder="Write your feedback here..."></textarea>
+
+                <div class="bottom-row">
+                    <span class="counter" id="counter">
+                        0 / 500 characters
+                    </span>
+
+                    <button class="analyze-btn" onclick="analyzeFeedback()">
+                        Analyze Feedback
+                    </button>
+                </div>
+
+                <div id="error">
+                    Please enter your feedback before analyzing.
+                </div>
+
+            </div>
+
+            <div class="card info-card">
+
+                <h2>How it works</h2>
+
+                <p>
+                    Enter your feedback and click the analyze button
+                    to view the text results.
+                </p>
+
+                <div class="line"></div>
+
+                <div class="info-item">
+                    <span class="number">1</span>
+                    <span>Reverse the entered string.</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="number">2</span>
+                    <span>Count the vowels in the paragraph.</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="number">3</span>
+                    <span>Display words and characters.</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="result">
+
+            <div class="result-header">
+                <h2>Analysis Result</h2>
+                <span class="rating-result" id="ratingResult"></span>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <div class="stat-label">Vowels</div>
+                    <div class="stat-value" id="vowels">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">Words</div>
+                    <div class="stat-value" id="words">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">Characters</div>
+                    <div class="stat-value" id="characters">0</div>
+                </div>
+
+            </div>
+
+            <div class="result-box">
+                <h3>Original Feedback</h3>
+                <p id="original"></p>
+            </div>
+
+            <div class="result-box">
+                <h3>Reversed String</h3>
+                <p id="reversed"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let selectedRating = 0;
+
+        function setRating(rating) {
+            selectedRating = rating;
+
+            let buttons = document.querySelectorAll(".rating button");
+
+            buttons.forEach(function(button, index) {
+                button.classList.toggle("active", index < rating);
+            });
+        }
+
+        function updateCount() {
+            let feedback = document.getElementById("feedback").value;
+            document.getElementById("counter").innerText =
+                feedback.length + " / 500 characters";
+        }
+
+        function analyzeFeedback() {
+            let feedback = document.getElementById("feedback").value;
+            let error = document.getElementById("error");
+            let result = document.getElementById("result");
+
+            if (feedback.trim() === "") {
+                error.style.display = "block";
+                result.style.display = "none";
+                return;
+            }
+
+            error.style.display = "none";
+
+            let reversed = feedback.split("").reverse().join("");
+
+            let vowelList = feedback.match(/[aeiou]/gi);
+            let vowelCount = vowelList ? vowelList.length : 0;
+
+            let wordList = feedback.trim().split(/\s+/);
+            let wordCount = wordList.length;
+
+            let characterCount = feedback.length;
+
+            document.getElementById("vowels").innerText = vowelCount;
+            document.getElementById("words").innerText = wordCount;
+            document.getElementById("characters").innerText = characterCount;
+
+            document.getElementById("original").innerText = feedback;
+            document.getElementById("reversed").innerText = reversed;
+
+            if (selectedRating > 0) {
+                document.getElementById("ratingResult").innerText =
+                    "Rating: " + selectedRating + " / 5";
+            } else {
+                document.getElementById("ratingResult").innerText = "";
+            }
+
+            result.style.display = "block";
+        }
+    </script>
+<footer class="footer">
+    <p>Designed By</p>
+    <p class="footer-name">Ananya Marghade</p>
+    <p>PRN 24070521004</p>
+    <p>Batch A1</p>
+</footer>
+</body>
+</html>
