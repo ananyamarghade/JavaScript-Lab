@@ -15,9 +15,9 @@
 - [List of Experiments](#list-of-experiments)
 - [Quick Links](#quick-links)
 - [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
 - [Learning Outcomes](#learning-outcomes)
 - [How to Run](#how-to-run)
-- [Screenshots](#screenshots)
 - [License](#license)
 
 ---
