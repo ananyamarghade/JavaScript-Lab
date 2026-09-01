@@ -453,7 +453,6 @@ A focused mini-tool that takes a single paragraph and performs two string operat
 ---
 
 ### 2. Feedback Analyzer — `feedback form.html`
-*(previously `e6.html`)*
 
 A styled feedback form that combines a 1–5 star-style rating widget with a live character counter and a string-analysis engine. On submission it reverses the feedback text and reports its vowel count, word count, and character count — applying the same `split()`, `match()`, and `reverse()` string techniques from the main experiment inside a realistic feedback-collection UI.
 
