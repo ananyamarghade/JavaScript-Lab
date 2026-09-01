@@ -447,6 +447,9 @@ A focused mini-tool that takes a single paragraph and performs two string operat
 - If the textarea is left empty, an inline "Please enter a paragraph first." message is shown instead of results.
 - On valid input, two result cards are rendered: the **Reversed String** (`paragraph.split("").reverse().join("")`) and the **Number of Vowels** (counted with the regex `/[aeiou]/gi`).
 
+> **Screenshot:**
+> ![String Operations output](string-operations-output.jpg)
+
 ---
 
 ### 2. Feedback Analyzer — `feedback form.html`
@@ -1012,6 +1015,9 @@ A styled feedback form that combines a 1–5 star-style rating widget with a liv
 - User rates their experience (1–5, via the rating buttons) and types feedback into the textarea, whose character counter updates live against a 500-character limit.
 - Clicking **Analyze Feedback** with empty input shows an inline validation error ("Please enter your feedback before analyzing.") and hides the results section.
 - On valid input, the **Analysis Result** section displays three stat cards — **Vowels** (via `match(/[aeiou]/gi)`), **Words** (via `trim().split(/\s+/)`), and **Characters** (`.length`) — along with the **Original Feedback** and the **Reversed String** (`split("").reverse().join("")`), plus the selected star rating.
+
+> **Screenshot:**
+> ![Feedback Analyzer output](feedback-analyzer-output.jpg)
 
 ---
 
