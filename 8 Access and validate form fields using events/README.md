@@ -1954,7 +1954,21 @@ button {
 
 ---
 
-## Output (Case Study — BearGYM Admission Form)
+## Output (exp8.html)
+- User fills in **Full Name**, **Age**, **Mobile Number**, **Email**, and selects a **Membership Plan**.
+- Leaving a field (**`blur`**) validates it on the spot: **Full Name** against `/^[A-Za-z ]+$/`, **Age** against the 16–60 range, **Email** against `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`, and **Mobile Number** against `/^\d{10}$/` — any failure prints an inline error message below the field.
+- Returning to a field (**`focus`**) instantly clears its error message, and choosing a **Membership Plan** (**`change`**) clears the plan error as soon as an option is picked.
+- Clicking **Submit** runs `event.preventDefault()` and checks that every error span is empty and a plan is selected: on success it prints **"Gym Admission Successful!"**; on failure it shows an `alert()` asking the user to correct the errors.
+
+> **Screenshot:**
+> ![Gym Admission Form output](<gym admission form.png>)
+
+---
+
+## Case Study Title
+BearGYM — Gym Admission Form: A Full Membership Registration Form with Live Validation, BMI Calculation, and Dynamic Pricing
+
+## Output (Case Study — exp8casestudy.html)
 - Typing at least 3 characters into **Full Name** clears its error live via an `input` listener; leaving **Age** in the 12–80 range on `change`, entering a valid address on **Email** `blur`, and completing **Date of Birth** each clear their own error the moment the value becomes valid.
 - **Mobile Number** strips any non-digit character as it's typed (`.replace(/[^0-9]/g, "")`) and clears its error once exactly 10 digits are present.
 - Entering **Height** (feet) and **Weight** (kg) recalculates and displays the **BMI** live on every `input` event; selecting a **Membership Plan** reads the option's `data-price` and updates the **Membership Fee** display instantly via `change`.
@@ -1962,8 +1976,7 @@ button {
 - Submitting the form runs a complete validation pass — Full Name, Date of Birth, Age, Email, Mobile Number, Gender, Membership Plan, and the Terms checkbox — showing a green **"Registration successful!"** banner and confirmation alert on success, or a **"Please correct the errors before submitting the form."** alert with individual field errors highlighted on failure.
 - Resetting the form (via the **Reset Form** button) clears all fields natively, then — after a `setTimeout(fn, 0)` — resets the BMI and Membership Fee readouts and hides the success banner and every visible error message.
 
-> **Screenshots:**
-> ![Gym Admission Form output](<gym admission form.png>)
+> **Screenshot:**
 > ![BearGYM Case Study output](exp8casestudy.png)
 
 ---
