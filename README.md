@@ -76,10 +76,14 @@ JavaScript-Lab/
 │   ├── exp6 case study.html
 │   └── feedback form.html
 │
-└── 7 Perform DOM traversal and updates/
-    ├── todo.html
-    ├── form.html
-    └── welcome.html
+├── 7 Perform DOM traversal and updates/
+│   ├── todo.html
+│   ├── form.html
+│   └── welcome.html
+│
+└── 8 Access and validate form fields using events/
+    ├── exp8.html
+    └── exp8casestudy.html
 ```
 
 Each experiment folder includes:
@@ -101,6 +105,7 @@ Each experiment folder includes:
 | 5 | Arrays, Array Methods, Math.max/min | CartEase — cart total calculator with slab-based discount logic | Pennywise — Expense Tracker (array min/max, total, average) |
 | 6 | String Functions & Regular Expressions | String Methods & Regex demo — split, match, replace, indexOf, email validation/extraction, reverse | String Operations (reverse + vowel count) & Feedback Analyzer |
 | 7 | DOM Traversal & Updates | To-Do List (createElement, appendChild, classList, querySelectorAll) | Sign Up Form (dynamic dropdowns + live validation) & Welcome Page |
+| 8 | Accessing & Validating Form Fields Using Events | Gym Admission Form — focus/blur/change validation with regex | BearGYM Admission Form — live BMI, dynamic pricing, full submit validation |
 
 ---
 
@@ -115,6 +120,7 @@ Each experiment folder includes:
 | 5 | [Experiment5.md](<./5 To create a cart total calculator with discount logic/README.md>) | [`5 To create a cart total calculator with discount logic/`](<./5 To create a cart total calculator with discount logic>) |
 | 6 | [Experiment6.md](<./6 Use string functions and regex  for validation/README.md>) | [`6 Use string functions and regex  for validation/`](<./6 Use string functions and regex  for validation>) |
 | 7 | [Experiment7.md](<./7 Perform DOM traversal and updates/README.md>) | [`7 Perform DOM traversal and updates/`](<./7 Perform DOM traversal and updates>) |
+| 8 | [Experiment8.md](<./8 Access and validate form fields using events/README.md>) | [`8 Access and validate form fields using events/`](<./8 Access and validate form fields using events>) |
 
 ---
 
@@ -145,7 +151,9 @@ Each experiment folder includes:
   <b>Experiment 6 — Feedback Analyzer</b><br>
   <img src="./6%20Use%20string%20functions%20and%20regex%20%20for%20validation/feedback-analyzer-output.jpg" width="700"><br><br>
   <b>Experiment 7 — SignUp Form</b><br>
-  <img src="./7%20Perform%20DOM%20traversal%20and%20updates/signupform (1).png" width="700">
+  <img src="./7%20Perform%20DOM%20traversal%20and%20updates/signupform (1).png" width="700"><br><br>
+  <b>Experiment 8 — BearGYM Admission Form</b><br>
+  <img src="./8%20Access%20and%20validate%20form%20fields%20using%20events/exp8casestudy.png" width="700">
 </p>
 
 ---
