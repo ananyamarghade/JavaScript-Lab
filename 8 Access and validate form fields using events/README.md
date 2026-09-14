@@ -354,7 +354,25 @@ document.getElementById("gymForm").addEventListener("submit", function(e){
 </html>
 ```
 
-### 2. BearGYM — Gym Admission Form (Case Study) — `exp8casestudy.html`
+---
+
+## Output (exp8.html)
+- User fills in **Full Name**, **Age**, **Mobile Number**, **Email**, and selects a **Membership Plan**.
+- Leaving a field (**`blur`**) validates it on the spot: **Full Name** against `/^[A-Za-z ]+$/`, **Age** against the 16–60 range, **Email** against `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`, and **Mobile Number** against `/^\d{10}$/` — any failure prints an inline error message below the field.
+- Returning to a field (**`focus`**) instantly clears its error message, and choosing a **Membership Plan** (**`change`**) clears the plan error as soon as an option is picked.
+- Clicking **Submit** runs `event.preventDefault()` and checks that every error span is empty and a plan is selected: on success it prints **"Gym Admission Successful!"**; on failure it shows an `alert()` asking the user to correct the errors.
+
+> **Screenshot:**
+> ![Gym Admission Form output](<gym admission form.png>)
+
+---
+
+## Case Study Title
+BearGYM — Gym Admission Form: A Full Membership Registration Form with Live Validation, BMI Calculation, and Dynamic Pricing
+
+## Case Study Program Code
+
+### BearGYM — Gym Admission Form — `exp8casestudy.html`
 A full membership-registration form that extends the same event-driven validation pattern across three sections — Personal Information, Physical Information, and Emergency Contact. Inputs are accessed via `getElementById()`/`querySelector()` and validated live: `input`/`change` listeners clear each field's error the moment it becomes valid (name length, age range 12–80, email regex, a 10-digit-only mobile number scrubbed with `.replace(/[^0-9]/g, "")`, and a chosen date of birth), while `input` listeners on Height and Weight recompute a BMI figure on the fly and a `change` listener on the Membership Plan dropdown reads each option's `data-price` attribute to update a live fee display. Checking either "Over 6 feet tall" or "Over 200 pounds" fires a `change`-triggered `alert()`. On `submit`, `event.preventDefault()` blocks the reload and every required field (name, DOB, age, email, mobile, gender via `querySelector('input[name="gender"]:checked')`, plan, and the terms checkbox) is validated in one pass, toggling each `.error` div's `display` and setting a `valid` flag; a successful pass reveals the success banner and a confirmation `alert()`, while a failed pass shows a generic correction alert. A `reset` listener uses `setTimeout(fn, 0)` to clear the BMI/fee readouts, hide the success message, and hide every error `div` right after the native form reset runs.
 
 #### `8 Access and validate form fields using events/exp8casestudy.html`
@@ -1953,20 +1971,6 @@ button {
 ```
 
 ---
-
-## Output (exp8.html)
-- User fills in **Full Name**, **Age**, **Mobile Number**, **Email**, and selects a **Membership Plan**.
-- Leaving a field (**`blur`**) validates it on the spot: **Full Name** against `/^[A-Za-z ]+$/`, **Age** against the 16–60 range, **Email** against `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`, and **Mobile Number** against `/^\d{10}$/` — any failure prints an inline error message below the field.
-- Returning to a field (**`focus`**) instantly clears its error message, and choosing a **Membership Plan** (**`change`**) clears the plan error as soon as an option is picked.
-- Clicking **Submit** runs `event.preventDefault()` and checks that every error span is empty and a plan is selected: on success it prints **"Gym Admission Successful!"**; on failure it shows an `alert()` asking the user to correct the errors.
-
-> **Screenshot:**
-> ![Gym Admission Form output](<gym admission form.png>)
-
----
-
-## Case Study Title
-BearGYM — Gym Admission Form: A Full Membership Registration Form with Live Validation, BMI Calculation, and Dynamic Pricing
 
 ## Output (Case Study — exp8casestudy.html)
 - Typing at least 3 characters into **Full Name** clears its error live via an `input` listener; leaving **Age** in the 12–80 range on `change`, entering a valid address on **Email** `blur`, and completing **Date of Birth** each clear their own error the moment the value becomes valid.
