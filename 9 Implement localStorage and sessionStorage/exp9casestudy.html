@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seminar Schedule Planner</title>
+
+    <style>
+        body{
+            font-family:Arial,sans-serif;
+            background:#f4f6f8;
+            margin:0;
+            padding:40px;
+            color:#222;
+        }
+
+        .container{
+            width:90%;
+            max-width:1000px;
+            margin:auto;
+        }
+
+        h1{
+            text-align:center;
+            color:#26384a;
+            margin-bottom:8px;
+        }
+
+        .subtitle{
+            text-align:center;
+            color:#666;
+            margin-bottom:30px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+            box-shadow:0 3px 12px rgba(0,0,0,.08);
+        }
+
+        th{
+            background:#30475e;
+            color:white;
+            padding:13px;
+            border:1px solid #ddd;
+        }
+
+        td{
+            padding:12px;
+            text-align:center;
+            border:1px solid #ddd;
+        }
+
+        tbody tr:nth-child(even){
+            background:#f8fafb;
+        }
+
+        .seminar{
+            color:#245f86;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        .seminar:hover{
+            text-decoration:underline;
+        }
+
+        .saved-row{
+            background:#e7f4ee !important;
+        }
+
+        .saved-row td{
+            font-weight:bold;
+        }
+
+        .form-box{
+            margin-top:35px;
+            background:white;
+            padding:25px;
+            border-radius:8px;
+            box-shadow:0 3px 12px rgba(0,0,0,.08);
+        }
+
+        .form-box h2{
+            margin-top:0;
+            color:#26384a;
+        }
+
+        label{
+            display:block;
+            margin-top:16px;
+            margin-bottom:7px;
+            font-weight:bold;
+        }
+
+        input,
+        select{
+            width:100%;
+            padding:11px;
+            border:1px solid #ccc;
+            border-radius:5px;
+            box-sizing:border-box;
+            font-size:15px;
+        }
+
+        button{
+            margin-top:22px;
+            padding:11px 24px;
+            border:0;
+            border-radius:5px;
+            background:#30475e;
+            color:white;
+            font-size:15px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#243447;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Seminar Schedule Planner</h1>
+    <p class="subtitle">Plan and save your preferred seminar sessions</p>
+
+    <table id="seminarTable">
+
+        <thead>
+            <tr>
+                <th rowspan="2">Day</th>
+                <th rowspan="2">Seminar</th>
+                <th colspan="2">Schedule</th>
+                <th rowspan="2">Topic</th>
+            </tr>
+
+            <tr>
+                <th>Begin</th>
+                <th>End</th>
+            </tr>
+        </thead>
+
+        <tbody id="scheduleBody"></tbody>
+
+    </table>
+
+
+    <div class="form-box">
+
+        <h2>Save Your Seminar Preference</h2>
+
+        <form id="preferenceForm">
+
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="day">Preferred Day</label>
+            <select id="day" required>
+                <option value="">Select Day</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+            </select>
+
+            <label for="topic">Preferred Topic</label>
+            <select id="topic" required>
+                <option value="">Select Topic</option>
+                <option value="Validity: DTD and Relax NG">
+                    Validity: DTD and Relax NG
+                </option>
+                <option value="XPath">XPath</option>
+                <option value="XSL Transformations">
+                    XSL Transformations
+                </option>
+                <option value="XSL Formatting Objects">
+                    XSL Formatting Objects
+                </option>
+            </select>
+
+            <label for="startTime">Begin Time</label>
+            <input type="time" id="startTime" required>
+
+            <label for="endTime">End Time</label>
+            <input type="time" id="endTime" required>
+
+            <button type="submit">Save Preference</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+var storageKey = "seminarPlannerFinalPreferences";
+
+var schedule = [
+    {
+        day:"Monday",
+        seminar:"Introduction to XML",
+        begin:"08:00",
+        end:"17:00",
+        topic:"Validity: DTD and Relax NG"
+    },
+    {
+        day:"Tuesday",
+        seminar:"XPath",
+        begin:"08:00",
+        end:"11:00",
+        topic:"XPath"
+    },
+    {
+        day:"Tuesday",
+        seminar:"XSL Transformations",
+        begin:"11:00",
+        end:"14:00",
+        topic:"XSL Transformations"
+    },
+    {
+        day:"Tuesday",
+        seminar:"XSL Transformations",
+        begin:"14:00",
+        end:"17:00",
+        topic:"XSL Transformations"
+    },
+    {
+        day:"Wednesday",
+        seminar:"XSL Formatting Objects",
+        begin:"08:00",
+        end:"12:00",
+        topic:"XSL Formatting Objects"
+    }
+];
+
+var topicDetails = {
+    "Validity: DTD and Relax NG":
+        "This topic explains how XML documents can be checked for a valid structure using DTD and Relax NG.",
+
+    "XPath":
+        "XPath is used to navigate through an XML document and select specific elements or nodes.",
+
+    "XSL Transformations":
+        "XSL Transformations are used to transform XML data into formats such as HTML or another XML document.",
+
+    "XSL Formatting Objects":
+        "XSL Formatting Objects are used to describe the layout and formatting of XML content for presentation."
+};
+
+
+function showDetails(day, seminar, topic){
+
+    sessionStorage.setItem("preferredTopic",topic);
+    sessionStorage.setItem("selectedSeminar",seminar);
+    sessionStorage.setItem("selectionStatus","Selected");
+
+    alert(
+        "Seminar Selected!\n\n" +
+        "Day: " + day + "\n" +
+        "Seminar: " + seminar + "\n" +
+        "Topic: " + topic + "\n\n" +
+        "About the Topic:\n" +
+        topicDetails[topic]
+    );
+}
+
+
+function formatTime(time){
+
+    var parts=time.split(":");
+    var hour=parseInt(parts[0]);
+    var minute=parts[1];
+
+    var period=hour>=12 ? "p.m." : "a.m.";
+
+    if(hour===0){
+        hour=12;
+    }
+    else if(hour>12){
+        hour=hour-12;
+    }
+
+    return hour+":"+minute+" "+period;
+}
+
+
+function createRow(item,saved){
+
+    var row=document.createElement("tr");
+
+    if(saved){
+        row.className="saved-row";
+    }
+
+    var seminarCell=document.createElement("td");
+    var beginCell=document.createElement("td");
+    var endCell=document.createElement("td");
+    var topicCell=document.createElement("td");
+
+    seminarCell.textContent=item.seminar;
+    seminarCell.className="seminar";
+
+    beginCell.textContent=formatTime(item.begin);
+    endCell.textContent=formatTime(item.end);
+    topicCell.textContent=item.topic;
+
+    seminarCell.onclick=function(){
+
+        showDetails(
+            item.day,
+            item.seminar,
+            item.topic
+        );
+
+    };
+
+    row.appendChild(seminarCell);
+    row.appendChild(beginCell);
+    row.appendChild(endCell);
+    row.appendChild(topicCell);
+
+    return row;
+}
+
+
+function displaySchedule(){
+
+    var body=document.getElementById("scheduleBody");
+
+    body.innerHTML="";
+
+    var preferences=JSON.parse(
+        localStorage.getItem(storageKey) || "[]"
+    );
+
+    var days=["Monday","Tuesday","Wednesday"];
+
+    for(var d=0;d<days.length;d++){
+
+        var day=days[d];
+
+        var originalRows=schedule.filter(function(item){
+            return item.day===day;
+        });
+
+        var savedRows=preferences.filter(function(item){
+            return item.day===day &&
+                   item.startTime &&
+                   item.endTime &&
+                   item.topic;
+        });
+
+        var totalRows=originalRows.length+savedRows.length;
+
+        if(totalRows===0){
+            continue;
+        }
+
+        for(var i=0;i<originalRows.length;i++){
+
+            var row=createRow(originalRows[i],false);
+
+            if(i===0){
+
+                var dayCell=document.createElement("td");
+
+                dayCell.textContent=day;
+                dayCell.rowSpan=totalRows;
+
+                row.insertBefore(dayCell,row.firstChild);
+            }
+
+            body.appendChild(row);
+        }
+
+        for(var j=0;j<savedRows.length;j++){
+
+            var savedItem={
+                day:savedRows[j].day,
+                seminar:savedRows[j].topic,
+                begin:savedRows[j].startTime,
+                end:savedRows[j].endTime,
+                topic:savedRows[j].topic
+            };
+
+            var savedRow=createRow(savedItem,true);
+
+            body.appendChild(savedRow);
+        }
+    }
+}
+
+
+function savePreference(event){
+
+    event.preventDefault();
+
+    var name=document.getElementById("name").value;
+    var day=document.getElementById("day").value;
+    var topic=document.getElementById("topic").value;
+    var startTime=document.getElementById("startTime").value;
+    var endTime=document.getElementById("endTime").value;
+
+    if(endTime<=startTime){
+
+        alert("End time must be later than begin time.");
+        return;
+    }
+
+    var preferences=JSON.parse(
+        localStorage.getItem(storageKey) || "[]"
+    );
+
+    var preference={
+        name:name,
+        day:day,
+        topic:topic,
+        startTime:startTime,
+        endTime:endTime
+    };
+
+    preferences.push(preference);
+
+    localStorage.setItem(
+        storageKey,
+        JSON.stringify(preferences)
+    );
+
+    localStorage.setItem("preferredName",name);
+    localStorage.setItem("preferredDay",day);
+    localStorage.setItem("preferredScheduleStart",startTime);
+    localStorage.setItem("preferredScheduleEnd",endTime);
+
+    sessionStorage.setItem("preferredTopic",topic);
+    sessionStorage.setItem("selectedSeminar",topic);
+    sessionStorage.setItem("selectionStatus","Selected");
+
+    alert(
+        "Preference Saved!\n\n" +
+        "Name: " + name + "\n" +
+        "Day: " + day + "\n" +
+        "Schedule: " + formatTime(startTime) +
+        " - " + formatTime(endTime) + "\n" +
+        "Topic: " + topic + "\n\n" +
+        "About the Topic:\n" +
+        topicDetails[topic]
+    );
+
+    document.getElementById("preferenceForm").reset();
+
+    displaySchedule();
+}
+
+
+document.getElementById("preferenceForm")
+.addEventListener("submit",savePreference);
+
+
+window.onload=function(){
+
+    displaySchedule();
+
+};
+
+</script>
+
+</body>
+</html>

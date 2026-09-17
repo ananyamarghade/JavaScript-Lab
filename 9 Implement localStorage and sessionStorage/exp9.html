@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Preference</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #eef1f4;
+            color: #252525;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .card{
+            width: 440px;
+            background: #ffffff;
+            border: 1px solid #dfe3e7;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .top{
+            padding: 24px 28px;
+            border-bottom: 1px solid #e5e7ea;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-icon{
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            background: #f0f2f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .top h1{
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .top p{
+            margin: 5px 0 0;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .content{
+            padding: 28px;
+        }
+
+        .label{
+            display: block;
+            margin-bottom: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .theme-options{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        button{
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .theme-btn{
+            padding: 16px;
+            background: #fff;
+            border: 1px solid #d5d9dd;
+            border-radius: 9px;
+            color: #333;
+            text-align: left;
+        }
+
+        .theme-btn strong{
+            display: block;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .theme-btn span{
+            font-size: 12px;
+            color: #888;
+        }
+
+        .theme-btn:hover{
+            border-color: #999;
+            background: #fafafa;
+        }
+
+        .dark-btn{
+            background: #292929;
+            color: white;
+            border-color: #292929;
+        }
+
+        .dark-btn span{
+            color: #bcbcbc;
+        }
+
+        .dark-btn:hover{
+            background: #1f1f1f;
+        }
+
+        .clear-btn{
+            width: 100%;
+            margin-top: 18px;
+            padding: 12px;
+            border: 1px solid #d8bcbc;
+            border-radius: 8px;
+            background: #fff;
+            color: #a33b3b;
+            font-size: 14px;
+        }
+
+        .clear-btn:hover{
+            background: #fff6f6;
+            border-color: #c99696;
+        }
+
+        .status{
+            margin-top: 20px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            background: #f5f6f7;
+            border: 1px solid #e3e5e7;
+            color: #666;
+            font-size: 13px;
+            text-align: center;
+            min-height: 40px;
+        }
+
+        .footer{
+            padding: 14px 28px;
+            background: #fafafa;
+            border-top: 1px solid #e5e7ea;
+            text-align: center;
+            color: #999;
+            font-size: 11px;
+        }
+
+        body.dark{
+            background: #18191a;
+            color: white;
+        }
+
+        body.dark .card{
+            background: #252627;
+            border-color: #3a3b3d;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        body.dark .top{
+            border-color: #3a3b3d;
+        }
+
+        body.dark .theme-icon{
+            background: #333537;
+        }
+
+        body.dark .top p{
+            color: #aaa;
+        }
+
+        body.dark .label{
+            color: #bbb;
+        }
+
+        body.dark .theme-btn{
+            background: #2d2f30;
+            color: white;
+            border-color: #484a4c;
+        }
+
+        body.dark .theme-btn:hover{
+            background: #343638;
+        }
+
+        body.dark .theme-btn span{
+            color: #aaa;
+        }
+
+        body.dark .dark-btn{
+            background: #111;
+            border-color: #111;
+        }
+
+        body.dark .clear-btn{
+            background: #2d2f30;
+            color: #ff9d9d;
+            border-color: #664848;
+        }
+
+        body.dark .clear-btn:hover{
+            background: #3a2e2e;
+        }
+
+        body.dark .status{
+            background: #303234;
+            border-color: #414346;
+            color: #bbb;
+        }
+
+        body.dark .footer{
+            background: #202122;
+            border-color: #3a3b3d;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="top">
+            <div class="theme-icon">◐</div>
+
+            <div>
+                <h1>Theme Preference</h1>
+                <p>Choose and save your preferred appearance</p>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <span class="label">Select Theme</span>
+
+            <div class="theme-options">
+
+                <button class="theme-btn" onclick="setTheme('light')">
+                    <strong>Light Theme</strong>
+                    <span>Clean and bright</span>
+                </button>
+
+                <button class="theme-btn dark-btn" onclick="setTheme('dark')">
+                    <strong>Dark Theme</strong>
+                    <span>Easy on the eyes</span>
+                </button>
+
+            </div>
+
+            <button class="clear-btn" onclick="clearPreference()">
+                Clear Saved Preference
+            </button>
+
+            <div class="status" id="message">
+                No changes made yet.
+            </div>
+
+        </div>
+
+        <div class="footer">
+            Preference is stored using LocalStorage & SessionStorage
+        </div>
+
+    </div>
+
+    <script>
+        function setTheme(theme) {
+
+            if(theme === 'dark'){
+                document.body.classList.add('dark');
+            }
+            else{
+                document.body.classList.remove('dark');
+            }
+
+            localStorage.setItem('theme', theme);
+            sessionStorage.setItem('sessionTheme', theme);
+
+            document.getElementById("message").innerHTML =
+                "Your " + theme + " theme preference has been saved.";
+        }
+
+        function clearPreference(){
+
+            localStorage.removeItem('theme');
+            sessionStorage.removeItem('sessionTheme');
+
+            document.body.classList.remove('dark');
+
+            document.getElementById("message").innerHTML =
+                "Saved theme preference has been cleared.";
+        }
+
+        window.onload = function(){
+
+            var saved = localStorage.getItem('theme');
+
+            if(saved === 'dark'){
+                document.body.classList.add('dark');
+
+                document.getElementById("message").innerHTML =
+                    "Dark theme preference restored.";
+            }
+
+            if(saved === 'light'){
+                document.getElementById("message").innerHTML =
+                    "Light theme preference restored.";
+            }
+        };
+    </script>
+
+</body>
+</html>
