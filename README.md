@@ -81,9 +81,13 @@ JavaScript-Lab/
 │   ├── form.html
 │   └── welcome.html
 │
-└── 8 Access and validate form fields using events/
-    ├── exp8.html
-    └── exp8casestudy.html
+├── 8 Access and validate form fields using events/
+│   ├── exp8.html
+│   └── exp8casestudy.html
+│
+└── 9 Implement localStorage and sessionStorage/
+    ├── themechange.html
+    └── seminar planner case study.html
 ```
 
 Each experiment folder includes:
@@ -106,6 +110,7 @@ Each experiment folder includes:
 | 6 | String Functions & Regular Expressions | String Methods & Regex demo — split, match, replace, indexOf, email validation/extraction, reverse | String Operations (reverse + vowel count) & Feedback Analyzer |
 | 7 | DOM Traversal & Updates | To-Do List (createElement, appendChild, classList, querySelectorAll) | Sign Up Form (dynamic dropdowns + live validation) & Welcome Page |
 | 8 | Accessing & Validating Form Fields Using Events | Gym Admission Form — focus/blur/change validation with regex | BearGYM Admission Form — live BMI, dynamic pricing, full submit validation |
+| 9 | `localStorage` & `sessionStorage` | Theme Preference — light/dark theme saved, restored on reload and clearable | Seminar Schedule Planner — preferences saved as JSON in `localStorage`, session selections in `sessionStorage`, schedule re-rendered on load |
 
 ---
 
@@ -121,6 +126,7 @@ Each experiment folder includes:
 | 6 | [Experiment6.md](<./6 Use string functions and regex  for validation/README.md>) | [`6 Use string functions and regex  for validation/`](<./6 Use string functions and regex  for validation>) |
 | 7 | [Experiment7.md](<./7 Perform DOM traversal and updates/README.md>) | [`7 Perform DOM traversal and updates/`](<./7 Perform DOM traversal and updates>) |
 | 8 | [Experiment8.md](<./8 Access and validate form fields using events/README.md>) | [`8 Access and validate form fields using events/`](<./8 Access and validate form fields using events>) |
+| 9 | [Experiment9.md](<./9 Implement localStorage and sessionStorage/README.md>) | [`9 Implement localStorage and sessionStorage/`](<./9 Implement localStorage and sessionStorage>) |
 
 ---
 
@@ -153,7 +159,9 @@ Each experiment folder includes:
   <b>Experiment 7 — SignUp Form</b><br>
   <img src="./7%20Perform%20DOM%20traversal%20and%20updates/signupform (1).png" width="700"><br><br>
   <b>Experiment 8 — BearGYM Admission Form</b><br>
-  <img src="./8%20Access%20and%20validate%20form%20fields%20using%20events/exp8casestudy.png" width="700">
+  <img src="./8%20Access%20and%20validate%20form%20fields%20using%20events/exp8casestudy.png" width="700"><br><br>
+  <b>Experiment 9 — Seminar Schedule Planner</b><br>
+  <img src="./9%20Implement%20localStorage%20and%20sessionStorage/Seminar%20Planner.png" width="700">
 </p>
 
 ---
@@ -170,6 +178,8 @@ Through these practicals, the following JavaScript concepts were implemented han
 - DOM manipulation and dynamic rendering
 - Event handling (inline, internal, external)
 - Real-time form validation with regex
+- Persisting data in the browser with `localStorage` and `sessionStorage` (`setItem`, `getItem`, `removeItem`)
+- Serialising arrays and objects with `JSON.stringify()` / `JSON.parse()` for storage
 - Console methods (`log`, `warn`, `error`, `table`) for debugging
 - Building complete, styled, interactive mini-applications — not isolated code snippets
 
