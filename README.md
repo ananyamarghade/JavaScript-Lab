@@ -37,17 +37,17 @@
 ```
 JavaScript-Lab/
 │
-├── 1 To create a webpage showing user info and a welcome message/
+├── 01 Department & Student Page/
 │   ├── department.html
 │   ├── student.html
 │   ├── script.js
 │   └── style.css
 │
-├── 2 To build a billing calculator with user input./
+├── 02 Billing Calculator/
 │   ├── shop-billing.html
 │   └── shop-billing.js
 │
-├── 3 To create a grading system based on user-entered marks/
+├── 03 Student Login & grading/
 │   ├── 3.1) Student Grading System/
 │   │   └── studentgrading.html
 │   └── 3.2) Student Login Page/
@@ -55,7 +55,7 @@ JavaScript-Lab/
 │       ├── script.js
 │       └── style.css
 │
-├── 4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/
+├── 04 Try-catch/
 │   ├── 4.1) Palindrome Checker/
 │   │   ├── palindrome.html
 │   │   └── palindrome.js
@@ -63,7 +63,7 @@ JavaScript-Lab/
 │       ├── vehicleregistration.html
 │       └── vehicleregistration.js
 │
-├── 5 To create a cart total calculator with discount logic/
+├── 05 Cart Calculator & Expense Tracker/
 │   ├── 5.1 Cart Calculator/
 │   │   └── exp5.html
 │   └── 5.2 Expense Tracker (Array MIn Max)/
@@ -71,21 +71,21 @@ JavaScript-Lab/
 │       ├── expense.css
 │       └── expense.js
 │
-├── 6 Use string functions and regex  for validation/
+├── 06 Use string functions and regex  for validation/
 │   ├── exp6.html
 │   ├── exp6 case study.html
 │   └── feedback form.html
 │
-├── 7 Perform DOM traversal and updates/
+├── 07 Perform DOM traversal and updates/
 │   ├── todo.html
 │   ├── form.html
 │   └── welcome.html
 │
-├── 8 Access and validate form fields using events/
+├── 08 Access and validate form fields using events/
 │   ├── exp8.html
 │   └── exp8casestudy.html
 │
-└── 9 Implement localStorage and sessionStorage/
+└── 09 Implement localStorage and sessionStorage/
     ├── themechange.html
     └── seminar planner case study.html
 ```
@@ -118,15 +118,15 @@ Each experiment folder includes:
 
 | Experiment | Lab Record | Source Folder |
 |---|---|---|
-| 1 | [Experiment1.md](./Experiment1.md) | [`1 To create a webpage showing user info and a welcome message/`](<./1 To create a webpage showing user info and a welcome message>) |
-| 2 | [Experiment2.md](./Experiment2.md) | [`2 To build a billing calculator with user input./`](<./2 To build a billing calculator with user input.>) |
-| 3 | [Experiment3.md](./Experiment3.md) | [`3 To create a grading system based on user-entered marks/`](<./3 To create a grading system based on user-entered marks>) |
-| 4 | [Experiment4.md](./Experiment4.md) | [`4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/`](<./4 Use function types, scope, and closures; apply try-catch to build a palindrome checker>) |
-| 5 | [Experiment5.md](<./5 To create a cart total calculator with discount logic/README.md>) | [`5 To create a cart total calculator with discount logic/`](<./5 To create a cart total calculator with discount logic>) |
-| 6 | [Experiment6.md](<./6 Use string functions and regex  for validation/README.md>) | [`6 Use string functions and regex  for validation/`](<./6 Use string functions and regex  for validation>) |
-| 7 | [Experiment7.md](<./7 Perform DOM traversal and updates/README.md>) | [`7 Perform DOM traversal and updates/`](<./7 Perform DOM traversal and updates>) |
-| 8 | [Experiment8.md](<./8 Access and validate form fields using events/README.md>) | [`8 Access and validate form fields using events/`](<./8 Access and validate form fields using events>) |
-| 9 | [Experiment9.md](<./9 Implement localStorage and sessionStorage/README.md>) | [`9 Implement localStorage and sessionStorage/`](<./9 Implement localStorage and sessionStorage>) |
+| 1 | [Experiment1.md](<./01 Department & Student Page/README.md>) | [`01 Department & Student Page/`](<./01 Department & Student Page>) |
+| 2 | [Experiment2.md](<./02 Billing Calculator/README.md>) | [`02 Billing Calculator/`](<./02 Billing Calculator>) |
+| 3 | [Experiment3.md](<./03 Student Login & grading/README.md>) | [`03 Student Login & grading/`](<./03 Student Login & grading>) |
+| 4 | [Experiment4.md](<./04 Try-catch/README.md>) | [`04 Try-catch/`](<./04 Try-catch>) |
+| 5 | [Experiment5.md](<./05 Cart Calculator & Expense Tracker/README.md>) | [`05 Cart Calculator & Expense Tracker/`](<./05 Cart Calculator & Expense Tracker>) |
+| 6 | [Experiment6.md](<./06 Use string functions and regex  for validation/README.md>) | [`06 Use string functions and regex  for validation/`](<./06 Use string functions and regex  for validation>) |
+| 7 | [Experiment7.md](<./07 Perform DOM traversal and updates/README.md>) | [`07 Perform DOM traversal and updates/`](<./07 Perform DOM traversal and updates>) |
+| 8 | [Experiment8.md](<./08 Access and validate form fields using events/README.md>) | [`08 Access and validate form fields using events/`](<./08 Access and validate form fields using events>) |
+| 9 | [Experiment9.md](<./09 Implement localStorage and sessionStorage/README.md>) | [`09 Implement localStorage and sessionStorage/`](<./09 Implement localStorage and sessionStorage>) |
 
 ---
 
@@ -145,23 +145,23 @@ Each experiment folder includes:
 
 <p align="center">
   <b>Experiment 1 — Student Information Portal</b><br>
-  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/1%20To%20create%20a%20webpage%20showing%20user%20info%20and%20a%20welcome%20message/student%20page.png" width="700"><br><br>
+  <img src="./01%20Department%20%26%20Student%20Page/student%20page.png" width="700"><br><br>
   <b>Experiment 2 — Billing Calculator</b><br>
-  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/2%20To%20build%20a%20billing%20calculator%20with%20user%20input./billing%20form.png" width="700"><br><br>
+  <img src="./02%20Billing%20Calculator/billing%20form.png" width="700"><br><br>
   <b>Experiment 3 — Student Grading System</b><br>
-  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20grading2.png" width="700"><br><br>
+  <img src="./03%20Student%20Login%20%26%20grading/3.1%29%20Student%20Grading%20System/student%20grading2.png" width="700"><br><br>
   <b>Experiment 4 — Palindrome Checker</b><br>
-  <img src="https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome2.png" width="700"><br><br>
+  <img src="./04%20Try-catch/4.1%29%20Palindrome%20Checker/palindrome2.png" width="700"><br><br>
   <b>Experiment 5 — CartEase Billing Calculator</b><br>
-  <img src="./5%20To%20create%20a%20cart%20total%20calculator%20with%20discount%20logic/cart-output.png" width="700"><br><br>
+  <img src="./05%20Cart%20Calculator%20%26%20Expense%20Tracker/cart-output.png" width="700"><br><br>
   <b>Experiment 6 — Feedback Analyzer</b><br>
-  <img src="./6%20Use%20string%20functions%20and%20regex%20%20for%20validation/feedback-analyzer-output.jpg" width="700"><br><br>
+  <img src="./06%20Use%20string%20functions%20and%20regex%20%20for%20validation/feedback-analyzer-output.jpg" width="700"><br><br>
   <b>Experiment 7 — SignUp Form</b><br>
-  <img src="./7%20Perform%20DOM%20traversal%20and%20updates/signupform (1).png" width="700"><br><br>
+  <img src="./07%20Perform%20DOM%20traversal%20and%20updates/signupform%20%281%29.png" width="700"><br><br>
   <b>Experiment 8 — BearGYM Admission Form</b><br>
-  <img src="./8%20Access%20and%20validate%20form%20fields%20using%20events/exp8casestudy.png" width="700"><br><br>
+  <img src="./08%20Access%20and%20validate%20form%20fields%20using%20events/exp8casestudy.png" width="700"><br><br>
   <b>Experiment 9 — Seminar Schedule Planner</b><br>
-  <img src="./9%20Implement%20localStorage%20and%20sessionStorage/Seminar%20Planner.png" width="700">
+  <img src="./09%20Implement%20localStorage%20and%20sessionStorage/Seminar%20Planner.png" width="700">
 </p>
 
 ---
