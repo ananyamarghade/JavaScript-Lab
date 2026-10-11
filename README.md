@@ -85,9 +85,17 @@ JavaScript-Lab/
 │   ├── exp8.html
 │   └── exp8casestudy.html
 │
-└── 09 Implement localStorage and sessionStorage/
-    ├── themechange.html
-    └── seminar planner case study.html
+├── 09 Implement localStorage and sessionStorage/
+│   ├── themechange.html
+│   └── seminar planner case study.html
+│
+└── 10 JSON Data with Fetch and jQuery/
+    ├── 10.1) Using Fetch()/
+    │   ├── exp10.1.html
+    │   └── exp10casestudy.html
+    └── 10.2) Using jquery/
+        ├── exp10.2.html
+        └── exp10part2casestudy.html
 ```
 
 Each experiment folder includes:
@@ -111,6 +119,7 @@ Each experiment folder includes:
 | 7 | DOM Traversal & Updates | To-Do List (createElement, appendChild, classList, querySelectorAll) | Sign Up Form (dynamic dropdowns + live validation) & Welcome Page |
 | 8 | Accessing & Validating Form Fields Using Events | Gym Admission Form — focus/blur/change validation with regex | BearGYM Admission Form — live BMI, dynamic pricing, full submit validation |
 | 9 | `localStorage` & `sessionStorage` | Theme Preference — light/dark theme saved, restored on reload and clearable | Seminar Schedule Planner — preferences saved as JSON in `localStorage`, session selections in `sessionStorage`, schedule re-rendered on load |
+| 10 | Loading JSON Data with `fetch()` & jQuery | Student Details — `fetch()` + `.then()` chain, `response.json()`, table built from a JSON file; same table again with `$.getJSON()` and `$.each()` | Employee Information Management (`fetch()` + `localStorage` + File System Access API) & OrderDesk Restaurant Dashboard (`$.getJSON()`, `.done()` / `.fail()` / `.always()`, status totals and sales summary) |
 
 ---
 
@@ -127,6 +136,7 @@ Each experiment folder includes:
 | 7 | [Experiment7.md](<./07 Perform DOM traversal and updates/README.md>) | [`07 Perform DOM traversal and updates/`](<./07 Perform DOM traversal and updates>) |
 | 8 | [Experiment8.md](<./08 Access and validate form fields using events/README.md>) | [`08 Access and validate form fields using events/`](<./08 Access and validate form fields using events>) |
 | 9 | [Experiment9.md](<./09 Implement localStorage and sessionStorage/README.md>) | [`09 Implement localStorage and sessionStorage/`](<./09 Implement localStorage and sessionStorage>) |
+| 10 | [Experiment10.md](<./10 JSON Data with Fetch and jQuery/README.md>) | [`10 JSON Data with Fetch and jQuery/`](<./10 JSON Data with Fetch and jQuery>) |
 
 ---
 
@@ -135,8 +145,10 @@ Each experiment folder includes:
 - HTML5
 - CSS3
 - JavaScript (ES6+)
+- jQuery 3.7.1 (CDN)
 - Visual Studio Code
 - Google Chrome
+- VS Code Live Server
 - Git & GitHub
   
 ---
@@ -161,7 +173,9 @@ Each experiment folder includes:
   <b>Experiment 8 — BearGYM Admission Form</b><br>
   <img src="./08%20Access%20and%20validate%20form%20fields%20using%20events/exp8casestudy.png" width="700"><br><br>
   <b>Experiment 9 — Seminar Schedule Planner</b><br>
-  <img src="./09%20Implement%20localStorage%20and%20sessionStorage/Seminar%20Planner.png" width="700">
+  <img src="./09%20Implement%20localStorage%20and%20sessionStorage/Seminar%20Planner.png" width="700"><br><br>
+  <b>Experiment 10 — OrderDesk Restaurant Order Dashboard</b><br>
+  <img src="./10%20JSON%20Data%20with%20Fetch%20and%20jQuery/10.2%29%20Using%20jquery/exp10part2casestudy.png" width="700">
 </p>
 
 ---
@@ -180,6 +194,9 @@ Through these practicals, the following JavaScript concepts were implemented han
 - Real-time form validation with regex
 - Persisting data in the browser with `localStorage` and `sessionStorage` (`setItem`, `getItem`, `removeItem`)
 - Serialising arrays and objects with `JSON.stringify()` / `JSON.parse()` for storage
+- Loading external JSON data asynchronously with `fetch()` — promise chaining (`.then()` / `.catch()`) and `response.json()`
+- Fetching and rendering JSON with jQuery — `$.getJSON()`, `$.each()`, `.append()`, `.done()` / `.fail()` / `.always()`
+- Running pages through a local server (VS Code Live Server) so `fetch()` and AJAX requests work
 - Console methods (`log`, `warn`, `error`, `table`) for debugging
 - Building complete, styled, interactive mini-applications — not isolated code snippets
 
