@@ -7,7 +7,7 @@
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP6\exp6.html"` | `"D:\Ananya\JavaScript LAB\EXP6\exp6 case study.html"` | `"D:\Ananya\JavaScript LAB\EXP6\feedback form.html"`
 
-**GITHUB File Path:** `6 Use string functions and regex  for validation/exp6.html` | `6 Use string functions and regex  for validation/exp6 case study.html` | `6 Use string functions and regex  for validation/feedback form.html`
+**GITHUB File Path:** `06 Use string functions and regex  for validation/exp6.html` | `06 Use string functions and regex  for validation/exp6 case study.html` | `06 Use string functions and regex  for validation/feedback form.html`
 
 ---
 
@@ -27,7 +27,7 @@ Use String Functions and Regular Expressions for Validation
 ### String Methods & Regular Expressions — `exp6.html`
 A single-page demo that takes a paragraph and an email address as input and runs them through a full set of string methods and regex operations: `split()` to break the paragraph into words, `match()` with a regex to pull out and count vowels, `replace()` to substitute a matched word, `indexOf()` to locate a search term, a regex-based email validator, `match()` again (with the global flag) to extract every email address from a block of text, and `split().reverse().join()` to reverse the whole paragraph.
 
-#### `6 Use string functions and regex  for validation/exp6.html`
+#### `06 Use string functions and regex  for validation/exp6.html`
 ```html
 <!DOCTYPE html>
 <html>
@@ -189,7 +189,7 @@ String Operations & Feedback Analyzer — Real-World Applications of String Meth
 ### 1. String Operations — `exp6 case study.html`
 A focused mini-tool that takes a single paragraph and performs two string operations on it: reversing the string and counting the number of vowels it contains, each shown in its own result card.
 
-#### `6 Use string functions and regex  for validation/exp6 case study.html`
+#### `06 Use string functions and regex  for validation/exp6 case study.html`
 ```html
 <!DOCTYPE html>
 <html>
@@ -456,7 +456,7 @@ A focused mini-tool that takes a single paragraph and performs two string operat
 
 A styled feedback form that combines a 1–5 star-style rating widget with a live character counter and a string-analysis engine. On submission it reverses the feedback text and reports its vowel count, word count, and character count — applying the same `split()`, `match()`, and `reverse()` string techniques from the main experiment inside a realistic feedback-collection UI.
 
-#### `6 Use string functions and regex  for validation/feedback form.html`
+#### `06 Use string functions and regex  for validation/feedback form.html`
 ```html
 <!DOCTYPE html>
 <html>
