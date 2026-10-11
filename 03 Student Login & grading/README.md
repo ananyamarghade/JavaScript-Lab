@@ -7,7 +7,7 @@
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP3\studentgrading.html"` | `"D:\Ananya\JavaScript LAB\EXP3\index.html"` | `"D:\Ananya\JavaScript LAB\EXP3\script.js"` | `"D:\Ananya\JavaScript LAB\EXP3\style.css"`
 
-**GITHUB File Path:** `3 To create a grading system based on user-entered marks/3.1) Student Grading System/studentgrading.html` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/index.html` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/script.js` | `3 To create a grading system based on user-entered marks/3.2) Student Login Page/style.css`
+**GITHUB File Path:** `03 Student Login & grading/3.1) Student Grading System/studentgrading.html` | `03 Student Login & grading/3.2) Student Login Page/index.html` | `03 Student Login & grading/3.2) Student Login Page/script.js` | `03 Student Login & grading/3.2) Student Login Page/style.css`
 
 ---
 
@@ -27,7 +27,7 @@ Implement Control Structures to Create a Grading System Based on User-Entered Ma
 ### Student Grading System — `studentgrading.html`
 A marksheet-style form that takes a student's name, PRN, batch, and marks for 5 subjects, then generates a full report card with per-subject grades, total marks, percentage, overall grade, and pass/fail result — all computed using nested `if-else` control structures.
 
-#### `3 To create a grading system based on user-entered marks/3.1) Student Grading System/studentgrading.html`
+#### `03 Student Login & grading/3.1) Student Grading System/studentgrading.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -379,7 +379,7 @@ A marksheet-style form that takes a student's name, PRN, batch, and marks for 5 
     <div class="top-strip"></div>
     <header class="site-header">
         <div class="header-inner">
-            <img class="header-logo" src="D:\Ananya\JavaScipt LAB\exp1\logo.png" alt="Symbiosis Institute of Technology, Nagpur Logo">
+            <img class="header-logo" src="../../01 Department & Student Page/logo.png" alt="Symbiosis Institute of Technology, Nagpur Logo">
             <div class="header-text">
                 <h1>Symbiosis Institute of Technology, Nagpur</h1>
             </div>
@@ -656,8 +656,8 @@ A marksheet-style form that takes a student's name, PRN, batch, and marks for 5 
 - **Reset** clears the form and hides the report card.
 
 > **Screenshot:**
-> ![Student grading system form](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20grading1.png)
-> ![Student grading system report card](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20grading2.png)
+> ![Student grading system form](<3.1) Student Grading System/student grading1.png>)
+> ![Student grading system report card](<3.1) Student Grading System/student grading2.png>)
 
 
 ---
@@ -669,7 +669,7 @@ Student Login Page — Form Validation Using Control Structures
 
 ### Login / Sign-Up Page — `index.html`
 
-#### `3 To create a grading system based on user-entered marks/index.html`
+#### `03 Student Login & grading/3.2) Student Login Page/index.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -683,7 +683,7 @@ Student Login Page — Form Validation Using Control Structures
   <header class="brand-bar">
     <img
         class="brand-logo"
-        src="D:\Ananya\JavaScipt LAB\exp1\logo.png"
+        src="../../01 Department & Student Page/logo.png"
         alt="SIT Logo"
         width="45"
         height="45"
@@ -805,7 +805,7 @@ Student Login Page — Form Validation Using Control Structures
 ### Validation Logic — `script.js`
 Implements character-level validators (`isUpperCaseLetter`, `isLowerCaseLetter`, `isDigit`, `isSpecialChar`) and control-structure-driven validation (`if-else` chains, `for` loops) for Full Name, college Email (must end in `@sitnagpur.siu.edu.in`), Password (length, case, digit, special-character, and "must not equal name/contain 'password'" rules), and Confirm Password, with the Login button enabled only once every field is valid.
 
-#### `3 To create a grading system based on user-entered marks/script.js`
+#### `03 Student Login & grading/3.2) Student Login Page/script.js`
 ```js
 const form = document.getElementById("signupForm");
 
@@ -1134,7 +1134,7 @@ form.addEventListener("submit", (event) => {
 
 ### Stylesheet — `style.css`
 
-#### `3 To create a grading system based on user-entered marks/style.css`
+#### `03 Student Login & grading/3.2) Student Login Page/style.css`
 ```css
 * {
   box-sizing: border-box;
@@ -1455,8 +1455,8 @@ body {
 - Password visibility can be toggled via the eye icon buttons on both password fields.
 
 > **Screenshot:**
-> ![Student login page - empty state](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20login1.png)
-> ![Student login page - validated and submitted](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/ddcd35f65efd9d2b46cbf496be16abf944ff5d9f/3%20To%20create%20a%20grading%20system%20based%20on%20user-entered%20marks/student%20login2.png)
+> ![Student login page - empty state](<3.2) Student Login Page/student login1.png>)
+> ![Student login page - validated and submitted](<3.2) Student Login Page/student login2.png>)
 
 
 ---
