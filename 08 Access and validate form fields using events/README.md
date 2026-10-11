@@ -7,7 +7,7 @@
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP8\exp8.html"` | `"D:\Ananya\JavaScript LAB\EXP8\exp8casestudy.html"`
 
-**GITHUB File Path:** `8 Access and validate form fields using events/exp8.html` | `8 Access and validate form fields using events/exp8casestudy.html`
+**GITHUB File Path:** `08 Access and validate form fields using events/exp8.html` | `08 Access and validate form fields using events/exp8casestudy.html`
 
 ---
 
@@ -27,7 +27,7 @@ Access and Validate Form Fields Using Events
 ### Gym Admission Form — `exp8.html`
 A compact membership registration form that demonstrates the core event-driven validation pattern: each field (Name, Age, Email, Mobile Number) is accessed with `getElementById()` and validated on `blur` using regex (`/^[A-Za-z ]+$/` for the name, `/^\d{10}$/` for the mobile number) or a simple range check, with the matching `focus` listener clearing that field's error as soon as the user returns to it. The Membership Plan dropdown is validated on `change`, and the form's `submit` handler re-checks that every error span is empty and a plan is selected before showing a success message — `event.preventDefault()` stops the page from reloading, and an `alert()` fires if any check fails.
 
-#### `8 Access and validate form fields using events/exp8.html`
+#### `08 Access and validate form fields using events/exp8.html`
 ```html
 <!DOCTYPE html>
 <html>
@@ -375,7 +375,7 @@ BearGYM — Gym Admission Form: A Full Membership Registration Form with Live Va
 ### BearGYM — Gym Admission Form — `exp8casestudy.html`
 A full membership-registration form that extends the same event-driven validation pattern across three sections — Personal Information, Physical Information, and Emergency Contact. Inputs are accessed via `getElementById()`/`querySelector()` and validated live: `input`/`change` listeners clear each field's error the moment it becomes valid (name length, age range 12–80, email regex, a 10-digit-only mobile number scrubbed with `.replace(/[^0-9]/g, "")`, and a chosen date of birth), while `input` listeners on Height and Weight recompute a BMI figure on the fly and a `change` listener on the Membership Plan dropdown reads each option's `data-price` attribute to update a live fee display. Checking either "Over 6 feet tall" or "Over 200 pounds" fires a `change`-triggered `alert()`. On `submit`, `event.preventDefault()` blocks the reload and every required field (name, DOB, age, email, mobile, gender via `querySelector('input[name="gender"]:checked')`, plan, and the terms checkbox) is validated in one pass, toggling each `.error` div's `display` and setting a `valid` flag; a successful pass reveals the success banner and a confirmation `alert()`, while a failed pass shows a generic correction alert. A `reset` listener uses `setTimeout(fn, 0)` to clear the BMI/fee readouts, hide the success message, and hide every error `div` right after the native form reset runs.
 
-#### `8 Access and validate form fields using events/exp8casestudy.html`
+#### `08 Access and validate form fields using events/exp8casestudy.html`
 ```html
 <!DOCTYPE html>
 <html>
