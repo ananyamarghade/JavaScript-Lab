@@ -1,1 +1,1507 @@
+# Experiment No. 10
+**Student Name:** Ananya Marghade
 
+**PRN:** 24070521004
+
+**BATCH:** A1
+
+**System File Path:** `"D:\Ananya\JavaScript LAB\EXP10\exp10.1.html"` | `"D:\Ananya\JavaScript LAB\EXP10\exp10casestudy.html"` | `"D:\Ananya\JavaScript LAB\EXP10\exp10.2.html"` | `"D:\Ananya\JavaScript LAB\EXP10\exp10part2casestudy.html"`
+
+**GITHUB File Path:** `10 JSON Data with Fetch and jQuery/10.1) Using Fetch()/exp10.1.html` | `10 JSON Data with Fetch and jQuery/10.1) Using Fetch()/exp10casestudy.html` | `10 JSON Data with Fetch and jQuery/10.2) Using jquery/exp10.2.html` | `10 JSON Data with Fetch and jQuery/10.2) Using jquery/exp10part2casestudy.html`
+
+---
+
+## Experiment Title
+Load and Display JSON Data Using `fetch()` and jQuery
+
+## Software / Tools Required
+1. Visual Studio Code (with the Live Server extension)
+2. Google Chrome
+3. HTML5
+4. JavaScript (ES6)
+5. jQuery 3.7.1 (CDN)
+
+---
+
+## Experiment Program Code
+
+### Student Details using Fetch() — `exp10.1.html`
+A student table that is loaded from an external JSON file. Clicking **Load Students** calls `loadStudents()`, which uses the **`fetch("students.json")`** API: the first `.then()` converts the response with `response.json()`, the second `.then()` receives the parsed array and loops over it with `forEach()`, building one `<tr>` per student with a **template literal** (`${student.id}`, `${student.name}`, …) that is appended to the `<tbody>`. The table body is cleared first with `innerHTML = ""` so repeated clicks do not duplicate rows, and a `.catch()` logs any failure to the console.
+
+#### `10 JSON Data with Fetch and jQuery/10.1) Using Fetch()/exp10.1.html`
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Load JSON using Fetch</title>
+        <style>
+            table{
+                width: 70%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            th,td{
+                border: 1px solid black;
+                padding: 10px;
+                text-align: left;
+            }
+
+            th{
+                background-color: #f2f2f2;
+            }
+        </style>
+    
+    </head>
+
+    <body>
+        <h2>Student Details using Fetch()</h2>
+        <button onclick="loadStudents()">Load Students</button>
+
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+                    </table>    
+                
+                    <script>
+                        function loadStudents() {
+                            fetch("students.json")
+                                .then(response => response.json())
+                                .then(data => {
+                                    let tableBody = document.querySelector("#studentTable tbody");
+
+                                    tableBody.innerHTML="";
+                                    data.forEach(student => {
+                                        let row = `
+                                        <tr>
+                                            <td>${student.id}</td>
+                                            <td>${student.name}</td>
+                                            <td>${student.department}</td>
+                                            <td>${student.marks}</td>
+
+                                        </tr>
+                                        `;
+                                        tableBody.innerHTML += row;
+                                    });
+                                })
+                                .catch(error => {
+                                    console.log('Error:', error)
+                        });
+                    }
+                    </script>
+                
+                
+                </body>
+</html>
+```
+
+---
+
+## Output (Student Details using Fetch())
+- On first load the page shows the heading and a **Load Students** button with an empty table (ID, Name, Department, Marks).
+- Clicking **Load Students** sends an asynchronous request for `students.json`; once the promise resolves, every record in the file is rendered as a table row.
+- Clicking the button again clears the table body and re-renders the data, so rows are never duplicated.
+- If the request fails (for example the file is missing, or the page is opened from `file://` instead of a server), the `.catch()` block logs `Error:` with the details in the browser console.
+- The page must be served over HTTP (e.g. **VS Code Live Server**) because `fetch()` cannot read local files directly.
+
+> **Screenshot:**
+> ![Student Details using Fetch()](<10.1) Using Fetch()/exp10.1.png>)
+
+---
+
+## Case Study Title
+Employee Information Management — Reading JSON with `fetch()` and Saving Records with `localStorage`
+
+## Case Study Program Code
+
+### Employee Information Management — `exp10casestudy.html`
+A styled employee records page with a four-field form (**Employee ID, Name, Department, Salary**) and two buttons. **ADD EMPLOYEE** validates that no field is empty, builds an employee object, and tries to append it to `employees.json` using the **File System Access API** (`showOpenFilePicker()`, `getFile()`, `createWritable()`); the file handle is remembered in **IndexedDB** (`saveHandle()` / `getSavedHandle()`) so the picker is not shown every time. Whether or not the file could be written, the employee is also stored in **`localStorage`** as a JSON array, and an `alert()` tells the user which of the two happened. **LOAD EMPLOYEES** calls `fetch("employees.json", { cache: "no-store" })`, checks `response.ok`, and stores the data in `fileEmployees`. `renderTable()` then merges these with the `localStorage` records (skipping duplicate `employeeId` values) and builds the rows with `createElement()` / `appendChild()`; failures are reported in a message line under the buttons.
+
+#### `10 JSON Data with Fetch and jQuery/10.1) Using Fetch()/exp10casestudy.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Information Management</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 40px 16px;
+        background-color: #e9edf3;
+        color: #1b2a4a;
+        font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        line-height: 1.55;
+    }
+
+    .container {
+        max-width: 880px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border: 1px solid #d0d7e3;
+        border-top: 4px solid #1f3a6e;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(27, 42, 74, 0.1);
+        padding: 36px;
+    }
+
+    h1 {
+        margin: 0 0 4px 0;
+        font-size: 26px;
+        font-weight: 600;
+        color: #14213d;
+    }
+
+    .subtitle {
+        margin: 0 0 28px 0;
+        padding-bottom: 18px;
+        border-bottom: 1px solid #d0d7e3;
+        color: #51617f;
+        font-size: 15px;
+    }
+
+    h2 {
+        margin: 32px 0 14px 0;
+        padding-left: 10px;
+        border-left: 4px solid #2f5fb3;
+        font-size: 18px;
+        font-weight: 600;
+        color: #14213d;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #25365a;
+    }
+
+    input {
+        padding: 11px 12px;
+        border: 1px solid #b4bdcf;
+        border-radius: 6px;
+        font-size: 15px;
+        color: #1b2a4a;
+        background-color: #fbfcfe;
+    }
+
+    input::placeholder {
+        color: #8a96ab;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #2f5fb3;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 3px rgba(47, 95, 179, 0.2);
+    }
+
+    .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    button {
+        padding: 11px 24px;
+        border: 1px solid #1f4e9c;
+        border-radius: 6px;
+        background-color: #2f5fb3;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #1f4e9c;
+    }
+
+    button:focus-visible {
+        outline: 2px solid #14213d;
+        outline-offset: 2px;
+    }
+
+    #loadButton {
+        background-color: #ffffff;
+        color: #1f4e9c;
+    }
+
+    #loadButton:hover {
+        background-color: #e8eefa;
+    }
+
+    .message {
+        min-height: 22px;
+        margin: 14px 0 0 0;
+        font-size: 14px;
+        color: #b3261e;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+        border: 1px solid #d0d7e3;
+        border-radius: 6px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+    }
+
+    th, td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #e0e5ee;
+        text-align: left;
+    }
+
+    th {
+        background-color: #1f3a6e;
+        color: #ffffff;
+        font-weight: 600;
+        border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f6f8fc;
+    }
+
+    tbody tr:hover {
+        background-color: #e8eefa;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    td.number, th.number {
+        text-align: right;
+    }
+
+    .footer {
+        max-width: 880px;
+        margin: 28px auto 0 auto;
+        text-align: center;
+        color: #51617f;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .footer .designer {
+        font-size: 16px;
+        font-weight: 600;
+        color: #14213d;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 20px 12px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Information Management</h1>
+
+        <h2>Employee Details</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="employeeId">Employee ID</label>
+                <input type="number" id="employeeId" placeholder="Enter employee ID">
+            </div>
+            <div class="form-group">
+                <label for="employeeName">Employee Name</label>
+                <input type="text" id="employeeName" placeholder="Enter employee name">
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" placeholder="Enter department">
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="number" id="salary" placeholder="Enter salary">
+            </div>
+        </div>
+
+        <div class="button-row">
+            <button type="button" id="addButton">ADD EMPLOYEE</button>
+            <button type="button" id="loadButton">LOAD EMPLOYEES</button>
+        </div>
+        <p class="message" id="message"></p>
+
+        <h2>Employee Records</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Department</th>
+                        <th class="number">Salary</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>Designed By</div>
+        <div class="designer">Ananya Marghade</div>
+        <div>PRN 24070521004</div>
+        <div>Batch A1</div>
+    </footer>
+
+    <script>
+        var idInput = document.getElementById("employeeId");
+        var nameInput = document.getElementById("employeeName");
+        var departmentInput = document.getElementById("department");
+        var salaryInput = document.getElementById("salary");
+        var messageBox = document.getElementById("message");
+        var tableBody = document.getElementById("tableBody");
+
+        var fileEmployees = [];
+        var showTable = false;
+        var fileHandle = null;
+
+        function getStoredEmployees() {
+            var data = localStorage.getItem("employees");
+            if (data === null) {
+                return [];
+            }
+            return JSON.parse(data);
+        }
+
+        function renderTable() {
+            tableBody.innerHTML = "";
+
+            if (!showTable) {
+                return;
+            }
+
+            var allEmployees = fileEmployees.slice();
+            var storedEmployees = getStoredEmployees();
+
+            for (var j = 0; j < storedEmployees.length; j++) {
+                var alreadyPresent = false;
+
+                for (var k = 0; k < allEmployees.length; k++) {
+                    if (allEmployees[k].employeeId === storedEmployees[j].employeeId) {
+                        alreadyPresent = true;
+                    }
+                }
+
+                if (!alreadyPresent) {
+                    allEmployees.push(storedEmployees[j]);
+                }
+            }
+
+            for (var i = 0; i < allEmployees.length; i++) {
+                var employee = allEmployees[i];
+                var row = document.createElement("tr");
+
+                var idCell = document.createElement("td");
+                idCell.textContent = employee.employeeId;
+
+                var nameCell = document.createElement("td");
+                nameCell.textContent = employee.employeeName;
+
+                var departmentCell = document.createElement("td");
+                departmentCell.textContent = employee.department;
+
+                var salaryCell = document.createElement("td");
+                salaryCell.className = "number";
+                salaryCell.textContent = employee.salary;
+
+                row.appendChild(idCell);
+                row.appendChild(nameCell);
+                row.appendChild(departmentCell);
+                row.appendChild(salaryCell);
+                tableBody.appendChild(row);
+            }
+        }
+
+        function openDatabase() {
+            return new Promise(function (resolve, reject) {
+                var request = indexedDB.open("employeeDb", 1);
+
+                request.onupgradeneeded = function () {
+                    request.result.createObjectStore("handles");
+                };
+
+                request.onsuccess = function () {
+                    resolve(request.result);
+                };
+
+                request.onerror = function () {
+                    reject(request.error);
+                };
+            });
+        }
+
+        async function saveHandle(handle) {
+            var db = await openDatabase();
+
+            return new Promise(function (resolve, reject) {
+                var transaction = db.transaction("handles", "readwrite");
+                transaction.objectStore("handles").put(handle, "employeesFile");
+
+                transaction.oncomplete = function () {
+                    resolve();
+                };
+
+                transaction.onerror = function () {
+                    reject(transaction.error);
+                };
+            });
+        }
+
+        async function getSavedHandle() {
+            var db = await openDatabase();
+
+            return new Promise(function (resolve, reject) {
+                var request = db.transaction("handles", "readonly").objectStore("handles").get("employeesFile");
+
+                request.onsuccess = function () {
+                    resolve(request.result || null);
+                };
+
+                request.onerror = function () {
+                    reject(request.error);
+                };
+            });
+        }
+
+        async function addEmployee() {
+            var idValue = idInput.value.trim();
+            var nameValue = nameInput.value.trim();
+            var departmentValue = departmentInput.value.trim();
+            var salaryValue = salaryInput.value.trim();
+
+            if (idValue === "" || nameValue === "" || departmentValue === "" || salaryValue === "") {
+                messageBox.textContent = "Please fill in all fields before adding an employee.";
+                return;
+            }
+
+            messageBox.textContent = "";
+
+            var employee = {
+                employeeId: Number(idValue),
+                employeeName: nameValue,
+                department: departmentValue,
+                salary: Number(salaryValue)
+            };
+
+            var fileUpdated = false;
+
+            if (window.showOpenFilePicker) {
+                try {
+                    if (fileHandle === null) {
+                        fileHandle = await getSavedHandle();
+                    }
+
+                    if (fileHandle !== null) {
+                        var permission = await fileHandle.queryPermission({ mode: "readwrite" });
+
+                        if (permission !== "granted") {
+                            permission = await fileHandle.requestPermission({ mode: "readwrite" });
+                        }
+
+                        if (permission !== "granted") {
+                            fileHandle = null;
+                        }
+                    }
+
+                    if (fileHandle === null) {
+                        var handles = await window.showOpenFilePicker({
+                            types: [{
+                                description: "JSON file",
+                                accept: { "application/json": [".json"] }
+                            }]
+                        });
+                        fileHandle = handles[0];
+                        await saveHandle(fileHandle);
+                    }
+
+                    var file = await fileHandle.getFile();
+                    var text = await file.text();
+                    var employees = JSON.parse(text);
+                    employees.push(employee);
+
+                    var writer = await fileHandle.createWritable();
+                    await writer.write(JSON.stringify(employees, null, 4));
+                    await writer.close();
+                    fileUpdated = true;
+                } catch (error) {
+                    fileUpdated = false;
+                    fileHandle = null;
+                    await saveHandle(null).catch(function () {});
+                }
+            }
+
+            var storedEmployees = getStoredEmployees();
+            storedEmployees.push(employee);
+            localStorage.setItem("employees", JSON.stringify(storedEmployees));
+
+            idInput.value = "";
+            nameInput.value = "";
+            departmentInput.value = "";
+            salaryInput.value = "";
+
+            if (fileUpdated) {
+                alert("Employee added successfully! employees.json updated.");
+            } else {
+                alert("Employee saved in localStorage only. employees.json was not updated.");
+            }
+        }
+
+        function loadEmployees() {
+            messageBox.textContent = "";
+
+            fetch("employees.json", { cache: "no-store" })
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error("Could not load employees.json");
+                    }
+                    return response.json();
+                })
+                .then(function (data) {
+                    fileEmployees = data;
+                    showTable = true;
+                    renderTable();
+                })
+                .catch(function () {
+                    messageBox.textContent = "Unable to load employees.json. Run the page using VS Code Live Server.";
+                });
+        }
+
+        document.getElementById("addButton").addEventListener("click", addEmployee);
+        document.getElementById("loadButton").addEventListener("click", loadEmployees);
+    </script>
+</body>
+</html>
+```
+
+---
+
+## Output (Case Study — Employee Information Management)
+- On load, the page shows the empty form and an empty **Employee Records** table.
+- Clicking **ADD EMPLOYEE** with any field blank shows **"Please fill in all fields before adding an employee."**
+- With valid data, the employee is saved in `localStorage` (key `employees`) and, if the browser supports the File System Access API and permission is granted for `employees.json`, also written into that file; the user gets either **"Employee added successfully! employees.json updated."** or **"Employee saved in localStorage only. employees.json was not updated."**
+- Clicking **LOAD EMPLOYEES** fetches `employees.json` and renders the file records followed by any extra records held in `localStorage`, with salary right-aligned and rows highlighted on hover.
+- If the file cannot be fetched, the message **"Unable to load employees.json. Run the page using VS Code Live Server."** is displayed.
+
+> **Screenshot:**
+> ![Employee Information Management](<10.1) Using Fetch()/exp10casestudy.png>)
+
+---
+
+## Experiment Program Code (Part 2 — jQuery)
+
+### Student Details using JSON & jQuery — `exp10.2.html`
+The same student table, now built with **jQuery**. jQuery 3.7.1 is loaded from the CDN, and `$("#loadBtn").click(...)` attaches the click handler. Inside it, **`$.getJSON("students1.json", callback)`** fetches and parses the JSON in one call; the callback empties the table body with `.empty()`, then iterates the array with **`$.each()`** and `.append()`s a template-literal row for each student. A chained `.fail()` handler shows `alert("Error loading JSON data")` if the request does not succeed.
+
+#### `10 JSON Data with Fetch and jQuery/10.2) Using jquery/exp10.2.html`
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details using JSON and jQuery</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 35px;
+            font-family: Arial, sans-serif;
+            background: #edf3ef;
+            color: #293b33;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 35px;
+            background: #ffffff;
+            border: 1px solid #d7e4dc;
+            border-radius: 4px;
+            box-shadow: 0 8px 25px rgba(42, 73, 54, 0.06);
+        }
+
+        .header {
+            padding: 8px 0 24px;
+            border-bottom: 2px solid #dce9e0;
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            color: #245844;
+            font-size: 27px;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: #73877b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .section {
+            padding: 25px 0 10px;
+        }
+
+        h3 {
+            margin: 0 0 8px;
+            color: #354b3e;
+            font-size: 19px;
+        }
+
+        .description {
+            margin: 0 0 20px;
+            color: #78877d;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 12px 23px;
+            border: none;
+            border-radius: 4px;
+            background: #32775a;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #245640;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th, td {
+            padding: 14px 15px;
+            border-bottom: 1px solid #e2ebe4;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background: #315d49;
+            color: #ffffff;
+            font-weight: 600;
+            border: none;
+        }
+
+        td {
+            color: #43564a;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f2f7f3;
+        }
+
+        tbody tr:hover {
+            background: #e3f0e7;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 20px 10px 5px;
+            border-top: 1px solid #dce9e0;
+            text-align: center;
+            color: #7b8b80;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        footer strong {
+            display: block;
+            color: #245844;
+            font-size: 15px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 22px 16px;
+            }
+
+            h2 {
+                font-size: 23px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h2>Student Details using JSON & jQuery</h2>
+            <p class="subtitle">
+                Retrieve and display student records from a JSON file using jQuery.
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>Student Records</h3>
+
+            <button id="loadBtn">Load Students</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $("#loadBtn").click(function() {
+            $.getJSON("students1.json", function(data) {
+                $("#tableBody").empty();
+
+                $.each(data, function(index, student) {
+                    $("#tableBody").append(`
+                        <tr>
+                            <td>${student.id}</td>
+                            <td>${student.name}</td>
+                            <td>${student.department}</td>
+                            <td>${student.marks}</td>
+                        </tr>
+                    `);
+                });
+            }).fail(function() {
+                alert("Error loading JSON data");
+            });
+        });
+    </script>
+
+    <footer>
+        Designed By
+        <strong>Ananya Marghade</strong>
+        <span>PRN 24070521004</span><br>
+        <span> Batch A1 </span>
+    </footer>
+</body>
+</html>
+```
+
+---
+
+## Output (Student Details using jQuery)
+- The page opens with a **Student Records** heading, a **Load Students** button and an empty table.
+- Clicking **Load Students** calls `$.getJSON()` on `students1.json` and fills the table with the ID, Name, Department and Marks of every student, with alternating row colours and a hover highlight.
+- Each click empties the table first, so the data is always shown once.
+- If the JSON file cannot be loaded, an alert reading **"Error loading JSON data"** is displayed.
+- As with `fetch()`, the page should be opened through a local server such as **VS Code Live Server**.
+
+> **Screenshot:**
+> ![Student Details using JSON and jQuery](<10.2) Using jquery/exp10.2.png>)
+
+---
+
+## Case Study Title (Part 2)
+OrderDesk — Restaurant Order Dashboard Using jQuery and JSON
+
+## Case Study Program Code (Part 2)
+
+### OrderDesk Restaurant Order Dashboard — `exp10part2casestudy.html`
+A restaurant order dashboard with a header carrying an embedded (Base64) chef logo, a **View Orders** button, an order table and a summary panel. Clicking the button disables it, shows a CSS spinner and **"Loading..."**, and calls **`$.getJSON("orders.json")`** with the promise-style `.done()`, `.fail()` and `.always()` handlers. In `.done()`, **`$.each()`** walks through the orders while a running **total order count** and **total sales** (`Number(order.totalAmount)`) are accumulated and a `counts` object tallies the **Preparing / Ready / Delivered** statuses. Each row is built from a template literal; text values pass through `escapeText()` (`$("<div>").text(value).html()`) to prevent HTML injection, and `getStatusClass()` maps each status to a coloured pill. The summary shows the total orders, the status breakdown, and the total sales in ₹. `.fail()` replaces the table with an error state and shows the error banner, and `.always()` re-enables the button and renames it **Refresh Orders**.
+
+#### `10 JSON Data with Fetch and jQuery/10.2) Using jquery/exp10part2casestudy.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderDesk | Restaurant Order Dashboard</title>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        :root {
+            --ink: #14211b;
+            --muted: #667569;
+            --line: #dfe5df;
+            --paper: #f1f4ef;
+            --card: #ffffff;
+            --saffron: #f4a81d;
+            --saffron-dark: #c98300;
+            --prep-bg: #fff1d6;
+            --prep-fg: #9a5b00;
+            --ready-bg: #dff1ff;
+            --ready-fg: #0b5a9a;
+            --done-bg: #dcf4e4;
+            --done-fg: #13693a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+            letter-spacing: -0.01em;
+        }
+
+        .header {
+            background: var(--ink);
+            color: #ffffff;
+            padding: 16px 7%;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-badge {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--saffron);
+            display: grid;
+            place-items: center;
+            flex: none;
+        }
+
+        .logo-badge img {
+            width: 34px;
+            height: auto;
+            display: block;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: #a9b8ae;
+            margin-top: 2px;
+        }
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: 40px auto 24px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 26px;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 48ch;
+        }
+
+        .view-btn {
+            border: none;
+            background: var(--saffron);
+            color: var(--ink);
+            padding: 14px 26px;
+            border-radius: 999px;
+            font: 700 15px "DM Sans", sans-serif;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .view-btn:hover {
+            background: #ffbb3d;
+        }
+
+        .view-btn:active {
+            transform: scale(0.97);
+        }
+
+        .view-btn:focus-visible {
+            outline: 3px solid var(--ink);
+            outline-offset: 3px;
+        }
+
+        .view-btn .spinner {
+            display: none;
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--ink);
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        .view-btn.loading .spinner {
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            display: none;
+            background: #fdeceb;
+            border-left: 5px solid #c62828;
+            color: #8f1d1d;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .table-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .table-header h3 {
+            font-size: 19px;
+        }
+
+        .table-header span {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 680px;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 13px 24px;
+            background: #f7f9f6;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--line);
+        }
+
+        td {
+            padding: 16px 24px;
+            border-top: 1px solid #edf0ec;
+            font-size: 15px;
+        }
+
+        th.num,
+        td.num {
+            text-align: right;
+        }
+
+        tbody tr:first-child td {
+            border-top: none;
+        }
+
+        tbody tr:hover {
+            background: #f9fbf8;
+        }
+
+        .order-id {
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .customer {
+            font-weight: 600;
+        }
+
+        .amount {
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .status::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .preparing {
+            background: var(--prep-bg);
+            color: var(--prep-fg);
+        }
+
+        .ready {
+            background: var(--ready-bg);
+            color: var(--ready-fg);
+        }
+
+        .delivered {
+            background: var(--done-bg);
+            color: var(--done-fg);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--muted);
+        }
+
+        .empty-state .icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .empty-state h4 {
+            color: var(--ink);
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .summary {
+            display: flex;
+            flex-wrap: wrap;
+            border-top: 2px solid var(--ink);
+            background: #fafbf9;
+        }
+
+        .summary-item {
+            flex: 1 1 200px;
+            padding: 20px 24px;
+        }
+
+        .summary-item + .summary-item {
+            border-left: 1px solid var(--line);
+        }
+
+        .summary-item span {
+            display: block;
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 2px;
+        }
+
+        .summary-item strong {
+            font-family: "Bricolage Grotesque", sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .summary-item.sales strong {
+            color: var(--saffron-dark);
+        }
+
+        .breakdown {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .breakdown .status {
+            font-size: 12px;
+            padding: 3px 10px;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+            padding: 26px 0 40px;
+        }
+
+        .footer-label {
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .footer strong {
+            font-family: "Bricolage Grotesque", sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        @media (max-width: 700px) {
+            .header {
+                padding: 14px 20px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 28px auto;
+            }
+
+            .hero {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .view-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .summary-item + .summary-item {
+                border-left: none;
+                border-top: 1px solid var(--line);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo-badge">
+            <img src="data:image/png;base64,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" alt="OrderDesk chef logo">
+        </div>
+        <div>
+            <h1>OrderDesk</h1>
+            <p>Restaurant order management</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <div>
+                <h2>Today's orders</h2>
+                <p>See what's cooking, what's ready to serve, and what has gone out.</p>
+            </div>
+
+            <button class="view-btn" id="viewOrders" type="button">
+                <span class="spinner"></span>
+                <span id="btnLabel">View Orders</span>
+            </button>
+        </section>
+
+        <div class="error-message" id="errorMessage" role="alert">
+            <strong>Couldn't load orders.</strong>
+            Check that <strong>orders.json</strong> is in the same folder as this page
+            and that the page is opened through a local server (not directly from a file).
+        </div>
+
+        <section class="table-card">
+
+            <div class="table-header">
+                <h3>Order list</h3>
+                <span id="tableStatus">Select "View Orders" to load data</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Food Item</th>
+                            <th class="num">Quantity</th>
+                            <th class="num">Total Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="orderTable">
+                        <tr>
+                            <td colspan="6">
+                                <div class="empty-state">
+                                    <div class="icon">🍴</div>
+                                    <h4>No orders loaded yet</h4>
+                                    <p>Select "View Orders" to show the latest orders.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="summary">
+                <div class="summary-item">
+                    <span>Total Orders</span>
+                    <strong id="totalOrders">0</strong>
+                    <div class="breakdown" id="breakdown"></div>
+                </div>
+
+                <div class="summary-item sales">
+                    <span>Total Sales</span>
+                    <strong id="totalSales">₹0.00</strong>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <span class="footer-label">Designed By</span>
+            <strong>Ananya Marghade</strong>
+            <span>PRN 24070521004</span>
+            <span>Batch A1</span>
+        </footer>
+
+    </main>
+
+    <script>
+        $(document).ready(function () {
+
+            function escapeText(value) {
+                return $("<div>").text(value).html();
+            }
+
+            function getStatusClass(status) {
+                if (status === "Preparing") {
+                    return "preparing";
+                } else if (status === "Ready") {
+                    return "ready";
+                } else if (status === "Delivered") {
+                    return "delivered";
+                }
+                return "";
+            }
+
+            $("#viewOrders").click(function () {
+
+                let button = $(this);
+
+                button.addClass("loading").prop("disabled", true);
+                $("#btnLabel").text("Loading...");
+                $("#errorMessage").hide();
+
+                $.getJSON("orders.json")
+                    .done(function (orders) {
+
+                        $("#orderTable").empty();
+                        $("#breakdown").empty();
+
+                        let totalOrders = 0;
+                        let totalSales = 0;
+                        let counts = { Preparing: 0, Ready: 0, Delivered: 0 };
+
+                        $.each(orders, function (index, order) {
+
+                            totalOrders++;
+                            totalSales += Number(order.totalAmount);
+
+                            if (counts.hasOwnProperty(order.orderStatus)) {
+                                counts[order.orderStatus]++;
+                            }
+
+                            let row = `
+                                <tr>
+                                    <td class="order-id">${escapeText(order.orderId)}</td>
+                                    <td class="customer">${escapeText(order.customerName)}</td>
+                                    <td>${escapeText(order.foodItem)}</td>
+                                    <td class="num">${escapeText(order.quantity)}</td>
+                                    <td class="num amount">₹${Number(order.totalAmount).toFixed(2)}</td>
+                                    <td>
+                                        <span class="status ${getStatusClass(order.orderStatus)}">
+                                            ${escapeText(order.orderStatus)}
+                                        </span>
+                                    </td>
+                                </tr>
+                            `;
+
+                            $("#orderTable").append(row);
+                        });
+
+                        $.each(counts, function (name, count) {
+                            $("#breakdown").append(`
+                                <span class="status ${getStatusClass(name)}">${count} ${name}</span>
+                            `);
+                        });
+
+                        $("#totalOrders").text(totalOrders);
+                        $("#totalSales").text("₹" + totalSales.toFixed(2));
+                        $("#tableStatus").text(totalOrders + " orders loaded");
+
+                    })
+                    .fail(function () {
+
+                        $("#orderTable").html(`
+                            <tr>
+                                <td colspan="6">
+                                    <div class="empty-state">
+                                        <div class="icon">⚠️</div>
+                                        <h4>Unable to load orders</h4>
+                                        <p>Please check the orders.json file.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        `);
+
+                        $("#breakdown").empty();
+                        $("#totalOrders").text("0");
+                        $("#totalSales").text("₹0.00");
+                        $("#tableStatus").text("Unable to load data");
+                        $("#errorMessage").show();
+                    })
+                    .always(function () {
+                        button.removeClass("loading").prop("disabled", false);
+                        $("#btnLabel").text("Refresh Orders");
+                    });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
+```
+
+---
+
+## Output (Case Study — OrderDesk)
+- On load, the dashboard shows an empty state (**"No orders loaded yet"**), the status text **Select "View Orders" to load data**, and zeros in the summary.
+- Clicking **View Orders** switches the button to a loading state, requests `orders.json`, and renders each order with its Order ID, Customer, Food Item, Quantity, Total Amount (₹) and a colour-coded **Status** pill (Preparing, Ready or Delivered).
+- The summary panel updates with the **Total Orders** count, the per-status breakdown (e.g. *2 Preparing, 2 Ready, 2 Delivered*), and the **Total Sales** figure; the table header shows **"6 orders loaded"**.
+- The button label changes to **Refresh Orders**, so the data can be reloaded at any time.
+- If `orders.json` is missing or the page is opened directly from a file, an error banner and an **"Unable to load orders"** state are shown.
+
+> **Screenshot:**
+> ![OrderDesk Restaurant Order Dashboard](<10.2) Using jquery/exp10part2casestudy.png>)
+
+---
+
+## Result / Conclusion
+The practical was completed successfully. JSON data was loaded from external files and rendered dynamically in the browser using two approaches: the native **`fetch()`** API (promise chaining with `.then()` / `.catch()`, `response.json()`) for a student table and an **Employee Information Management** page that also persists new records with `localStorage`, and **jQuery's `$.getJSON()`** (with `$.each()`, `.append()`, `.done()`, `.fail()` and `.always()`) for a student table and an **OrderDesk** restaurant dashboard that computes order totals and sales from the JSON data.
