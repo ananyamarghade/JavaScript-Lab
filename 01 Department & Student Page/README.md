@@ -7,7 +7,7 @@
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP1\department.html"` | `"D:\Ananya\JavaScript LAB\EXP1\student.html"` | `1 "D:\Ananya\JavaScript LAB\EXP1\script.js"` | `1"D:\Ananya\JavaScript LAB\EXP1\style.css"`
 
-**GITHUB File Path:** `1 To create a webpage showing user info and a welcome message/department.html` | `1 To create a webpage showing user info and a welcome message/student.html` | `1 To create a webpage showing user info and a welcome message/script.js` | `1 To create a webpage showing user info and a welcome message/style.css`
+**GITHUB File Path:** `01 Department & Student Page/department.html` | `01 Department & Student Page/student.html` | `01 Department & Student Page/script.js` | `01 Department & Student Page/style.css`
 
 ---
 
@@ -28,7 +28,7 @@ Demonstration of Inline, Internal and External JavaScript, Console Methods, and 
 ### Department Page — `department.html`
 Landing page for the CSE department. Uses an **inline** event-handler script (`onmouseover="console.log(...)"`) written directly in the HTML markup, and loads the **external** `script.js` file.
 
-#### `1 To create a webpage showing user info and a welcome message/department.html`
+#### `01 Department & Student Page/department.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -220,10 +220,10 @@ Landing page for the CSE department. Uses an **inline** event-handler script (`o
 ```
 
 
-#### `1 To create a webpage showing user info and a welcome message/script.js` (external script, shared by both pages)
+#### `01 Department & Student Page/script.js` (external script, shared by both pages)
 Contains reusable helper functions, random "fact"/"highlight" generators, and the responsive navbar toggle, loaded via `<script src="script.js">`.
 
-#### `1 To create a webpage showing user info and a welcome message/script.js`
+#### `01 Department & Student Page/script.js`
 ```js
 function toTitleCase(text) {
     return text
@@ -322,9 +322,9 @@ window.onload = function () {
 ```
 
 
-#### `1 To create a webpage showing user info and a welcome message/style.css` (shared stylesheet)
+#### `01 Department & Student Page/style.css` (shared stylesheet)
 
-#### `1 To create a webpage showing user info and a welcome message/style.css`
+#### `01 Department & Student Page/style.css`
 ```css
 * {
   box-sizing: border-box;
@@ -1029,7 +1029,7 @@ a {
 - Console methods (`console.log`) fire on page load and on hover, visible in DevTools.
 
 > **Screenshot:**
-> ![Department page output](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/1%20To%20create%20a%20webpage%20showing%20user%20info%20and%20a%20welcome%20message/dept%20page.png)
+> ![Department page output](<dept page.png>)
 
 
 ---
@@ -1042,7 +1042,7 @@ Student Information Portal — Internal JavaScript, Console Methods, and Form-Ba
 ### Student Information Page — `student.html`
 Student-details form containing an **internal** `<script>` block (form validation and profile-generation logic written directly inside the `<head>` of this file), which works together with the external `script.js` shown above.
 
-#### `1 To create a webpage showing user info and a welcome message/student.html`
+#### `01 Department & Student Page/student.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -1501,7 +1501,7 @@ function resetForm() {
 - Clicking **Reset** clears all validation messages and hides the profile card.
 
 > **Screenshot:**
-> ![Student information portal output](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/1%20To%20create%20a%20webpage%20showing%20user%20info%20and%20a%20welcome%20message/student%20page.png)
+> ![Student information portal output](<student page.png>)
 
 ---
 
