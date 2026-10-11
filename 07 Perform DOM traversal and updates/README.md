@@ -7,7 +7,7 @@
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP7\todo.html"` | `"D:\Ananya\JavaScript LAB\EXP7\form.html"` | `"D:\Ananya\JavaScript LAB\EXP7\welcome.html"`
 
-**GITHUB File Path:** `7 Perform DOM traversal and updates/todo.html` | `7 Perform DOM traversal and updates/form.html` | `7 Perform DOM traversal and updates/welcome.html`
+**GITHUB File Path:** `07 Perform DOM traversal and updates/todo.html` | `07 Perform DOM traversal and updates/form.html` | `07 Perform DOM traversal and updates/welcome.html`
 
 ---
 
@@ -27,7 +27,7 @@ Perform DOM Traversal and Updates
 ### To-Do List — `todo.html`
 A full to-do list application built almost entirely through DOM traversal and manipulation: every task item (checkbox, label, Edit/Delete buttons) is constructed at runtime with `document.createElement()` and wired together with `appendChild()`, task completion is toggled with `classList.toggle()`, the live task count is derived by traversing existing nodes with `querySelectorAll("li:not(.empty)")`, and the day-selector strip is updated by looping over `querySelectorAll(".day")` to move the `active` class between siblings.
 
-#### `7 Perform DOM traversal and updates/todo.html`
+#### `07 Perform DOM traversal and updates/todo.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -701,7 +701,7 @@ Sign Up Form & Welcome Page — Dynamic DOM Traversal for Form Building, Validat
 ### 1. Sign Up Form — `form.html`
 A registration form whose Day and Year dropdowns are **populated entirely at runtime** — a `for` loop creates 31 `<option>` elements for the day selector and another builds the year list back to 1950, each inserted via `createElement()` + `appendChild()`. Every field is looked up once with `getElementById()` and reused throughout, `focus`/`blur`/`keyup` listeners traverse to sibling elements to update border colors and clear inline errors live, and full submit-time validation (regex checks for name, username, email, website, and a strong password) walks the form field-by-field before handing off validated data to the next page via `localStorage`.
 
-#### `7 Perform DOM traversal and updates/form.html`
+#### `07 Perform DOM traversal and updates/form.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -1184,7 +1184,7 @@ form.addEventListener("submit", function(event) {
 ### 2. Welcome Page — `welcome.html`
 A minimal confirmation page that the Sign Up form redirects to (`window.location.href = "welcome.html"`) once every validation check has passed and the form data has been written to `localStorage`.
 
-#### `7 Perform DOM traversal and updates/welcome.html`
+#### `07 Perform DOM traversal and updates/welcome.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
