@@ -7,7 +7,7 @@
 
 **File Path:** `"D:\Ananya\JavaScript LAB\EXP4\palindrome.html"` | `"D:\Ananya\JavaScript LAB\EXP4\palindrome.js"` | `"D:\Ananya\JavaScript LAB\EXP4\vehicleregistration.html"` | `"D:\Ananya\JavaScript LAB\EXP4\vehicleregistration.js"`
 
-**GITHUB File Path:** `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/palindrome.html` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/palindrome.js` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/vehicleregistration.html` | `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/vehicleregistration.js`
+**GITHUB File Path:** `04 Try-catch/4.1) Palindrome Checker/palindrome.html` | `04 Try-catch/4.1) Palindrome Checker/palindrome.js` | `04 Try-catch/4.2) Vehicle Registration Page/vehicleregistration.html` | `04 Try-catch/4.2) Vehicle Registration Page/vehicleregistration.js`
 
 ---
 
@@ -26,7 +26,7 @@ Use Function Types, Scope, and Closures; Apply try-catch to Build a Palindrome C
 
 ### Palindrome Checker — `palindrome.html`
 
-#### `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/palindrome.html`
+#### `04 Try-catch/4.1) Palindrome Checker/palindrome.html`
 ```html
 <!DOCTYPE html>
 <html>
@@ -169,7 +169,7 @@ Use Function Types, Scope, and Closures; Apply try-catch to Build a Palindrome C
 ### Palindrome Logic — `palindrome.js`
 Demonstrates a **named function** (`reverseString`), a **closure** (`message()` returns an inner `display()` function that still has access to the outer `msg` variable), and **try-catch** error handling for input validation (empty input, non-alphanumeric characters, length limits, spaces).
 
-#### `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/palindrome.js`
+#### `04 Try-catch/4.1) Palindrome Checker/palindrome.js`
 ```js
 function reverseString(str){
     return str.split("").reverse().join("");
@@ -262,9 +262,9 @@ function checkPalindrome(){
 - The heading "Palindrome Checker" inside the result box is generated using the **closure** returned by `message()`.
 
 > **Screenshot:**
-> ![Palindrome checker - empty state](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome1.png)
-> ![Palindrome checker - palindrome result](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome2.png)
-> ![Palindrome checker - non-palindrome / error result](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/336706a3dad4aa0153d8617fa2604e924d4c722d/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.1%29%20Palindrome%20Checker/palindrome3.png)
+> ![Palindrome checker - empty state](<4.1) Palindrome Checker/palindrome1.png>)
+> ![Palindrome checker - palindrome result](<4.1) Palindrome Checker/palindrome2.png>)
+> ![Palindrome checker - non-palindrome / error result](<4.1) Palindrome Checker/palindrome3.png>)
 
 
 
@@ -277,7 +277,7 @@ Vehicle Registration Number Validator Using Functions and try-catch
 
 ### Vehicle Registration Validator — `vehicleregistration.html`
 
-#### `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/vehicleregistration.html`
+#### `04 Try-catch/4.2) Vehicle Registration Page/vehicleregistration.html`
 ```html
 <!DOCTYPE html>
 <html>
@@ -463,7 +463,7 @@ Vehicle Registration Number Validator Using Functions and try-catch
 ### Validation Logic — `vehicleregistration.js`
 Validates an Indian vehicle registration number (format: `SS DD LL NNNN`, e.g. `MH12AB1234`) using sequential `if` checks inside a `try` block, each `throw`ing a specific error message that is caught and shown via `alert()` along with an on-page error/success state.
 
-#### `4 Use function types, scope, and closures; apply try-catch to build a palindrome checker/vehicleregistration.js`
+#### `04 Try-catch/4.2) Vehicle Registration Page/vehicleregistration.js`
 ```js
 function checkRegistrationNumber() {
 
@@ -527,8 +527,8 @@ function checkRegistrationNumber() {
 - If all checks pass, the result box turns green and displays **"VALID Registration Number."**
 
 > **Screenshot:**
-> ![Vehicle registration validator - valid input](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/e84df12bcd23d0a59e4572d99a2ce61c06d733f9/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.2%29%20Vehicle%20Registration%20Page/vehicle%20registration1.png)
-> ![Vehicle registration validator - invalid input](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/e84df12bcd23d0a59e4572d99a2ce61c06d733f9/4%20Use%20function%20types%2C%20scope%2C%20and%20closures%3B%20apply%20try-catch%20to%20build%20a%20palindrome%20checker/4.2%29%20Vehicle%20Registration%20Page/vehicle%20registration2.png)
+> ![Vehicle registration validator - valid input](<4.2) Vehicle Registration Page/vehicle registration1.png>)
+> ![Vehicle registration validator - invalid input](<4.2) Vehicle Registration Page/vehicle registration2.png>)
 
 
 
