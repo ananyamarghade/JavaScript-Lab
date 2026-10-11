@@ -7,7 +7,7 @@
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP5\exp5.html"` | `"D:\Ananya\JavaScript LAB\EXP5\expense.html"` | `"D:\Ananya\JavaScript LAB\EXP5\expense.css"` | `"D:\Ananya\JavaScript LAB\EXP5\expense.js"`
 
-**GITHUB File Path:** `5 To create a cart total calculator with discount logic/5.1 Cart Calculator/exp5.html` | `5 To create a cart total calculator with discount logic/5.2 Expense Tracker (Array MIn Max)/expense.html` | `5 To create a cart total calculator with discount logic/5.2 Expense Tracker (Array MIn Max)/expense.css` | `5 To create a cart total calculator with discount logic/5.2 Expense Tracker (Array MIn Max)/expense.js`
+**GITHUB File Path:** `05 Cart Calculator & Expense Tracker/5.1 Cart Calculator/exp5.html` | `05 Cart Calculator & Expense Tracker/5.2 Expense Tracker (Array MIn Max)/expense.html` | `05 Cart Calculator & Expense Tracker/5.2 Expense Tracker (Array MIn Max)/expense.css` | `05 Cart Calculator & Expense Tracker/5.2 Expense Tracker (Array MIn Max)/expense.js`
 
 ---
 
@@ -27,7 +27,7 @@ To Create a Cart Total Calculator with Discount Logic
 ### CartEase — Shopping Cart & Bill Calculator — `exp5.html`
 A shopping-cart billing tool where products (name, price, quantity) are added one at a time into an array of objects. The cart table, item summary, and a filtered list of "expensive" products (price &gt; 1000) are all re-rendered on every change using `forEach`, and the final bill is computed with `reduce()` plus slab-based discount logic.
 
-#### `5 To create a cart total calculator with discount logic/5.1 Cart Calculator/exp5.html`
+#### `05 Cart Calculator & Expense Tracker/5.1 Cart Calculator/exp5.html`
 ```html
 <!DOCTYPE html>
 <html>
@@ -723,7 +723,7 @@ Pennywise — Expense Tracker Using Arrays and Min/Max Functions
 ### Expense Tracker — `expense.html`
 An expense-logging dashboard that stores every expense's amount in a plain array (`expenses`), then derives the total, average, maximum, and minimum spend from that array on every update — visually exposing the underlying array (`const expenses = [...]`) alongside its computed min/max/count.
 
-#### `5 To create a cart total calculator with discount logic/5.2 Expense Tracker (Array MIn Max)/expense.html`
+#### `05 Cart Calculator & Expense Tracker/5.2 Expense Tracker (Array MIn Max)/expense.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -886,7 +886,7 @@ An expense-logging dashboard that stores every expense's amount in a plain array
 
 ### Stylesheet — `expense.css`
 
-#### `5 To create a cart total calculator with discount logic/5.2 Expense Tracker (Array MIn Max)/expense.css`
+#### `05 Cart Calculator & Expense Tracker/5.2 Expense Tracker (Array MIn Max)/expense.css`
 ```css
 * {
     box-sizing: border-box;
@@ -1241,7 +1241,7 @@ footer strong {
 ### Expense Logic — `expense.js`
 Builds an `amounts` array from the `expenses` objects using `map()`, then derives `total` via `reduce()`, and `maximum`/`minimum` via `Math.max(...amounts)` / `Math.min(...amounts)` (the spread operator applied to array min/max functions), with `average` computed from total and count.
 
-#### `5 To create a cart total calculator with discount logic/5.2 Expense Tracker (Array MIn Max)/expense.js`
+#### `05 Cart Calculator & Expense Tracker/5.2 Expense Tracker (Array MIn Max)/expense.js`
 ```js
 const expenses = [];
 
