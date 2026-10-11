@@ -8,7 +8,7 @@
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP2\shop-billing.html"` | `2 "D:\Ananya\JavaScript LAB\EXP2\shop-billing.js"`
 
-**GITHUB File Path:** `2 To build a billing calculator with user input./shop-billing.html` | `2 To build a billing calculator with user input./shop-billing.js`
+**GITHUB File Path:** `02 Billing Calculator/shop-billing.html` | `02 Billing Calculator/shop-billing.js`
 
 ---
 
@@ -28,7 +28,7 @@ Demonstration of `var`, `let`, `const`, Template Literals, Destructuring, and a 
 ### QuickCart Billing Calculator — `shop-billing.html`
 A shopping-cart style billing page (customer/delivery details, cart table, price summary, printable receipt) with all styling embedded in an internal `<style>` block.
 
-#### `2 To build a billing calculator with user input./shop-billing.html`
+#### `02 Billing Calculator/shop-billing.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -505,7 +505,7 @@ body{
 ### Billing Logic — `shop-billing.js`
 Implements cart operations (add/remove item), running price calculations (delivery charge, 18% GST, membership discount, promo-code discount), receipt generation, printing, and a full form reset — using `var` and `let` declarations, `forEach` loops, conditional (`if-else`) control structures, and array methods (`push`, `splice`).
 
-#### `2 To build a billing calculator with user input./shop-billing.js`
+#### `02 Billing Calculator/shop-billing.js`
 ```js
 var cart = [];
 
@@ -779,7 +779,7 @@ document.getElementById("promo").addEventListener("input", calculate);
 - **Print** opens the browser print dialog restricted to the receipt only (via `@media print` rules); **Reset** clears the entire form and cart after a confirmation prompt.
 
 > **Screenshot:**
-> ![Billing calculator output](https://raw.githubusercontent.com/ananyamarghade/JavaScript-Lab/d58808a2be018186c55400541afeb3011fcca150/2%20To%20build%20a%20billing%20calculator%20with%20user%20input./billing%20form.png)
+> ![Billing calculator output](<billing form.png>)
 
 
 ---
