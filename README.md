@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./assets/banner.svg" alt="JavaScript Lab" width="100%">
+  <img src="./banner.svg" alt="JavaScript Lab" width="100%">
 </h1>
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
