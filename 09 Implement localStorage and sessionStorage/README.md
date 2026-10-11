@@ -7,7 +7,7 @@
 
 **System File Path:** `"D:\Ananya\JavaScript LAB\EXP9\themechange.html"` | `"D:\Ananya\JavaScript LAB\EXP9\seminar planner case study.html"`
 
-**GITHUB File Path:** `9 Implement localStorage and sessionStorage/themechange.html` | `9 Implement localStorage and sessionStorage/seminar planner case study.html`
+**GITHUB File Path:** `09 Implement localStorage and sessionStorage/themechange.html` | `09 Implement localStorage and sessionStorage/seminar planner case study.html`
 
 ---
 
@@ -27,7 +27,7 @@ Implement localStorage and sessionStorage
 ### Theme Preference — `themechange.html`
 A single-card page that lets the user pick a **Light** or **Dark** theme and remembers the choice. `setTheme()` toggles a `dark` class on `<body>` (the `body.dark` CSS overrides restyle the whole card) and writes the choice to both Web Storage areas — `localStorage.setItem('theme', ...)` for a preference that survives closing the browser, and `sessionStorage.setItem('sessionTheme', ...)` for a copy that lives only as long as the current tab. `clearPreference()` removes both keys with `removeItem()` and returns the page to its default light look, and a `window.onload` handler reads `localStorage.getItem('theme')` to restore the saved theme automatically on the next visit.
 
-#### `9 Implement localStorage and sessionStorage/themechange.html`
+#### `09 Implement localStorage and sessionStorage/themechange.html`
 ```html
 <!DOCTYPE html>
 <html>
@@ -383,7 +383,7 @@ Seminar Schedule Planner — Saving User Preferences with localStorage and sessi
 ### Seminar Schedule Planner — `seminar planner case study.html`
 A seminar timetable (Day / Seminar / Begin–End / Topic) built at runtime from a `schedule` array using `createElement()` and `appendChild()`, with a form below it for saving a personal seminar preference. The two storage areas are used for different jobs. **`localStorage`** keeps the saved preferences — an array of objects serialised with `JSON.stringify()` under the key `seminarPlannerFinalPreferences`, plus individual keys (`preferredName`, `preferredDay`, `preferredScheduleStart`, `preferredScheduleEnd`) — so they persist across reloads. **`sessionStorage`** holds the current-session selection (`preferredTopic`, `selectedSeminar`, `selectionStatus`), set whenever a seminar is clicked or a preference is saved. On every load, `displaySchedule()` reads the array back with `JSON.parse()`, filters the original and saved entries per day, and merges the saved rows into the correct day group (the Day cell's `rowSpan` grows to cover them), highlighted with the `saved-row` style. `formatTime()` converts the 24-hour values from `<input type="time">` into 12-hour `a.m.` / `p.m.` display.
 
-#### `9 Implement localStorage and sessionStorage/seminar planner case study.html`
+#### `09 Implement localStorage and sessionStorage/seminar planner case study.html`
 ```html
 <!DOCTYPE html>
 <html>
