@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Information Management</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 40px 16px;
+        background-color: #e9edf3;
+        color: #1b2a4a;
+        font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        line-height: 1.55;
+    }
+
+    .container {
+        max-width: 880px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border: 1px solid #d0d7e3;
+        border-top: 4px solid #1f3a6e;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(27, 42, 74, 0.1);
+        padding: 36px;
+    }
+
+    h1 {
+        margin: 0 0 4px 0;
+        font-size: 26px;
+        font-weight: 600;
+        color: #14213d;
+    }
+
+    .subtitle {
+        margin: 0 0 28px 0;
+        padding-bottom: 18px;
+        border-bottom: 1px solid #d0d7e3;
+        color: #51617f;
+        font-size: 15px;
+    }
+
+    h2 {
+        margin: 32px 0 14px 0;
+        padding-left: 10px;
+        border-left: 4px solid #2f5fb3;
+        font-size: 18px;
+        font-weight: 600;
+        color: #14213d;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #25365a;
+    }
+
+    input {
+        padding: 11px 12px;
+        border: 1px solid #b4bdcf;
+        border-radius: 6px;
+        font-size: 15px;
+        color: #1b2a4a;
+        background-color: #fbfcfe;
+    }
+
+    input::placeholder {
+        color: #8a96ab;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #2f5fb3;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 3px rgba(47, 95, 179, 0.2);
+    }
+
+    .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    button {
+        padding: 11px 24px;
+        border: 1px solid #1f4e9c;
+        border-radius: 6px;
+        background-color: #2f5fb3;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #1f4e9c;
+    }
+
+    button:focus-visible {
+        outline: 2px solid #14213d;
+        outline-offset: 2px;
+    }
+
+    #loadButton {
+        background-color: #ffffff;
+        color: #1f4e9c;
+    }
+
+    #loadButton:hover {
+        background-color: #e8eefa;
+    }
+
+    .message {
+        min-height: 22px;
+        margin: 14px 0 0 0;
+        font-size: 14px;
+        color: #b3261e;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+        border: 1px solid #d0d7e3;
+        border-radius: 6px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+    }
+
+    th, td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #e0e5ee;
+        text-align: left;
+    }
+
+    th {
+        background-color: #1f3a6e;
+        color: #ffffff;
+        font-weight: 600;
+        border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f6f8fc;
+    }
+
+    tbody tr:hover {
+        background-color: #e8eefa;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    td.number, th.number {
+        text-align: right;
+    }
+
+    .footer {
+        max-width: 880px;
+        margin: 28px auto 0 auto;
+        text-align: center;
+        color: #51617f;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .footer .designer {
+        font-size: 16px;
+        font-weight: 600;
+        color: #14213d;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 20px 12px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Information Management</h1>
+
+        <h2>Employee Details</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="employeeId">Employee ID</label>
+                <input type="number" id="employeeId" placeholder="Enter employee ID">
+            </div>
+            <div class="form-group">
+                <label for="employeeName">Employee Name</label>
+                <input type="text" id="employeeName" placeholder="Enter employee name">
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" id="department" placeholder="Enter department">
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="number" id="salary" placeholder="Enter salary">
+            </div>
+        </div>
+
+        <div class="button-row">
+            <button type="button" id="addButton">ADD EMPLOYEE</button>
+            <button type="button" id="loadButton">LOAD EMPLOYEES</button>
+        </div>
+        <p class="message" id="message"></p>
+
+        <h2>Employee Records</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Department</th>
+                        <th class="number">Salary</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>Designed By</div>
+        <div class="designer">Ananya Marghade</div>
+        <div>PRN 24070521004</div>
+        <div>Batch A1</div>
+    </footer>
+
+    <script>
+        var idInput = document.getElementById("employeeId");
+        var nameInput = document.getElementById("employeeName");
+        var departmentInput = document.getElementById("department");
+        var salaryInput = document.getElementById("salary");
+        var messageBox = document.getElementById("message");
+        var tableBody = document.getElementById("tableBody");
+
+        var fileEmployees = [];
+        var showTable = false;
+        var fileHandle = null;
+
+        function getStoredEmployees() {
+            var data = localStorage.getItem("employees");
+            if (data === null) {
+                return [];
+            }
+            return JSON.parse(data);
+        }
+
+        function renderTable() {
+            tableBody.innerHTML = "";
+
+            if (!showTable) {
+                return;
+            }
+
+            var allEmployees = fileEmployees.slice();
+            var storedEmployees = getStoredEmployees();
+
+            for (var j = 0; j < storedEmployees.length; j++) {
+                var alreadyPresent = false;
+
+                for (var k = 0; k < allEmployees.length; k++) {
+                    if (allEmployees[k].employeeId === storedEmployees[j].employeeId) {
+                        alreadyPresent = true;
+                    }
+                }
+
+                if (!alreadyPresent) {
+                    allEmployees.push(storedEmployees[j]);
+                }
+            }
+
+            for (var i = 0; i < allEmployees.length; i++) {
+                var employee = allEmployees[i];
+                var row = document.createElement("tr");
+
+                var idCell = document.createElement("td");
+                idCell.textContent = employee.employeeId;
+
+                var nameCell = document.createElement("td");
+                nameCell.textContent = employee.employeeName;
+
+                var departmentCell = document.createElement("td");
+                departmentCell.textContent = employee.department;
+
+                var salaryCell = document.createElement("td");
+                salaryCell.className = "number";
+                salaryCell.textContent = employee.salary;
+
+                row.appendChild(idCell);
+                row.appendChild(nameCell);
+                row.appendChild(departmentCell);
+                row.appendChild(salaryCell);
+                tableBody.appendChild(row);
+            }
+        }
+
+        function openDatabase() {
+            return new Promise(function (resolve, reject) {
+                var request = indexedDB.open("employeeDb", 1);
+
+                request.onupgradeneeded = function () {
+                    request.result.createObjectStore("handles");
+                };
+
+                request.onsuccess = function () {
+                    resolve(request.result);
+                };
+
+                request.onerror = function () {
+                    reject(request.error);
+                };
+            });
+        }
+
+        async function saveHandle(handle) {
+            var db = await openDatabase();
+
+            return new Promise(function (resolve, reject) {
+                var transaction = db.transaction("handles", "readwrite");
+                transaction.objectStore("handles").put(handle, "employeesFile");
+
+                transaction.oncomplete = function () {
+                    resolve();
+                };
+
+                transaction.onerror = function () {
+                    reject(transaction.error);
+                };
+            });
+        }
+
+        async function getSavedHandle() {
+            var db = await openDatabase();
+
+            return new Promise(function (resolve, reject) {
+                var request = db.transaction("handles", "readonly").objectStore("handles").get("employeesFile");
+
+                request.onsuccess = function () {
+                    resolve(request.result || null);
+                };
+
+                request.onerror = function () {
+                    reject(request.error);
+                };
+            });
+        }
+
+        async function addEmployee() {
+            var idValue = idInput.value.trim();
+            var nameValue = nameInput.value.trim();
+            var departmentValue = departmentInput.value.trim();
+            var salaryValue = salaryInput.value.trim();
+
+            if (idValue === "" || nameValue === "" || departmentValue === "" || salaryValue === "") {
+                messageBox.textContent = "Please fill in all fields before adding an employee.";
+                return;
+            }
+
+            messageBox.textContent = "";
+
+            var employee = {
+                employeeId: Number(idValue),
+                employeeName: nameValue,
+                department: departmentValue,
+                salary: Number(salaryValue)
+            };
+
+            var fileUpdated = false;
+
+            if (window.showOpenFilePicker) {
+                try {
+                    if (fileHandle === null) {
+                        fileHandle = await getSavedHandle();
+                    }
+
+                    if (fileHandle !== null) {
+                        var permission = await fileHandle.queryPermission({ mode: "readwrite" });
+
+                        if (permission !== "granted") {
+                            permission = await fileHandle.requestPermission({ mode: "readwrite" });
+                        }
+
+                        if (permission !== "granted") {
+                            fileHandle = null;
+                        }
+                    }
+
+                    if (fileHandle === null) {
+                        var handles = await window.showOpenFilePicker({
+                            types: [{
+                                description: "JSON file",
+                                accept: { "application/json": [".json"] }
+                            }]
+                        });
+                        fileHandle = handles[0];
+                        await saveHandle(fileHandle);
+                    }
+
+                    var file = await fileHandle.getFile();
+                    var text = await file.text();
+                    var employees = JSON.parse(text);
+                    employees.push(employee);
+
+                    var writer = await fileHandle.createWritable();
+                    await writer.write(JSON.stringify(employees, null, 4));
+                    await writer.close();
+                    fileUpdated = true;
+                } catch (error) {
+                    fileUpdated = false;
+                    fileHandle = null;
+                    await saveHandle(null).catch(function () {});
+                }
+            }
+
+            var storedEmployees = getStoredEmployees();
+            storedEmployees.push(employee);
+            localStorage.setItem("employees", JSON.stringify(storedEmployees));
+
+            idInput.value = "";
+            nameInput.value = "";
+            departmentInput.value = "";
+            salaryInput.value = "";
+
+            if (fileUpdated) {
+                alert("Employee added successfully! employees.json updated.");
+            } else {
+                alert("Employee saved in localStorage only. employees.json was not updated.");
+            }
+        }
+
+        function loadEmployees() {
+            messageBox.textContent = "";
+
+            fetch("employees.json", { cache: "no-store" })
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error("Could not load employees.json");
+                    }
+                    return response.json();
+                })
+                .then(function (data) {
+                    fileEmployees = data;
+                    showTable = true;
+                    renderTable();
+                })
+                .catch(function () {
+                    messageBox.textContent = "Unable to load employees.json. Run the page using VS Code Live Server.";
+                });
+        }
+
+        document.getElementById("addButton").addEventListener("click", addEmployee);
+        document.getElementById("loadButton").addEventListener("click", loadEmployees);
+    </script>
+</body>
+</html>
