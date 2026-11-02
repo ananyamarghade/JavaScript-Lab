@@ -91,13 +91,43 @@ JavaScript-Lab/
 │   ├── themechange.html
 │   └── seminar planner case study.html
 │
-└── 10 JSON Data with Fetch and jQuery/
-    ├── 10.1) Using Fetch()/
-    │   ├── exp10.1.html
-    │   └── exp10casestudy.html
-    └── 10.2) Using jquery/
-        ├── exp10.2.html
-        └── exp10part2casestudy.html
+├── 10 JSON Data with Fetch and jQuery/
+│   ├── 10.1) Using Fetch()/
+│   │   ├── exp10.1.html
+│   │   └── exp10casestudy.html
+│   └── 10.2) Using jquery/
+│       ├── exp10.2.html
+│       └── exp10part2casestudy.html
+│
+├── 11 JavaScript timers and ES6 module/
+│   ├── class scheduler.html
+│   ├── main.js
+│   ├── style.css
+│   ├── concert registration/
+│   │   ├── index.html
+│   │   ├── app.js
+│   │   └── styles.css
+│   ├── nagpur-project/
+│   │   └── index.html
+│   └── rakhinest/
+│       ├── index.html
+│       ├── shop.html
+│       ├── css/style.css
+│       └── js/app.js
+│
+└── 12 Interactive real time web app/
+    ├── fooddelivery/
+    │   ├── index.html
+    │   ├── script.js
+    │   ├── style.css
+    │   └── menu.json
+    ├── TechNova Workshop Booking.html
+    └── sih-site/
+        ├── index.html
+        ├── css/styles.css
+        └── js/
+            ├── app.js
+            └── data.js
 ```
 
 Each experiment folder includes:
@@ -122,6 +152,8 @@ Each experiment folder includes:
 | 8 | Accessing & Validating Form Fields Using Events | Gym Admission Form — focus/blur/change validation with regex | BearGYM Admission Form — live BMI, dynamic pricing, full submit validation |
 | 9 | `localStorage` & `sessionStorage` | Theme Preference — light/dark theme saved, restored on reload and clearable | Seminar Schedule Planner — preferences saved as JSON in `localStorage`, session selections in `sessionStorage`, schedule re-rendered on load |
 | 10 | Loading JSON Data with `fetch()` & jQuery | Student Details — `fetch()` + `.then()` chain, `response.json()`, table built from a JSON file; same table again with `$.getJSON()` and `$.each()` | Employee Information Management (`fetch()` + `localStorage` + File System Access API) & OrderDesk Restaurant Dashboard (`$.getJSON()`, `.done()` / `.fail()` / `.always()`, status totals and sales summary) |
+| 11 | JavaScript Timers & ES6 Modules | Class Scheduler — loaded with `<script type="module">`; `setInterval()` drives a live clock, countdown and automatic class status (upcoming / starting soon / ongoing / completed), `setTimeout()` handles toasts and animations; add / edit / delete with validation, overlap check and `localStorage` | AFTERHOURS Concert Registration (live pass price calculator, form validation, digital pass), My City – Nagpur (scroll-spy and reveal-on-scroll landmarks site) & RakhiNest (multi-page rakhi store with cart, coupons, checkout and order tracking) |
+| 12 | Interactive Real-Time Web Application | FoodieGo — food delivery app: menu loaded with jQuery `$.ajax()`, search / filter / sort, cart drawer with coupons and live bill, validated checkout, orders and simulated real-time tracking with `setInterval()`, all persisted in `localStorage` | TechNova Workshop Booking form (HTML5 validation + instant confirmation) & Smart India Hackathon 2026 portal (data-driven page with live search, filters and modals) |
 
 ---
 
@@ -139,6 +171,8 @@ Each experiment folder includes:
 | 8 | [Experiment8.md](<./08 Access and validate form fields using events/README.md>) | [`08 Access and validate form fields using events/`](<./08 Access and validate form fields using events>) |
 | 9 | [Experiment9.md](<./09 Implement localStorage and sessionStorage/README.md>) | [`09 Implement localStorage and sessionStorage/`](<./09 Implement localStorage and sessionStorage>) |
 | 10 | [Experiment10.md](<./10 JSON Data with Fetch and jQuery/README.md>) | [`10 JSON Data with Fetch and jQuery/`](<./10 JSON Data with Fetch and jQuery>) |
+| 11 | [Experiment11.md](<./11 JavaScript timers and ES6 module/README.md>) | [`11 JavaScript timers and ES6 module/`](<./11 JavaScript timers and ES6 module>) |
+| 12 | [Experiment12.md](<./12 Interactive real time web app/README.md>) | [`12 Interactive real time web app/`](<./12 Interactive real time web app>) |
 
 ---
 
@@ -148,6 +182,7 @@ Each experiment folder includes:
 - CSS3
 - JavaScript (ES6+)
 - jQuery 3.7.1 (CDN)
+- Google Fonts (CDN)
 - Visual Studio Code
 - Google Chrome
 - VS Code Live Server
@@ -177,7 +212,11 @@ Each experiment folder includes:
   <b>Experiment 9 — Seminar Schedule Planner</b><br>
   <img src="./09%20Implement%20localStorage%20and%20sessionStorage/Seminar%20Planner.png" width="700"><br><br>
   <b>Experiment 10 — OrderDesk Restaurant Order Dashboard</b><br>
-  <img src="./10%20JSON%20Data%20with%20Fetch%20and%20jQuery/10.2%29%20Using%20jquery/exp10part2casestudy.png" width="700">
+  <img src="./10%20JSON%20Data%20with%20Fetch%20and%20jQuery/10.2%29%20Using%20jquery/exp10part2casestudy.png" width="700"><br><br>
+  <b>Experiment 11 — Class Scheduler</b><br>
+  <img src="./11%20JavaScript%20timers%20and%20ES6%20module/class%20scheduler.png" width="700"><br><br>
+  <b>Experiment 12 — FoodieGo Food Delivery App</b><br>
+  <img src="./12%20Interactive%20real%20time%20web%20app/fooddelivery/food%20delivery.png" width="700">
 </p>
 
 ---
@@ -198,7 +237,12 @@ Through these practicals, the following JavaScript concepts were implemented han
 - Serialising arrays and objects with `JSON.stringify()` / `JSON.parse()` for storage
 - Loading external JSON data asynchronously with `fetch()` — promise chaining (`.then()` / `.catch()`) and `response.json()`
 - Fetching and rendering JSON with jQuery — `$.getJSON()`, `$.each()`, `.append()`, `.done()` / `.fail()` / `.always()`
-- Running pages through a local server (VS Code Live Server) so `fetch()` and AJAX requests work
+- Timers — `setInterval()` for a live clock, countdown and simulated real-time order tracking; `setTimeout()` for toasts and short-lived animations
+- ES6 modules (`<script type="module">`) and modern ES6 syntax — arrow functions, destructuring, spread, template literals, closures and the module pattern
+- Building a live status engine that re-renders the UI only when the underlying data changes
+- Loading data with jQuery AJAX (`$.ajax()`) and building a single-page interface that switches views without reloading
+- Event delegation for dynamically created elements, search / filter / sort pipelines and a cart-and-coupon billing flow
+- Running pages through a local server (VS Code Live Server) so `fetch()`, AJAX requests and ES module scripts work
 - Console methods (`log`, `warn`, `error`, `table`) for debugging
 - Building complete, styled, interactive mini-applications — not isolated code snippets
 
@@ -211,7 +255,7 @@ Through these practicals, the following JavaScript concepts were implemented han
    git clone https://github.com/ananyamarghade/JavaScript-Lab.git
    ```
 2. **Open any experiment folder** and launch its main `.html` file (e.g. `index.html`, `department.html`, `shop-billing.html`) directly in a browser.
-3. No build tools, servers, or dependencies required — everything runs client-side.
+3. No build tools or dependencies are required — everything runs client-side. Most experiments open directly in the browser, but Experiments **10**, **11** (Class Scheduler) and **12** (FoodieGo) load JSON files or ES module scripts, which browsers block on `file://` addresses. Open these folders with **VS Code Live Server** (right-click the `.html` file → *Open with Live Server*).
 
 ---
 
