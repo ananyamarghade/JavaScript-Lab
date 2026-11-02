@@ -1,0 +1,850 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechNova | Workshop Booking</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #030a20;
+    color: white;
+}
+
+/* NAVBAR */
+nav {
+    height: 85px;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #07112c;
+    border-bottom: 1px solid #293c72;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    font-size: 45px;
+    color: #75b8ff;
+    font-weight: bold;
+}
+
+.logo h2 {
+    font-size: 25px;
+}
+
+.logo p {
+    color: #b9c6e5;
+    font-size: 14px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.nav-links a {
+    color: #d9d9ff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links .book {
+    border: 1px solid #47a8ff;
+    padding: 12px 25px;
+    border-radius: 30px;
+}
+
+/* MAIN LAYOUT */
+.main {
+    display: grid;
+    grid-template-columns: 0.8fr 1.55fr;
+    gap: 35px;
+    padding: 30px 4.7%;
+    align-items: stretch;
+}
+
+/* LEFT SECTION */
+.left {
+    padding-top: 25px;
+}
+
+.tag {
+    display: inline-block;
+    border: 1px solid #ba78ff;
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: white;
+    background: #171039;
+    font-size: 17px;
+}
+
+.left h1 {
+    font-size: clamp(48px, 5.5vw, 82px);
+    line-height: 0.98;
+    margin-top: 25px;
+    font-weight: 750;
+    letter-spacing: -2px;
+}
+
+.left h1 span {
+    color: #b77bff;
+}
+
+.subtitle {
+    font-size: 25px;
+    line-height: 1.4;
+    margin-top: 20px;
+    color: #e5e8ff;
+}
+
+.line {
+    height: 4px;
+    width: 100px;
+    background: linear-gradient(to right, #d2a1ff, #6735ff);
+    margin: 17px 0 25px;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 20px;
+}
+
+.event-details div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.event-details span {
+    color: #bd9cff;
+    font-size: 23px;
+}
+
+/* LAPTOP VISUAL */
+.laptop-area {
+    height: 220px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(
+        ellipse at bottom, #172f83 0%, transparent 70%
+    );
+}
+
+.laptop {
+    width: 230px;
+    height: 145px;
+    background: linear-gradient(140deg, #182c58, #02091d);
+    border: 3px solid #6baaff;
+    border-radius: 9px;
+    transform: perspective(500px) rotateY(-12deg) rotateX(5deg);
+    box-shadow: 0 0 35px #284aff88;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: #438cff;
+    position: relative;
+}
+
+.laptop::after {
+    content: "";
+    position: absolute;
+    width: 265px;
+    height: 10px;
+    bottom: -17px;
+    left: -20px;
+    background: linear-gradient(
+        90deg, #263c82, #a4b9ff, #273b83
+    );
+    border-radius: 50%;
+    transform: perspective(100px) rotateX(15deg);
+}
+
+/* WHY ATTEND */
+.why {
+    margin-top: 15px;
+    padding: 17px 25px;
+    border: 1px solid #344d9d;
+    border-radius: 25px;
+    background: linear-gradient(130deg, #101e45, #0b1431);
+}
+
+.why h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.why p {
+    margin: 9px 0;
+    font-size: 15px;
+}
+
+.why span {
+    color: #27e9b0;
+    font-weight: bold;
+    margin-right: 12px;
+    font-size: 20px;
+}
+
+/* FORM CARD */
+.form-card {
+    background: linear-gradient(
+        140deg, #111a39, #080f26 65%, #151b50
+    );
+    border: 1px solid #7668bd;
+    border-radius: 23px;
+    padding: 25px 35px;
+    box-shadow: 0 10px 40px #0005;
+}
+
+.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #6456a7;
+}
+
+.ticket-icon {
+    font-size: 45px;
+    color: #ba8aff;
+}
+
+.form-heading h2 {
+    font-size: 29px;
+}
+
+.form-heading p {
+    font-size: 17px;
+    color: #c8cbe4;
+    margin-top: 4px;
+}
+
+/* FORM SECTIONS */
+.section {
+    padding: 17px 0;
+    border-bottom: 1px solid #34416b;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 13px;
+    font-size: 19px;
+}
+
+.number {
+    height: 29px;
+    width: 29px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e0c4ff, #a66bff);
+    color: #171039;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px 30px;
+}
+
+.field label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.required {
+    color: #ff7474;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: #111a35;
+    border: 1px solid #53628d;
+    border-radius: 7px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #aab3ce;
+}
+
+select option {
+    background: #111a35;
+    color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #a875ff;
+    box-shadow: 0 0 8px #9b65ff44;
+}
+
+/* RADIO OPTIONS */
+.radio-options {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 9px;
+}
+
+.radio-options label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #b47aff;
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+}
+
+/* TEXTAREA */
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* TICKET DETAILS */
+.ticket-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+    align-items: center;
+}
+
+.ticket-box {
+    border: 1px solid #82769d;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: #171a30;
+}
+
+.ticket-box .icon {
+    font-size: 30px;
+    color: #ffca65;
+}
+
+.ticket-box h4 {
+    font-size: 15px;
+}
+
+.ticket-box p {
+    color: #c4c6d9;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #c08aff;
+    margin-left: auto;
+}
+
+/* CHECKBOX */
+.terms {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 13px;
+    color: #e6e5f5;
+}
+
+.terms a {
+    color: #b77bff;
+    text-decoration: none;
+}
+
+/* BUTTONS */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 16px;
+}
+
+button {
+    padding: 12px 38px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit {
+    border: none;
+    color: white;
+    background: linear-gradient(100deg, #962fff, #414dff);
+}
+
+.submit:hover {
+    box-shadow: 0 0 20px #844bff88;
+    transform: translateY(-2px);
+}
+
+.reset {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.reset:hover {
+    background: #ffffff15;
+}
+
+/* CONFIRMATION */
+#confirmation {
+    display: none;
+    text-align: center;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    color: #75ffc0;
+    background: #123d35;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 25px 15px;
+    background: #07112c;
+    border-top: 1px solid #51418a;
+    color: #b9c6e5;
+    line-height: 1.8;
+}
+
+.footer p {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a98aff;
+}
+
+.footer h3 {
+    color: white;
+    font-size: 19px;
+    margin: 3px 0;
+}
+
+.footer span {
+    display: block;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1000px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+
+    .left {
+        padding-bottom: 10px;
+    }
+
+    .laptop-area {
+        display: none;
+    }
+
+    .why {
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width: 600px) {
+    nav {
+        padding: 15px 5%;
+        height: auto;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .main {
+        padding: 20px 4%;
+    }
+
+    .left h1 {
+        font-size: 53px;
+    }
+
+    .subtitle {
+        font-size: 19px;
+    }
+
+    .form-card {
+        padding: 20px 16px;
+    }
+
+    .form-heading h2 {
+        font-size: 22px;
+    }
+
+    .grid,
+    .ticket-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    button {
+        padding: 12px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">
+        <div class="logo-icon">&lt;/&gt;</div>
+        <div>
+            <h2>TechNova</h2>
+            <p>Learn · Build · Grow</p>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#workshops">Workshops</a>
+        <a href="#details">Event Info</a>
+        <a href="#booking" class="book">Book Ticket</a>
+    </div>
+</nav>
+
+<div class="main">
+
+    <!-- LEFT CONTENT -->
+    <div class="left">
+
+        <div class="tag">✦ &nbsp; Technical Workshop</div>
+
+        <h1>Technical<br><span>Workshop</span></h1>
+
+        <p class="subtitle">
+            Explore Technology.<br>
+            Build Skills. Shape the Future.
+        </p>
+
+        <div class="line"></div>
+
+        <div class="event-details" id="details">
+            <div><span>▦</span> 20 November 2026</div>
+            <div><span>◷</span> 10:00 AM – 4:00 PM</div>
+            <div><span>♦</span> Main Auditorium</div>
+        </div>
+
+        <div class="laptop-area">
+            <div class="laptop">&lt;/&gt;</div>
+        </div>
+
+        <div class="why">
+            <h3>Why Attend?</h3>
+            <p><span>✓</span> Expert-Led Sessions</p>
+            <p><span>✓</span> Hands-On Learning</p>
+            <p><span>✓</span> Certificate of Participation</p>
+        </div>
+
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="form-card" id="booking">
+
+        <div class="form-heading">
+            <div class="ticket-icon">🎟</div>
+            <div>
+                <h2>Ticket Booking Form</h2>
+                <p>Register now for the Technical Workshop!</p>
+            </div>
+        </div>
+
+        <form id="bookingForm">
+
+            <!-- SECTION 1 -->
+            <div class="section">
+
+                <h3 class="section-heading">
+                    <span class="number">1</span>
+                    Student Information
+                </h3>
+
+                <div class="grid">
+
+                    <div class="field">
+                        <label>Full Name <span class="required">*</span></label>
+                        <input type="text"
+                        placeholder="Enter your full name"
+                        pattern="[A-Za-z ]{2,}" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Roll Number <span class="required">*</span></label>
+                        <input type="text"
+                        placeholder="Enter roll number" required>
+                    </div>
+
+                    <div class="field">
+                        <label>College Email <span class="required">*</span></label>
+                        <input type="email"
+                        placeholder="name@college.edu" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Mobile Number <span class="required">*</span></label>
+                        <input type="tel"
+                        placeholder="10-digit mobile number"
+                        pattern="[0-9]{10}" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Department / Branch <span class="required">*</span></label>
+                        <select required>
+                            <option value="">Select Branch</option>
+                            <option>Computer Science Engineering</option>
+                            <option>AI & Data Science</option>
+                            <option>Information Technology</option>
+                            <option>Electronics Engineering</option>
+                            <option>Mechanical Engineering</option>
+                            <option>Civil Engineering</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Year of Study <span class="required">*</span></label>
+                        <select required>
+                            <option value="">Select Year</option>
+                            <option>First Year</option>
+                            <option>Second Year</option>
+                            <option>Third Year</option>
+                            <option>Final Year</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 2 -->
+            <div class="section" id="workshops">
+
+                <h3 class="section-heading">
+                    <span class="number">2</span>
+                    Workshop Preferences
+                </h3>
+
+                <div class="grid">
+
+                    <div class="field">
+                        <label>Select Workshop Track <span class="required">*</span></label>
+                        <select required>
+                            <option value="">Choose a workshop</option>
+                            <option>Artificial Intelligence & ML</option>
+                            <option>Web Development</option>
+                            <option>Cyber Security</option>
+                            <option>Cloud Computing</option>
+                            <option>Internet of Things</option>
+                            <option>Data Science & Analytics</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Preferred Session <span class="required">*</span></label>
+
+                        <div class="radio-options">
+                            <label>
+                                <input type="radio" name="session"
+                                value="Morning" required> Morning
+                            </label>
+
+                            <label>
+                                <input type="radio" name="session"
+                                value="Afternoon"> Afternoon
+                            </label>
+
+                            <label>
+                                <input type="radio" name="session"
+                                value="Full Day"> Full Day
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Previous Technical Experience</label>
+
+                        <div class="radio-options">
+                            <label>
+                                <input type="radio" name="experience"
+                                value="Beginner"> Beginner
+                            </label>
+
+                            <label>
+                                <input type="radio" name="experience"
+                                value="Intermediate"> Intermediate
+                            </label>
+
+                            <label>
+                                <input type="radio" name="experience"
+                                value="Advanced"> Advanced
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Special Requirements / Queries</label>
+                        <textarea placeholder="Any special requests..."></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 3 -->
+            <div class="section">
+
+                <h3 class="section-heading">
+                    <span class="number">3</span>
+                    Ticket Details
+                </h3>
+
+                <div class="ticket-row">
+
+                    <div class="ticket-box">
+                        <div class="icon">🎫</div>
+
+                        <div>
+                            <h4>Student Workshop Pass</h4>
+                            <p>
+                                Workshop Access + Learning Material<br>
+                                + Certificate
+                            </p>
+                        </div>
+
+                        <div class="price">₹299</div>
+                    </div>
+
+                    <div class="field">
+                        <label>Payment Method <span class="required">*</span></label>
+                        <select required>
+                            <option value="">Select Payment Method</option>
+                            <option>UPI</option>
+                            <option>Debit / Credit Card</option>
+                            <option>Net Banking</option>
+                            <option>Cash</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- TERMS -->
+            <div class="terms">
+                <input type="checkbox" required>
+                <span>
+                    I confirm that the information provided is correct
+                    and agree to the event
+                    <a href="#">terms & conditions.</a>
+                </span>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="buttons">
+                <button type="submit" class="submit">
+                    Book My Ticket &nbsp; →
+                </button>
+
+                <button type="reset" class="reset">
+                    Reset
+                </button>
+            </div>
+
+            <!-- CONFIRMATION -->
+            <div id="confirmation">
+                ✓ Registration form submitted successfully!
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>Designed By</p>
+    <h3>Ananya Marghade</h3>
+    <span>PRN 24070521004</span>
+    <span>Batch A1</span>
+</footer>
+
+<script>
+document.getElementById("bookingForm").addEventListener(
+    "submit", function(event) {
+
+        event.preventDefault();
+
+        document.getElementById("confirmation").style.display = "block";
+
+        document.getElementById("confirmation").scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    }
+);
+
+document.getElementById("bookingForm").addEventListener(
+    "reset", function() {
+
+        document.getElementById("confirmation").style.display = "none";
+    }
+);
+</script>
+
+</body>
+</html>
