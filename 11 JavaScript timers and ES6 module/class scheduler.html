@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Scheduler and Countdown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">CS</span>
+      <div>
+        <h1>Class Scheduler</h1>
+        <p>Student dashboard</p>
+      </div>
+    </div>
+    <div class="clock">
+      <span class="live"><i></i>Live</span>
+      <div class="clock-text">
+        <span class="clock-date" id="currentDate"></span>
+        <span class="clock-time" id="currentTime"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <article class="card countdown-card" id="countdownCard" data-mode="none">
+      <div class="countdown-info">
+        <p class="eyebrow" id="countdownLabel">No upcoming classes</p>
+        <h2 id="countdownTitle">You are all caught up</h2>
+        <p class="countdown-meta" id="countdownMeta">Add a class to start a live countdown.</p>
+        <p class="countdown-note" id="countdownNote"></p>
+      </div>
+      <div class="countdown-grid">
+        <div class="time-box">
+          <span id="cdDays">00</span>
+          <small>Days</small>
+        </div>
+        <div class="time-box">
+          <span id="cdHours">00</span>
+          <small>Hours</small>
+        </div>
+        <div class="time-box">
+          <span id="cdMinutes">00</span>
+          <small>Minutes</small>
+        </div>
+        <div class="time-box">
+          <span id="cdSeconds">00</span>
+          <small>Seconds</small>
+        </div>
+      </div>
+    </article>
+
+    <section class="column column-left">
+      <article class="card form-card">
+        <div class="card-head">
+          <h2 id="formTitle">Add a Class</h2>
+          <p class="card-sub">Fill in the details to schedule a class.</p>
+        </div>
+        <form id="classForm" novalidate>
+          <div class="field">
+            <label for="name">Class Name</label>
+            <input type="text" id="name" name="name" maxlength="60" placeholder="e.g. Web Technologies Lecture" autocomplete="off">
+            <span class="error" id="nameError"></span>
+          </div>
+
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" maxlength="60" placeholder="e.g. JavaScript" autocomplete="off">
+            <span class="error" id="subjectError"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date">
+              <span class="error" id="dateError"></span>
+            </div>
+            <div class="field">
+              <label for="startTime">Start Time</label>
+              <input type="time" id="startTime" name="startTime">
+              <span class="error" id="startTimeError"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="duration">Duration (minutes)</label>
+            <input type="number" id="duration" name="duration" min="5" max="480" step="1" placeholder="e.g. 60">
+            <span class="error" id="durationError"></span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submitBtn">Add Class</button>
+            <button type="button" class="btn btn-ghost" id="cancelBtn" hidden>Cancel</button>
+          </div>
+        </form>
+      </article>
+    </section>
+
+    <section class="column column-right">
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-value" id="statTotal">0</span>
+          <span class="stat-label">Total Classes</span>
+        </div>
+        <div class="stat stat-upcoming">
+          <span class="stat-value" id="statUpcoming">0</span>
+          <span class="stat-label">Upcoming</span>
+        </div>
+        <div class="stat stat-ongoing">
+          <span class="stat-value" id="statOngoing">0</span>
+          <span class="stat-label">In Progress</span>
+        </div>
+        <div class="stat stat-completed">
+          <span class="stat-value" id="statCompleted">0</span>
+          <span class="stat-label">Completed</span>
+        </div>
+      </div>
+
+      <article class="card list-card">
+        <div class="card-head list-head">
+          <div>
+            <h2>Your Schedule</h2>
+            <p class="card-sub">Sorted by date and start time.</p>
+          </div>
+          <div class="filters" role="group" aria-label="Filter classes">
+            <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="filter-btn" data-filter="upcoming" aria-pressed="false">Upcoming</button>
+            <button type="button" class="filter-btn" data-filter="completed" aria-pressed="false">Completed</button>
+          </div>
+        </div>
+
+        <ul class="class-list" id="classList"></ul>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-icon">0</div>
+          <h3 id="emptyTitle">No classes yet</h3>
+          <p id="emptyText">Use the form to add your first class.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-label">Designed By</span>
+      <strong class="footer-name">Ananya Marghade</strong>
+      <div class="footer-meta">
+        <span>PRN 24070521004</span><br>
+        <span>Batch A1</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-area" id="toastArea" aria-live="polite"></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
